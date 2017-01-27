@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testting phrasing tags</title>
+</head>
+<body>
+    <h3>for tag <code>&lt;a&gt;</code>: add link to a page</h3>
+    Click 
+    <a href="http://google.com" target="_blank">here</a>
+    to start your journey online.
+    <h3>for tag <code>&lt;abbr&gt;</code>: abbr for abbrivation</h3>
+    <abbr title="Thanks God, its Friday">TGIF</abbr>
+    <h3>for tag <code>&lt;area&gt;</code>: use area together with &lt;map&gt;</h3>
+    <p>click on the chicken will direct you to a info page.</p>
+    <img src="http://www.m5bq.com/upload/201612/29/201612290017497167.gif" alt="happy new year img" usemap = "#new-year-map"/>
+    <a href="http://www.m5bq.com/zhuanti/753">image source</a>
+    <map name="new-year-map">
+      <area 
+        shape="circle" 
+        coords="120,120,100" 
+        href="https://en.wikipedia.org/wiki/Chinese_New_Year" 
+        alt="Chinese New Year info">
+    </map>
+    <h3>for tag <code>&lt;b&gt;</code>: bold text</h3>
+        <p>It is a truely pleasure to do homework on the <b>Chinese New Year eve</b>.</p> 
+    <h3>for tag <code>&lt;bdi&gt;</code>: bidirectional isolation text</h3>
+    <h3>for tag <code>&lt;bdo&gt;</code>: bidirectional text with overrided direction.</h3>
+        <p>I am making a mirror text <em>here <bdo dir="rtl">here</bdo></em></p>
+    <h3>for tag <code>&lt;br&gt;</code>: line break element. no content and no end tag</h3>
+        <p>Today is a good day<br>I just used a line-breaker! yah!<br></p>
+    <h3>for tag <code>&lt;cite&gt;</code>: used for title of a work, author names, etc</h3>
+        <p>here we demonstrated together with tag <code>&lt;blockquote&gt;</code>.</p>
+        <blockquote>Tradition becomes our security, and when the mind is secure it is in decay.</blockquote>
+        <cite>Jiddu Krishnamurti</cite>
+    <h3>for tag <code>&lt;code&gt;</code></h3>
+        We always need a <code>main()</code> function.
+    <h3>for tag <code>&lt;data&gt;</code>: to make machine-readable data to be displayed user-friendly</h3>
+        <h4>Checkout book list</h4>
+        <ul>
+            <li> <data value="9x28398234"> <cite>The Indian Music</cite> </data> </li>
+            <li> <data value="BD28831234"> <cite>How to cook in 3 minutes </cite></data> </li>
+            <li> <data value="B3rd203948"> <cite>Introduction to HTML </cite></data> </li>
+        </ul>
+    <h3>for tag <code>&lt;datalist&gt;</code>: usually used as a list for user to choose from</h3>
+        What would you like to eat on the New Year's eve:
+        <input type="text" name="new-year-eve-dinner" list="new_year_dinner" maxlength="50">
+        <datalist id="new_year_dinner">
+            <option value="Fried Rice">
+            <option value="Hot Pot">
+            <option value="Rice Cake">
+            <option value="Dumpling">
+        </datalist>
+    <h3>for tag <code>&lt;del&gt;</code> and <code>&lt;ins&gt;</code>: remove
+        text and insert text.</h3> 
+        <p>Note that the default render for <code>&lt;ins&gt;</code>is to
+        underline text. However, semantically, it denotes an element which has
+        been inserted.</p>
+        <ol>
+            <li><del datetime="2017-01-26T14:01:03Z">buy rice cake</del></li>
+            <li><ins datetime="2017-01-26T14:22:33Z">go to BOA</ins></li>
+            <li>finish homework</li>
+        </ol>
+    <h3>for tag <code>&lt;s&gt;</code>: delete irrelavant text</h3>
+        <p>The result is the same as tag <code>&lt;del&gt;</code>, but</p>
+        <ul>
+            <li><code>&lt;del&gt;</code> represents a removal from a document</li>
+            <li><code>&lt;s&gt;</code> represents contents that no longer
+            accurate or relevant </li>
+        </ul>
+        <p>lunch buffet for only <s>$10</s> $12 per person.</p>
+    <h3>for tag <code>&lt;u&gt;</code>: underline</h3>
+        <p>this tag is used for <u>presentation</u> purpose.</p>
+    <h3>for tag <code>&lt;dfn&gt;</code>: first time defining an word</h3>
+        <p>Red envelopes are passed out during the Chinese New Year's
+        celebrations.  A <dfn>Red envelopes</dfn> is an red packet with money,
+        which is used to suppress the evil spirit, literally.</p>   
+    <h3>for tag <code>&lt;em&gt;</code>: used for emphasizing words.</h3>
+        <p>If you do not do this homework, you will <em>fail</em> the class.</p>
+    <h3>for tag <code>&lt;i&gt;</code>: used for italic names, technical terms, etc.</h3>
+        <p>The stranger said her name was <i>Sophy</i>.</p>
+    <h3>for tag <code>&lt;kbd&gt;</code> and <code>&lt;samp&gt;</code>: represents input text that a user should type.</h3>
+        <p>useful in a instruction file. display text that the user should enter into their keyboard.<br> 
+        Here we demonstrated with <code>&lt;samp&gt;</code> tag which usually
+        used to represent sample output of a program.</p>
+        <h4>How to search online</h4>
+        <ol>
+            <li>open your browser</li>
+            <li>type <kbd>google.com</kbd> into your browser address bar.</li>
+            <li>click <kbd><kbd><samp>Enter</samp></kbd></kbd></li>
+        </ol>
+    <h3>for tag <code>&lt;mark&gt;</code>: highlighting text to draw attention</h3>
+        <p>I eat <mark>100000000</mark> burgers today</p>
+    <h3>for tag <code>&lt;meter&gt;</code>: a gauge that represents a percentage or a range</h3>
+        <p>Homework 3 finished: <meter min="0" max="100" value="40"></meter></p>
+    <h3>for tag <code>&lt;progress&gt;</code>: a bar that represents the
+        progress of a task</h3>
+        <p>scaning now. progress: <progress max="100"><span>20</span>%</progress></p>
+    <h3>for tag <code>&lt;output&gt;</code>: represents the result of a calculation </h3>
+        <form oninput="product.value=parseInt(a.value) * parseInt(b.value)">
+            0 <input type="number" id="a" value="50"> 100
+            x <input type="range" id="b" value="50">
+            = <output name="product" for="a b"></output>
+        </form>
+    <h3>for tag <code>&lt;q&gt;</code>: quote</h3>
+        <p><cite>Jiddu Krishnamurti</cite> said <q> It is no measure of health
+            to be well adjusted to a profoundly sick society</q>.</p>
+    <h3>
+        for tag <code>&lt;ruby&gt;</code>: ruby anotation. common use for eastern language.
+    </h3> 
+        <p>
+            ofen used with tag <code>&lt;rt&gt;</code>, which can be used for
+            explanation or <em>pronunciation</em>.
+        <p>
+        <p><ruby>日<rt>に</rt>本<rt>ほん</rt>語<rt>ご</rt></ruby></p>
+    <h3>
+        for tag <code>&lt;small&gt;</code>: small font used for legal
+        restriction, copyright and so on.
+    </h3>
+        <p><small>© Copyright 2017, FLJ Corporation.</small></p>
+    <h3>for tag <code>&lt;strong&gt;</code>: to convey urgency and importancy</h3>
+        <p><strong>Warning</strong>: late submission will not be accept!</p>
+    <h3>for tag <code>&lt;time&gt;</code></h3>
+        <p>The homework is due on <time>2017-01-28 20:59</time>.</p>
+    <h3>for tag <code>&lt;var&gt;</code>: variable, could be used in math equation.</h3>
+        <p>Let's assume <var>x</var> stands for the total income.</p>
+    <h3>for tag <code>&lt;wbr&gt;</code>: indicate the best place to break line when necessary.</h3>
+        <p>This<wbr>Very<wbr>long<wbr>word<wbr>without<wbr>breaking<wbr>need<wbr>us<wbr>to<wbr>mandatorily<wbr>tell<wbr>the<wbr>where<wbr>to<wbr>the<wbr>sentence<wbr>when<wbr>it<wbr>is<wbr>necessary.This<wbr>Very<wbr>long<wbr>word<wbr>without<wbr>breaking<wbr>need<wbr>us<wbr>to<wbr>mandatorily<wbr>tell<wbr>the<wbr>where<wbr>to<wbr>the<wbr>sentence<wbr>when<wbr>it<wbr>is<wbr>necessary. </p>
+    <h3>for tag <code>&lt;sub&gt;</code>: subscript text</h3>
+        <p>this tag should only be used when the absense of the element will
+        change the meaning of the content. It should not be used only for
+        presentation purposes.</p>
+        <p>Carbon Dioxide is often written as CO<sub>2</sub>.</p>
+    <h3>for tag <code>&lt;sup&gt;</code>: superscript text</h3>
+        <p>One of the basic unit in measuring volumn is m<sup>2</sup>.</p>
+    <h3>for tag <code>&lt;span&gt;</code>: meaning nothing on its own.</h3>
+        <p>span is often used with other <em>global attributes</em>.<br>
+        For example, using attribute <code>class</code> to classify <em>if</em>
+        as a keyword: <span class="keyword">if</span></p>
+</body>
+</html>
+
