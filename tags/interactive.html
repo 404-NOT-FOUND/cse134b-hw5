@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing Interactive Tags</title>
+</head>
+<body>
+    <!-- TODO -->
+    <!-- <form action="processkey.cgi" method="post" enctype="multipart/form-data"> -->
+    <!--     <p><keygen name="key"></p> -->
+    <!--     <p><input type=submit value="Submit key..."></p> -->
+    <!-- </form> -->
+    <h1>Interactive Tags Test Page</h1>
+    <p>In the form below, we will try some of the elements that enable users to interactive with our site.</p>
+    <form>
+        <fieldset>
+            <legend>The &lt;input&gt; tag</legend>
+            <p>This is a hidden input box</p>
+            <input type="hidden">
+            <p>This is a text input box</p>
+            <input type="text" value="try edit me!">
+            <p>This is a search input box</p>
+            <input type="search">
+            <p>This is a tel input box</p>
+            <input type="tel">
+            <p>This is a url input box</p>
+            <input type="url">
+            <p>This is an email input box</p>
+            <input type="email">
+            <p>This is a password input box</p>
+            <input type="password">
+            <p>This is a date input box</p>
+            <input type="date">
+            <p>This is a time input box</p>
+            <input type="time">
+            <p>This is a number input box</p>
+            <input type="number">
+            <p>This is a range input box</p>
+            <input type="range">
+            <p>This is a color input box</p>
+            <input type="color">
+            <p>This is a checkbox input box</p>
+            <input type="checkbox">
+            <p>This is a group of radio buttons, you can only check one!</p>
+            <label><input type="radio" name="testRadio"> Option this</label>
+            <label><input type="radio" name="testRadio"> Option that</label>
+            <p>This is a file input box</p>
+            <input type="file">
+            <p>This is a submit input box</p>
+            <input type="submit">
+            <p>This is a image input box</p>
+            <input type="image" src="img/btn.png" alt="image button" height="70">
+            <p>This is a reset input box</p>
+            <input type="reset">
+            <p>This is a button input box</p>
+            <input type="button" value="A clickable button">
+        </fieldset>
+        <fieldset>
+            <legend>The &lt;button&gt; tag</legend>
+            <p>This is a button (actually using the <span class="keyword">&lt;button&gt;</span> tag)</p>
+            <button>Another clickable button</button>
+        </fieldset>
+        <fieldset>
+            <legend>The &lt;select&gt; tag</legend>
+            <p>This is a list where you can select from</p>
+            <select>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>The &lt;textarea&gt; tag</legend>
+            <p>Tell us what you think about us</p>
+            <textarea rows="5" cols="60" maxlength="400">Enter your thoughts here</textarea>
+        </fieldset>
+    </form>
+    <p>Using the <span class="keyword">action</span> attribute we can process the information collected in the form.</p>
+    <fieldset>
+        <legend>The &lt;form&gt; tag with action</legend>
+        <form action="http://www.google.com/search" method="get">
+            <label>Let's Google this: <input type="search" name="q"></label> 
+            <button type="submit">Search</button>
+        </form>
+    </fieldset>
+</body>
+</html>
