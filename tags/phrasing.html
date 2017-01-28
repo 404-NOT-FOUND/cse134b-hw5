@@ -6,44 +6,45 @@
     <title>Testting Phrasing Tags</title>
 </head>
 <body>
-    <h3>for tag <code>&lt;a&gt;</code>: add link to a page</h3>
-    Click 
-    <a href="http://google.com" target="_blank">here</a>
-    to start your journey online.
-    <h3>for tag <code>&lt;abbr&gt;</code>: abbr for abbreviation</h3>
-    <abbr title="Thanks God, its Friday">TGIF</abbr>
-    <h3>for tag <code>&lt;area&gt;</code>: use area together with &lt;map&gt;</h3>
-    <p>click on the chicken will direct you to a info page.</p>
+    <h1>Phrasing Tags Test Page</h1>
+    <h3>Tag <code>&lt;a&gt;</code>: Add link to a page</h3>
+    <p>Click <a href="http://google.com" target="_blank">here</a> to start your
+    journey online.</p>
+    <h3>Tag <code>&lt;abbr&gt;</code>: Abbr for abbreviation</h3>
+    <p>Move your cursor over the letters to see what the abbreviation means:
+    <abbr title="Thanks God, its Friday">TGIF</abbr>.</p>
+    <h3>Tag <code>&lt;area&gt;</code>: Use area together with <code>&lt;map&gt;</code></h3>
+    <p>Click on the chicken will direct you to a info page.</p>
     <img src="http://www.m5bq.com/upload/201612/29/201612290017497167.gif" alt="happy new year img" usemap = "#new-year-map"/>
-    <a href="http://www.m5bq.com/zhuanti/753">image source</a>
+    <p>The image was created by <cite><a href="http://www.m5bq.com/zhuanti/753">m5bq</a></cite>.</p>
     <map name="new-year-map">
-      <area 
-        shape="circle" 
-        coords="120,120,100" 
-        href="https://en.wikipedia.org/wiki/Chinese_New_Year" 
+      <area
+        shape="circle"
+        coords="120,120,100"
+        href="https://en.wikipedia.org/wiki/Chinese_New_Year"
         alt="Chinese New Year info">
     </map>
-    <h3>for tag <code>&lt;b&gt;</code>: bold text</h3>
-        <p>It is a truly pleasure to do homework on the <b>Chinese New Year eve</b>.</p> 
-    <h3>for tag <code>&lt;bdi&gt;</code>: bidirectional isolation text</h3>
-    <h3>for tag <code>&lt;bdo&gt;</code>: bidirectional text with overridden direction.</h3>
+    <h3>Tag <code>&lt;b&gt;</code>: Bold text</h3>
+        <p>It is a true pleasure to do homework on the <b>Chinese New Year eve</b>.</p>
+    <h3>Tag <code>&lt;bdi&gt;</code>: Bidirectional isolation text</h3>
+    <h3>Tag <code>&lt;bdo&gt;</code>: Bidirectional text with overridden direction</h3>
         <p>I am making a mirror text <em>here <bdo dir="rtl">here</bdo></em></p>
-    <h3>for tag <code>&lt;br&gt;</code>: line break element. no content and no end tag</h3>
+    <h3>Tag <code>&lt;br&gt;</code>: Line break element. no content and no end tag</h3>
         <p>Today is a good day<br>I just used a line-breaker! Yay!<br></p>
-    <h3>for tag <code>&lt;cite&gt;</code>: used for title of a work, author names, etc.</h3>
-        <p>here we demonstrated together with tag <code>&lt;blockquote&gt;</code>.</p>
+    <h3>Tag <code>&lt;cite&gt;</code>: Used for title of a work, author names, etc</h3>
+        <p>Here we demonstrated together with tag <code>&lt;blockquote&gt;</code>.</p>
         <blockquote>Tradition becomes our security, and when the mind is secure it is in decay.</blockquote>
         <cite>Jiddu Krishnamurti</cite>
-    <h3>for tag <code>&lt;code&gt;</code></h3>
-        We always need a <code>main()</code> function.
-    <h3>for tag <code>&lt;data&gt;</code>: to make machine-readable data to be displayed user-friendly</h3>
-        <h4>Checkout book list</h4>
+    <h3>Tag <code>&lt;code&gt;</code></h3>
+        <p>We always need a <code>main()</code> function.</p>
+    <h3>Tag <code>&lt;data&gt;</code>: To make machine-readable data to be displayed user-friendly</h3>
+        <p>Checkout book list:</p>
         <ul>
-            <li> <data value="9x28398234"> <cite>The Indian Music</cite> </data> </li>
-            <li> <data value="BD28831234"> <cite>How to cook in 3 minutes </cite></data> </li>
-            <li> <data value="B3rd203948"> <cite>Introduction to HTML </cite></data> </li>
+            <li><data value="9x28398234"><cite>The Indian Music</cite></data></li>
+            <li><data value="BD28831234"><cite>How to cook in 3 minutes</cite></data></li>
+            <li><data value="B3rd203948"><cite>Introduction to HTML</cite></data></li>
         </ul>
-    <h3>for tag <code>&lt;datalist&gt;</code>: usually used as a list for user to choose from</h3>
+    <h3>Tag <code>&lt;datalist&gt;</code>: Usually used as a list for user to choose from</h3>
         What would you like to eat on the New Year's eve:
         <input type="text" name="new-year-eve-dinner" list="new_year_dinner" maxlength="50">
         <datalist id="new_year_dinner">
@@ -52,8 +53,8 @@
             <option value="Rice Cake">
             <option value="Dumpling">
         </datalist>
-    <h3>for tag <code>&lt;del&gt;</code> and <code>&lt;ins&gt;</code>: remove
-        text and insert text.</h3> 
+    <h3>Tag <code>&lt;del&gt;</code> and <code>&lt;ins&gt;</code>: Remove
+        text and insert text</h3>
         <p>Note that the default render for <code>&lt;ins&gt;</code>is to
         underline text. However, semantically, it denotes an element which has
         been inserted.</p>
@@ -62,82 +63,69 @@
             <li><ins datetime="2017-01-26T14:22:33Z">go to BOA</ins></li>
             <li>finish homework</li>
         </ol>
-    <h3>for tag <code>&lt;s&gt;</code>: delete irrelevant text</h3>
+    <h3>Tag <code>&lt;s&gt;</code>: Delete irrelevant text</h3>
         <p>The result is the same as tag <code>&lt;del&gt;</code>, but</p>
         <ul>
             <li><code>&lt;del&gt;</code> represents a removal from a document</li>
             <li><code>&lt;s&gt;</code> represents contents that no longer
             accurate or relevant </li>
         </ul>
-        <p>lunch buffet for only <s>$10</s> $12 per person.</p>
-    <h3>for tag <code>&lt;u&gt;</code>: underline</h3>
-        <p>this tag is used for <u>presentation</u> purpose.</p>
-    <h3>for tag <code>&lt;dfn&gt;</code>: first time defining an word</h3>
+        <p>Lunch buffet for only <s>$10</s> $12 per person.</p>
+    <h3>Tag <code>&lt;u&gt;</code>: Underline</h3>
+        <p>This tag is used for <u>presentation</u> purpose.</p>
+    <h3>Tag <code>&lt;dfn&gt;</code>: First time defining an word</h3>
         <p>Red envelopes are passed out during the Chinese New Year's
-        celebrations.  A <dfn>Red envelopes</dfn> is an red packet with money,
-        which is used to suppress the evil spirit, literally.</p>   
-    <h3>for tag <code>&lt;em&gt;</code>: used for emphasizing words.</h3>
+        celebrations. A <dfn>Red envelopes</dfn> is an red packet with money,
+        which is used to suppress the evil spirit, literally.</p>
+    <h3>Tag <code>&lt;em&gt;</code>: Used for emphasizing words</h3>
         <p>If you do not do this homework, you will <em>fail</em> the class.</p>
-    <h3>for tag <code>&lt;i&gt;</code>: used for italic names, technical terms, etc.</h3>
+    <h3>Tag <code>&lt;i&gt;</code>: Used for italic names, technical terms, etc</h3>
         <p>The stranger said her name was <i>Sophie</i>.</p>
-    <h3>for tag <code>&lt;kbd&gt;</code> and <code>&lt;samp&gt;</code>: represents input text that a user should type.</h3>
-        <p>useful in a instruction file. display text that the user should enter into their keyboard.<br> 
-        Here we demonstrated with <code>&lt;samp&gt;</code> tag which usually
-        used to represent sample output of a program.</p>
-        <h4>How to search online</h4>
+    <h3>Tag <code>&lt;kbd&gt;</code> and <code>&lt;samp&gt;</code>: Represents input text that a user should type</h3>
+        <p>Useful in a instruction file. display text that the user should enter into their keyboard. Here we demonstrated with <code>&lt;samp&gt;</code> tag which usually used to represent sample output of a program.</p>
+        <p>How to search online</p>
         <ol>
             <li>open your browser</li>
             <li>type <kbd>Google.com</kbd> into your browser address bar.</li>
-            <li>click <kbd><kbd><samp>Enter</samp></kbd></kbd></li>
+            <li>click <kbd><samp>Enter</samp></kbd></li>
         </ol>
-    <h3>for tag <code>&lt;mark&gt;</code>: highlighting text to draw attention</h3>
-        <p>I eat <mark>100000000</mark> burgers today</p>
-    <h3>for tag <code>&lt;meter&gt;</code>: a gauge that represents a percentage or a range</h3>
+    <h3>Tag <code>&lt;mark&gt;</code>: Highlighting text to draw attention</h3>
+        <p>I ate <mark>100000000</mark> burgers today.</p>
+    <h3>Tag <code>&lt;meter&gt;</code>: A gauge that represents a percentage or a range</h3>
         <p>Homework 3 finished: <meter min="0" max="100" value="40"></meter></p>
-    <h3>for tag <code>&lt;progress&gt;</code>: a bar that represents the
+    <h3>Tag <code>&lt;progress&gt;</code>: A bar that represents the
         progress of a task</h3>
-        <p>scanning now. progress: <progress max="100"><span>20</span>%</progress></p>
-    <h3>for tag <code>&lt;output&gt;</code>: represents the result of a calculation </h3>
+        <p>Scanning now. progress: <progress max="100">20 %</progress></p>
+    <h3>Tag <code>&lt;output&gt;</code>: Represents the result of a calculation</h3>
         <form oninput="product.value=parseInt(a.value) * parseInt(b.value)">
-            0 <input type="number" id="a" value="50"> 100
+              <input type="number" id="a" value="50">
             x <input type="range" id="b" value="50">
             = <output name="product" for="a b"></output>
         </form>
-    <h3>for tag <code>&lt;q&gt;</code>: quote</h3>
-        <p><cite>Jiddu Krishnamurti</cite> said <q> It is no measure of health
+    <h3>Tag <code>&lt;q&gt;</code>: Quote</h3>
+        <p><cite>Jiddu Krishnamurti</cite> said <q>It is no measure of health
             to be well adjusted to a profoundly sick society</q>.</p>
-    <h3>
-        for tag <code>&lt;ruby&gt;</code>: ruby annotation. common use for eastern language.
-    </h3> 
-        <p>
-            often used with tag <code>&lt;rt&gt;</code>, which can be used for
-            explanation or <em>pronunciation</em>.
-        <p>
-        <p><ruby>日<rt>に</rt>本<rt>ほん</rt>語<rt>ご</rt></ruby></p>
-    <h3>
-        for tag <code>&lt;small&gt;</code>: small font used for legal
-        restriction, copyright and so on.
-    </h3>
+    <h3>Tag <code>&lt;ruby&gt;</code>: Ruby annotation. common use for eastern language</h3>
+        <p>Often used with tag <code>&lt;rt&gt;</code>, which can be used for explanation or <em>pronunciation</em>: <ruby>日<rt>に</rt>本<rt>ほん</rt>語<rt>ご</rt></ruby></p>
+    <h3>Tag <code>&lt;small&gt;</code>: Small font used for legal restriction, copyright and so on</h3>
         <p><small>© Copyright 2017, FLJ Corporation.</small></p>
-    <h3>for tag <code>&lt;strong&gt;</code>: to convey urgency and importance</h3>
-        <p><strong>Warning</strong>: late submission will not be accept!</p>
-    <h3>for tag <code>&lt;time&gt;</code></h3>
+    <h3>Tag <code>&lt;strong&gt;</code>: To convey urgency and importance</h3>
+        <p><strong>Warning</strong>: Late submission will not be accepted!</p>
+    <h3>Tag <code>&lt;time&gt;</code></h3>
         <p>The homework is due on <time>2017-01-28 20:59</time>.</p>
-    <h3>for tag <code>&lt;var&gt;</code>: variable, could be used in math equation.</h3>
+    <h3>Tag <code>&lt;var&gt;</code>: Variable, could be used in math equation</h3>
         <p>Let's assume <var>x</var> stands for the total income.</p>
-    <h3>for tag <code>&lt;wbr&gt;</code>: indicate the best place to break line when necessary.</h3>
-        <p>This<wbr>Very<wbr>long<wbr>word<wbr>without<wbr>breaking<wbr>need<wbr>us<wbr>to<wbr>manually<wbr>tell<wbr>the<wbr>where<wbr>to<wbr>the<wbr>sentence<wbr>when<wbr>it<wbr>is<wbr>necessary.This<wbr>Very<wbr>long<wbr>word<wbr>without<wbr>breaking<wbr>need<wbr>us<wbr>to<wbr>manually<wbr>tell<wbr>the<wbr>where<wbr>to<wbr>the<wbr>sentence<wbr>when<wbr>it<wbr>is<wbr>necessary. </p>
-    <h3>for tag <code>&lt;sub&gt;</code>: subscript text</h3>
-        <p>this tag should only be used when the absence of the element will
-        change the meaning of the content. It should not be used only for
-        presentation purposes.</p>
+    <h3>Tag <code>&lt;wbr&gt;</code>: Indicate the best place to break line when necessary</h3>
+        <p>This<wbr>Very<wbr>Long<wbr>Word<wbr>Without<wbr>Breaking<wbr>Needs<wbr>Us<wbr>To<wbr>Manually<wbr>Tell<wbr>The<wbr>Where<wbr>To<wbr>The<wbr>Sentence<wbr>When<wbr>It<wbr>Is<wbr>Necessary<wbr>Again<wbr>This<wbr>Very<wbr>Long<wbr>Word<wbr>Without<wbr>Breaking<wbr>Needs<wbr>Us<wbr>To<wbr>Manually<wbr>Tell<wbr>The<wbr>Where<wbr>To<wbr>The<wbr>Sentence<wbr>When<wbr>It<wbr>Is<wbr>Necessary<wbr>Again<wbr>This<wbr>Very<wbr>Long<wbr>Word<wbr>Without<wbr>Breaking<wbr>Needs<wbr>Us<wbr>To<wbr>Manually<wbr>Tell<wbr>The<wbr>Where<wbr>To<wbr>The<wbr>Sentence<wbr>When<wbr>It<wbr>Is<wbr>Necessary<wbr>Again<wbr>This<wbr>Very<wbr>Long<wbr>Word<wbr>Without<wbr>Breaking<wbr>Needs<wbr>Us<wbr>To<wbr>Manually<wbr>Tell<wbr>The<wbr>Where<wbr>To<wbr>The<wbr>Sentence<wbr>When<wbr>It<wbr>Is<wbr>Necessary.</p>
+        <p>Without the use of the <code>wbr</code> tag, the above paragraph will stay in one line because of the lack of line-break opportunities:</p>
+        <p>ThisVeryLongWordWithoutBreakingNeedsUsToManuallyTellTheWhereToTheSentenceWhenItIsNecessaryAgainThisVeryLongWordWithoutBreakingNeedsUsToManuallyTellTheWhereToTheSentenceWhenItIsNecessaryAgainThisVeryLongWordWithoutBreakingNeedsUsToManuallyTellTheWhereToTheSentenceWhenItIsNecessaryAgainThisVeryLongWordWithoutBreakingNeedsUsToManuallyTellTheWhereToTheSentenceWhenItIsNecessary.</p>
+    <h3>Tag <code>&lt;sub&gt;</code>: Subscript text</h3>
+        <p>This tag should only be used when the absence of the element will change the meaning of the content. It should not be used only for presentation purposes.</p>
         <p>Carbon Dioxide is often written as CO<sub>2</sub>.</p>
-    <h3>for tag <code>&lt;sup&gt;</code>: superscript text</h3>
-        <p>One of the basic unit in measuring volume is m<sup>2</sup>.</p>
-    <h3>for tag <code>&lt;span&gt;</code>: meaning nothing on its own.</h3>
-        <p>span is often used with other <em>global attributes</em>.<br>
-        For example, using attribute <code>class</code> to classify <em>if</em>
-        as a keyword: <span class="keyword">if</span></p>
+    <h3>Tag <code>&lt;sup&gt;</code>: Superscript text</h3>
+        <p>One of the basic unit in measuring volume is <span class="unit">m<sup>2</sup></span>.</p>
+    <h3>Tag <code>&lt;span&gt;</code>: Meaning nothing on its own</h3>
+        <p>Span is often used with other <em>global attributes</em>. For example, using attribute <code>class</code> to classify <em>if</em> as a keyword: <span class="keyword">if</span>.</p>
 </body>
 </html>
 
