@@ -15,4 +15,4 @@ Similarly, the `<bdi>` tag
 triggers the same warning, too.
 
 The tag `<math>` is the top-level element in MathML. 
-MathML, however, is not supported by Chrome or Interne Explorer.
+MathML, however, is not supported by Chrome or Internet Explorer.
