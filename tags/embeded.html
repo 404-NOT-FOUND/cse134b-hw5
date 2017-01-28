@@ -7,28 +7,34 @@
 <body>
 	<h1>Embedded Tags Test Page</h1>
 
-	<p>Below is an image using the &lt;img&gt; tag</p>
+	<hr>
+
+	<h3><code>&lt;img&gt;</code> tag: Embed images</h3>
 	<img src="https://s-media-cache-ak0.pinimg.com/originals/de/7a/9f/de7a9ff45c4087284940941534d2e410.jpg" alt="A cat image" height="200">
+	<a href="https://www.google.com/search?q=cute+cat&espv=2&biw=1280&bih=726&site=webhp&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjJ-6TB4uXRAhUD3GMKHRhXBXAQ_AUIBigB#imgrc=Ljk1Qt8xwuMHqM%3A">found on google images</a>
 
-	<p>Below is another image using the &lt;embed&gt; tag</p>
+	<h3><code>&lt;embed&gt;</code> tag: Embed an object</h3>
 	<embed src="http://www.cutestpaw.com/wp-content/uploads/2016/02/s-Yawn..jpeg" height="200">
+	<a href="https://www.google.com/search?q=cute+cat&espv=2&biw=1280&bih=726&site=webhp&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjJ-6TB4uXRAhUD3GMKHRhXBXAQ_AUIBigB#imgrc=Ljk1Qt8xwuMHqM%3A">found on google images</a>
 
-	<p>Below is another image using the &lt;object&gt; tag</p>
+	<h3><code>&lt;object&gt;</code> tag: Embed an object</h3>
 	<object data="https://s-media-cache-ak0.pinimg.com/originals/33/5c/d5/335cd5249b648648fb0b086282cbaf32.jpg" height="200"></object>
+	<a href="https://www.google.com/search?q=cute+cat&espv=2&biw=1280&bih=726&site=webhp&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjJ-6TB4uXRAhUD3GMKHRhXBXAQ_AUIBigB#imgrc=JUdSZjx_I5JpzM%3A">found on google images</a>
 
-	<p>Below is a video</p>
+	<h3><code>&lt;video&gt;</code> tag: Embed a video file</h3>
 	<video src="img/cat_vid.mp4" controls></video>
 	<p>By <cite>erez</cite> on <a href="https://vimeo.com/91711013">Vimeo</a></p>
 
-	<p>Below is an audio sample</p>
+	<h3><code>&lt;audio&gt;</code> tag: Embed an audio file</h3>
 	<audio src="img/sound.mp3" controls></audio>
 
-	<p>Below is a circle created with the &lt;svg&gt; tag</p>
+	<h3><code>&lt;svg&gt;</code> tag: Embed a scalable vector graphic</h3>
 	<svg width="100" height="100">
 		<circle cx="50" cy="50" r="40" fill="blue" />
 	</svg>
 
-	<p>Below is a rectangle drawn on a &lt;canvas&gt;</p>
+	<h3><code>&lt;canvas&gt;</code> tag: Embed a canvas</h3>
+	<p>Can use javascript to display something on the canvas</p>
 	<canvas id="canv" width="200" height="150" style="border:1px solid #f0f0f0;"></canvas>
 	<script>
 		var canv = document.getElementById("canv");
@@ -38,7 +44,7 @@
 		rect.fillRect (0, 0, 150, 100);
 	</script>
 
-	<p>This is the using the &lt;math&gt; tag</p>
+	<h3><code>&lt;math&gt;</code> tag: Embed a MathML instance</h3>
 	<math xmlns="http://www.w3.org/1998/Math/MathML">	
 		<mrow>			
 			<mrow>
@@ -63,7 +69,7 @@
 		</mrow>
 	</math>
 
-	<p>Below is embedded web context using the &lt;iframe&gt; tag</p>
+	<h3><code>&lt;iframe&gt;</code>: Embed a document within the current document</h3>
 	<iframe srcdoc="<html><head></head><body>
 		<p>Lorem ipsum dolor sit amet, at liber quidam liberavisse per, pri lorem paulo cu. Hinc quando periculis ut duo, no usu mundi integre. Has ex dicant placerat. Eam equidem singulis ullamcorper ad. Denique minimum voluptatibus in sea, brute posse ipsum per ea, in sed maiestatis reprimique. Lorem ipsum dolor sit amet, at liber quidam liberavisse per, pri lorem paulo cu. Hinc quando periculis ut duo, no usu mundi integre. Has ex dicant placerat. Eam equidem singulis ullamcorper ad. Denique minimum voluptatibus in sea, brute posse ipsum per ea, in sed maiestatis reprimique.</p>
 		</body></html>" width="300" height="200">
