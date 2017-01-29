@@ -16,6 +16,11 @@ header h1 {
     text-shadow: 3px 3px 13px gray;
 }
 
+header a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 main {
     width: 80%;
     background-color: #f8f8f8;
