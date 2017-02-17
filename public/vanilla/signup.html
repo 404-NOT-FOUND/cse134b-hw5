@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create account</title>
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <main>
@@ -12,30 +13,39 @@
             <form action="index.html" method="post">
                 <ul>
                     <li>
-                        <label for="u_name">Your name</label>
-                        <input type="text" maxLength="50"
-                               id="u_name" name="u_name" 
-                               placeholder="Enter your name" 
-                               required>
+                        <div class="info-box">
+                          <label for="u_name"></label>
+                          <input type="text" maxLength="50"
+                                 id="u_name" name="u_name" 
+                                 placeholder="Enter your name" 
+                                 required>
+                        </div>
                     </li>
                     <li>
-                        <label for="u_email">Email</label>
-                        <input type="email" maxLength="64"
-                               id="u_email" name="u_email" 
-                               placeholder="Enter a valid email"
-                               required>
+                        <div class="info-box">
+                          <label for="u_email"></label>
+                          <input type="email" maxLength="64"
+                                 id="u_email" name="u_email" 
+                                 placeholder="Enter a valid email"
+                                 required>
+                        </div>
                     </li>
                     <li>
-                        <label for="u_pwd">Password</label>
-                        <input type="password" maxlength="1024" autocomplete="off"
-                               id="u_pwd" name="u_pwd" 
-                               placeholder="at least 6 characters" required>
+                        <div class="info-box">
+                          <label for="u_pwd"></label>
+                          <input type="password" maxlength="1024" autocomplete="off"
+                                 id="u_pwd" name="u_pwd" 
+                                 placeholder="Password (at least 6 characters)" required>
+                        </div>
                     </li>
                     <li>
-                        <label for="u_pwd_check">Password again</label>
-                        <input type="password" 
-                               id="u_pwd_check" name="u_pwd_check" 
-                               required>
+                        <div class="info-box">
+                          <label for="u_pwd_check"></label>
+                          <input type="password" 
+                                 id="u_pwd_check" name="u_pwd_check" 
+                                 placeholder="Renter your password"
+                                 required>
+                        </div>
                     </li>
                 </ul>
                 <button type="submit">Create your BoarDex account</button>

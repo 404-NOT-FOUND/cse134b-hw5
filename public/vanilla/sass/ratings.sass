@@ -1,0 +1,41 @@
+$stars-off: url('../img/star-off.png')
+$stars-on: url('../img/star-on.png')
+$star-size: 24px
+
+.ratings
+	ul
+		list-style-type: none
+		padding-left: 0px
+
+.rating-stars
+	overflow: hidden
+	vertical-align: bottom
+	display: inline-block
+	width: auto
+	height: $star-size
+
+	input
+		opacity: 0
+		margin-right: -100%
+
+	label
+		position: relative
+		display: block
+		float: right
+		background: $stars-off
+		baground-size: $star-size $star-size
+
+	label:before
+		display: block
+		opacity: 0
+		content: ''
+		width: $star-size
+		height: $star-size
+		background: $stars-on
+		background-size: $star-size $star-size
+		transition: opacity 0.2s linear
+
+	label:hover:before,
+	label:hover ~ label:before,
+	&:not(:hover) > :checked ~ label:before
+		opacity: 1

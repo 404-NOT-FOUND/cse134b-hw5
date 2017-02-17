@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Game List | BoarDex</title>
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
 
     <header>
-        <h1><a href="../index.html">BoarDex</a></h1>
-        <input name="searchbox" type="search"
-               placeholder="Search for a game">
-        <button type="submit">Search</button>
+        <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
+        <div class="searchbar">
+            <input id="searchbox" type="search"
+                   placeholder="Search for a game" />
+            <button type="submit" id="search-btn">Search</button>
+        </div>
+        <div class="login">
+            <a href="signup.html" id="signup"><button>Sign Up</button></a>
+            <a href="login.html" id="signin"><button>Sign In</button></a>
+        </div>
     </header>
 
     <div class="sidebar">
