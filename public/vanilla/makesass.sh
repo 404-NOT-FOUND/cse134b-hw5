@@ -2,7 +2,8 @@
 # makesass.sh
 
 # add your .sass source files to the list
-SRCS=""
+SRCS="sidebar.sass
+     "
 
 ################################################################################
 
