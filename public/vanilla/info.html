@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Info | BoarDex</title>
+    <link rel="stylesheet" href="css/sidebar.css" type="text/css" media="screen">
 </head>
 <body>
 
@@ -18,80 +19,104 @@
         <h1>Tags</h1>
         <form>
             <ul>
-                <li><label><input type="checkbox"> Card games</label></li>
-                <li><label><input type="checkbox"> Paper and pen</label></li>
-                <li><label><input type="checkbox"> For children</label></li>
-                <li><label><input type="checkbox"> Quick games</label></li>
+                <li><div class="category">Materials</div>
+                <ul>
+                    <li><label><input type="radio" name="material"> Cards</label></li>
+                    <li><label><input type="radio" name="material"> Paper and Pen</label></li>
+                    <li><label><input type="radio" name="material"> Boards</label></li>
+                    <li><label><input type="radio" name="material"> Poker Cards</label></li>
+                </ul>
+                </li>
+                <li><div class="category">Age</div>
+                <ul>
+                    <li><label><input type="radio" name="age"> under 10</label></li>
+                    <li><label><input type="radio" name="age"> under 16</label></li>
+                    <li><label><input type="radio" name="age"> adults</label></li>
+                </ul>
+                </li>
+                <li>
+                    <div class="category">Play time</div>
+                    <ul>
+                        <li><label><input type="radio" name="age"> under 10 minutes</label></li>
+                        <li><label><input type="radio" name="age"> under 30 minutes</label></li>
+                        <li><label><input type="radio" name="age"> under 60 minutes</label></li>
+                        <li><label><input type="radio" name="age"> above 60 minutes</label></li>
+                    </ul>
+                </li>
             </ul>
-            <button type="submit">Apply Filters</button>
+            <div class="filter-button">
+                <button type="submit">Apply Filters</button>
+            </div>
         </form>
     </div>
 
-    <div class="gameinfo">
-        <div class="intro">
-            <main>
-            <h1>Battleship</h1>
-
-            <figure>
-                <img src="http://2.bp.blogspot.com/-XnwpQbtM7KQ/VoVGj1gZhYI/AAAAAAAADAc/-HBVvBVzFv0/s320/battleshipGame.jpg">
-                <figcaption>Battleship game board</figcaption>
-            </figure>
-
-            <p>Battleship (also Battleships or Sea Battle) is a guessing game for
-            two players. It's played on ruled grids (paper or board) on which the
-            players' fleets of ships (including battleships) are marked. The locations
-            of the fleet are concealed from the other player. Players alternate turns
-            taking 'shots' at the other player's fleet. The objective of the game is to
-            destroy the opposing player's fleet. It is known worldwide as a pencil and
-            paper game which dates from World War&nbsp;I. It was published by various
-            companies as a pad-and-pencil game in the 1930s, and was released as a
-            plastic board game by Milton Bradley in 1967. The game has spawned
-            electronic versions, video games, smart device apps and films
-            (Source: <a href="https://en.wikipedia.org/wiki/Battleship_(game)">Wikipedia</a>).</p>
-            </main>
+    <main>
+        <div class="gameinfo">
+            <div class="intro">
+                <main>
+                <h1>Battleship</h1>
+        
+                <figure>
+                    <img src="http://2.bp.blogspot.com/-XnwpQbtM7KQ/VoVGj1gZhYI/AAAAAAAADAc/-HBVvBVzFv0/s320/battleshipGame.jpg">
+                    <figcaption>Battleship game board</figcaption>
+                </figure>
+        
+                <p>Battleship (also Battleships or Sea Battle) is a guessing game for
+                two players. It's played on ruled grids (paper or board) on which the
+                players' fleets of ships (including battleships) are marked. The locations
+                of the fleet are concealed from the other player. Players alternate turns
+                taking 'shots' at the other player's fleet. The objective of the game is to
+                destroy the opposing player's fleet. It is known worldwide as a pencil and
+                paper game which dates from World War&nbsp;I. It was published by various
+                companies as a pad-and-pencil game in the 1930s, and was released as a
+                plastic board game by Milton Bradley in 1967. The game has spawned
+                electronic versions, video games, smart device apps and films
+                (Source: <a href="https://en.wikipedia.org/wiki/Battleship_(game)">Wikipedia</a>).</p>
+                </main>
+            </div>
+        
+            <div class="ratings">
+                <ul>
+                    <li>Fun:
+                        <form class="rating-stars">
+                               <label><input type="radio" name="fun" value="1"></label><!--
+                            --><label><input type="radio" name="fun" value="2"></label><!--
+                            --><label><input type="radio" name="fun" value="3"></label><!--
+                            --><label><input type="radio" name="fun" value="4"></label><!--
+                            --><label><input type="radio" name="fun" value="5"></label>
+                        </form>
+                    </li>
+                    <li>Difficulty:
+                        <form class="rating-stars">
+                               <label><input type="radio" name="difficulty" value="1"></label><!--
+                            --><label><input type="radio" name="difficulty" value="2"></label><!--
+                            --><label><input type="radio" name="difficulty" value="3"></label><!--
+                            --><label><input type="radio" name="difficulty" value="4"></label><!--
+                            --><label><input type="radio" name="difficulty" value="5"></label>
+                        </form>
+                    </li>
+                    <li>Challenging:
+                        <form class="rating-stars">
+                               <label><input type="radio" name="challenging" value="1"></label><!--
+                            --><label><input type="radio" name="challenging" value="2"></label><!--
+                            --><label><input type="radio" name="challenging" value="3"></label><!--
+                            --><label><input type="radio" name="challenging" value="4"></label><!--
+                            --><label><input type="radio" name="challenging" value="5"></label>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="ratings">
+        
+        <div class="recommend">
+            <p>You might also like:</p>
             <ul>
-                <li>Fun:
-                    <form class="rating-stars">
-                           <label><input type="radio" name="fun" value="1"></label><!--
-                        --><label><input type="radio" name="fun" value="2"></label><!--
-                        --><label><input type="radio" name="fun" value="3"></label><!--
-                        --><label><input type="radio" name="fun" value="4"></label><!--
-                        --><label><input type="radio" name="fun" value="5"></label>
-                    </form>
-                </li>
-                <li>Difficulty:
-                    <form class="rating-stars">
-                           <label><input type="radio" name="difficulty" value="1"></label><!--
-                        --><label><input type="radio" name="difficulty" value="2"></label><!--
-                        --><label><input type="radio" name="difficulty" value="3"></label><!--
-                        --><label><input type="radio" name="difficulty" value="4"></label><!--
-                        --><label><input type="radio" name="difficulty" value="5"></label>
-                    </form>
-                </li>
-                <li>Challenging:
-                    <form class="rating-stars">
-                           <label><input type="radio" name="challenging" value="1"></label><!--
-                        --><label><input type="radio" name="challenging" value="2"></label><!--
-                        --><label><input type="radio" name="challenging" value="3"></label><!--
-                        --><label><input type="radio" name="challenging" value="4"></label><!--
-                        --><label><input type="radio" name="challenging" value="5"></label>
-                    </form>
-                </li>
+                <li><a href="info.html">Chess</a></li>
+                <li><a href="info.html">Chinese Chess</a></li>
+                <li><a href="info.html">Nim</a></li>
             </ul>
         </div>
-    </div>
-
-    <div class="recommend">
-        <p>You might also like:</p>
-        <ul>
-            <li><a href="info.html">Chess</a></li>
-            <li><a href="info.html">Chinese Chess</a></li>
-            <li><a href="info.html">Nim</a></li>
-        </ul>
-    </div>
+    </main>
 
 </body>
 </html>
