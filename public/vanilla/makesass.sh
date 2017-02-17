@@ -3,6 +3,7 @@
 
 # add your .sass source files to the list
 SRCS="sidebar.sass
+      gameinfo.sass
      "
 
 ################################################################################
