@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>BoarDex Sign In</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <main>
@@ -12,23 +13,27 @@
             <form action="index.html" method="post">
                 <ul>
                     <li>
-                        <label for="u_name">Username</label>
-                        <input type="text" maxLength="50"
-                               id="u_name" name="u_name" 
-                               placeholder="Enter Username" 
-                               required>
+                        <div class="info-box">
+                          <label for="u_name"></label>
+                          <input type="text" maxLength="50"
+                                 id="u_name" name="u_name" 
+                                 placeholder="Username" 
+                                 required>
+                        </div>
                     </li>
                     <li>
-                        <label for="u_pwd">Password</label>
-                        <input type="password" 
-                               id="u_pwd" name="u_pwd" 
-                               placeholder="at least 6 characters" 
-                               required>
+                        <div class="info-box">
+                          <label for="u_pwd"></label>
+                          <input type="password" 
+                                 id="u_pwd" name="u_pwd" 
+                                 placeholder="Password" 
+                                 required>
+                        </div>
                     </li>
                 </ul>
-                <button type="submit">Login</button>
                 <label><input type="checkbox" checked="checked"> 
-                    Keep me signed in.</label>
+                    Keep me signed in.</label> <br />
+                <button type="submit">Login</button>
             </form>
             <div class="new-user">
                 <h5>New to BoarDex?</h5>

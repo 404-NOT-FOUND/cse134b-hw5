@@ -4,6 +4,9 @@
 # add your .sass source files to the list
 SRCS="sidebar.sass
       list.sass
+      header.sass
+      login.sass
+      ratings.sass
      "
 
 ################################################################################
