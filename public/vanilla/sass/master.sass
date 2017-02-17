@@ -1,0 +1,20 @@
+
+@import devices
+
+body
+  font-family: 'Corbel', sans-serif
+  background-color: #eee
+
+main
+  padding: 30px
+  padding-top: 40px
+  background-color: #f8f8f8
+
+@media #{$phones, $tablets}
+  main
+    margin: 0 auto
+    width: 80%
+@media #{$computers}
+  main
+    width: 65%
+
