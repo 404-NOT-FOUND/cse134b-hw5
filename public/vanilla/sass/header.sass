@@ -12,56 +12,62 @@ header
   background-color: $header-color
   font-family: 'Corbel', sans-serif
   height: $header-height
+  margin-left: -10px
+  padding-left: 20px
   position: fixed
   top: 0px
   width: 100%
-  padding-left: 20px
-  margin-left: -10px
 
   h1
-    margin-top: 20px
-    font-size: 50px
-    text-shadow: 3px 3px 13px gray
     display: inline-block
-
+    font-size: 50px
+    margin-top: 20px
+    text-shadow: 3px 3px 13px gray
+    
     a
-      text-decoration: none
       color: #fff
+      text-decoration: none
 
 .searchbar
-  margin-top: $header-height/2 - $search-height/2
-  margin-left: 20px
-  position: absolute
   display: inline-block
+  margin-left: 20px
+  margin-top: $header-height/2 - $search-height/2
+  position: absolute
   white-space: nowrap
   
   #searchbox
-    height: $search-height
-    width: 40vw
     border: none
-    font-size: 10pt
     border-radius: 5px 0px 0px 5px
-    vertical-align: top
+    font-size: 10pt
+    height: $search-height
     padding-left: 10px
+    vertical-align: top
+    width: 40vw
 
   #search-btn
     border-radius: 0px 5px 5px 0px
 
 .login
-  margin-top: $header-height/2 - $search-height/2
-  position: absolute
-  right: 40px
   display: inline-block
   white-space: nowrap
 
   #signup
-    text-decoration: none
+    border-radius: 5px
+    background-color: #f2f2f2
     color: #000
+    font-size: 10pt
+    height: 33px
+    margin-top: -42px
+    padding-top: 17px
+    position: absolute
+    right: 150px
+    text-align: center
+    text-decoration: none
+    width: 100px 
 
   #signin
-    margin-left: 10px
-    text-decoration: none
-    color: #000
+    @extend #signup
+    right: 40px
 
 
 .boardex-dex 
