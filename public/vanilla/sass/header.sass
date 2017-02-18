@@ -1,0 +1,78 @@
+@import button
+
+$header-color: #c9c9c9
+$header-height: 100px
+$search-width: 500px
+$search-height: 50px
+
+body
+  margin-top: $header-height+50px
+
+header
+  background-color: $header-color
+  font-family: 'Corbel', sans-serif
+  height: $header-height
+  margin-left: -10px
+  padding-left: 20px
+  position: fixed
+  top: 0px
+  width: 100%
+  z-index: 100
+  border-bottom: 7px solid #e0e0e0
+
+  h1
+    display: inline-block
+    font-size: 50px
+    margin-top: 20px
+    text-shadow: 3px 3px 13px gray
+
+    a
+      color: #fff
+      text-decoration: none
+
+.searchbar
+  display: inline-block
+  margin-left: 20px
+  margin-top: $header-height/2 - $search-height/2
+  position: absolute
+  white-space: nowrap
+
+  #searchbox
+    border: none
+    border-radius: 5px 0px 0px 5px
+    font-size: 10pt
+    height: $search-height
+    padding-left: 10px
+    vertical-align: top
+    width: 40vw
+
+  #search-btn
+    border-radius: 0px 5px 5px 0px
+
+.login
+  display: inline-block
+  white-space: nowrap
+
+  #signup
+    border-radius: 5px
+    background-color: #f2f2f2
+    color: #000
+    font-size: 10pt
+    height: 33px
+    margin-top: -42px
+    padding-top: 17px
+    position: absolute
+    right: 150px
+    text-align: center
+    text-decoration: none
+    width: 100px
+
+  #signin
+    @extend #signup
+    right: 40px
+
+
+.boardex-dex
+  color: gray
+
+

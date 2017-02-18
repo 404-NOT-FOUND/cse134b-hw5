@@ -1,0 +1,28 @@
+
+@import devices
+@import button
+
+$sidebar-width: 250px
+
+.sidebar
+  float: left
+  width: $sidebar-width
+  h1
+    font-size: large
+  ul
+    list-style-type: none
+    padding-left: 0
+    .category
+      font-weight: bold
+      margin-top: 15px
+  .filter-button
+    text-align: center
+    margin-top: 30px
+
+@media #{$phones, $tablets}
+  .sidebar
+    display: none
+@media #{$computers}
+  main
+    margin-left: $sidebar-width+10px
+

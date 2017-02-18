@@ -4,38 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>BoarDex Sign In</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 <body>
-    <main>
-        <div class="sign-in-box">
-            <h1>Welcome back!</h1>
-            <form action="index.html" method="post">
-                <ul>
-                    <li>
-                        <label for="u_name">Username</label>
-                        <input type="text" maxLength="50"
-                               id="u_name" name="u_name" 
-                               placeholder="Enter Username" 
-                               required>
-                    </li>
-                    <li>
-                        <label for="u_pwd">Password</label>
-                        <input type="password" 
-                               id="u_pwd" name="u_pwd" 
-                               placeholder="at least 6 characters" 
-                               required>
-                    </li>
-                </ul>
-                <button type="submit">Login</button>
-                <label><input type="checkbox" checked="checked"> 
-                    Keep me signed in.</label>
-            </form>
-            <div class="new-user">
-                <h5>New to BoarDex?</h5>
-                <a id="createAccountSubmit" href="signup.html">Create your BoarDex account</a>
-            </div>
+    <div class="sign-in-box">
+        <h1>Welcome back!</h1>
+        <form action="index.html" method="post">
+            <ul>
+                <li>
+                    <div class="info-box">
+                      <label for="u_name"></label>
+                      <input type="text" maxLength="50"
+                             id="u_name" name="u_name" 
+                             placeholder="Username" 
+                             required>
+                    </div>
+                </li>
+                <li>
+                    <div class="info-box">
+                      <label for="u_pwd"></label>
+                      <input type="password" 
+                             id="u_pwd" name="u_pwd" 
+                             placeholder="Password" 
+                             required>
+                    </div>
+                </li>
+            </ul>
+            <label><input type="checkbox" checked="checked"> 
+                Keep me signed in.</label> <br />
+            <button type="submit">Login</button>
+        </form>
+        <div class="new-user">
+            <h5>New to BoarDex?</h5>
+            <a id="createAccountSubmit" href="signup.html">Create your BoarDex account</a>
         </div>
-    </main>
+    </div>
     <footer>
         <p><small>&copy; 2017, FLJ Corporation</small></p>
     </footer>

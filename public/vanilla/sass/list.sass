@@ -1,0 +1,35 @@
+$board-img-height: 200px
+$board-img-width: 200px
+$board-name-ratio-of-img: 1.2
+
+ul.board-list
+  width: 90%
+  margin: auto
+  padding: 0px
+  text-align: center
+  list-style: none
+
+  .board-item
+    display: inline-block
+    margin: 0 auto
+    margin-top: 30px
+    padding: 0px
+    text-align: center
+    vertical-align: text-top
+
+    a
+      display: inline-block
+
+    .board-name
+      width: $board-img-width*$board-name-ratio-of-img
+      margin-top: 10px
+
+    .board-img
+      height: $board-img-height
+      width: $board-img-width
+      clip-path: circle($board-img-height/2 at center)
+      position: relative
+
+main
+  h1
+    text-align: center
