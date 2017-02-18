@@ -1,0 +1,49 @@
+
+$board-img-size: 60px
+$board-name-ratio-of-img: 1.2
+$recommend-comp-space: 20px
+$board-item-space: 15px
+
+ul.recommend-bar
+  width: 100%
+  padding: 0px
+  display: inline-block
+  text-align: center
+  list-style: none
+
+  li
+    display: inline-block
+    vertical-align: middle
+    margin-left:  $recommend-comp-space
+    margin-right: $recommend-comp-space
+
+  li.bar-nav-button>button
+    height: 30px
+    width: 40px
+
+  li#nav-previous
+    text-align: left
+  li#nav-next
+    text-align: right
+
+  ul.recommend-list
+    vertical-align: top
+    padding: 0px
+    margin: auto
+
+  li.board-item
+    display: table-cell
+    margin-top: 30px
+    padding-left:  $board-item-space
+    padding-right: $board-item-space
+    vertical-align: text-top
+    text-align: center
+
+    .board-name
+      width: $board-img-size*$board-name-ratio-of-img
+      margin-top: 10px
+
+    .board-img
+      height: $board-img-size
+      width:  $board-img-size
+      clip-path: circle($board-img-size/2 at center)
