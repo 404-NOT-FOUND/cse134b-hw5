@@ -1,14 +1,18 @@
 
 @import devices
 
+$body-bg-color: #fafafa
+// $content-bg-color: #fff
+$content-bg-color: $body-bg-color
+
 body
   font-family: 'Corbel', sans-serif
-  background-color: #eee
+  background-color: $body-bg-color
 
 main
   padding: 30px
-  padding-top: 40px
-  background-color: #f8f8f8
+  padding-top: 0px
+  background-color: $content-bg-color
 
 @media #{$phones, $tablets}
   main

@@ -1,6 +1,11 @@
 @import button
 
-$header-color: #c9c9c9
+$logo-color-light: #000
+$logo-color-dark: #0db7ab
+
+// $header-color: #ffb03b
+$header-color: #fff
+$header-shadow-color: #eee
 $header-height: 100px
 $search-width: 500px
 $search-height: 50px
@@ -18,16 +23,16 @@ header
   top: 0px
   width: 100%
   z-index: 100
-  border-bottom: 7px solid #e0e0e0
+  border-bottom: 1px solid $header-shadow-color
 
   h1
     display: inline-block
     font-size: 50px
     margin-top: 20px
-    text-shadow: 3px 3px 13px gray
+    // text-shadow: 3px 3px 13px gray
 
     a
-      color: #fff
+      color: $logo-color-light
       text-decoration: none
 
 .searchbar
@@ -38,6 +43,7 @@ header
   white-space: nowrap
 
   #searchbox
+    margin-left: 30px
     border: none
     border-radius: 5px 0px 0px 5px
     font-size: 10pt
@@ -45,6 +51,7 @@ header
     padding-left: 10px
     vertical-align: top
     width: 40vw
+    background-color: #f4f4f4
 
   #search-btn
     border-radius: 0px 5px 5px 0px
@@ -54,9 +61,9 @@ header
   white-space: nowrap
 
   #signup
+    font-weight: bolder
     border-radius: 5px
-    background-color: #f2f2f2
-    color: #000
+    color: white
     font-size: 10pt
     height: 33px
     margin-top: -42px
@@ -66,6 +73,7 @@ header
     text-align: center
     text-decoration: none
     width: 100px
+    background-color: $button-color
 
   #signin
     @extend #signup
@@ -73,6 +81,6 @@ header
 
 
 .boardex-dex
-  color: gray
+  color: $logo-color-dark
 
 
