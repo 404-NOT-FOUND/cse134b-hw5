@@ -4,33 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <title>BoarDex Sign In</title>
+    <link href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
     <main>
-        <div class="sign-in-box">
+        <div class="sign-in-box col-xs-offset-4 col-xs-4 col-xs-offset-4">
             <h1>Welcome back!</h1>
             <form action="index.html" method="post">
-                <ul>
-                    <li>
-                        <label for="u_name">Username</label>
-                        <input type="text" maxLength="50"
-                               id="u_name" name="u_name" 
-                               placeholder="Enter Username" 
-                               required>
-                    </li>
-                    <li>
-                        <label for="u_pwd">Password</label>
-                        <input type="password" 
-                               id="u_pwd" name="u_pwd" 
-                               placeholder="at least 6 characters" 
-                               required>
-                    </li>
-                </ul>
-                <button type="submit">Login</button>
+                <div class="input-group col-xs-offset-1 col-xs-10 col-xs-offset-1">
+                    <label for="u_name"></label>
+                    <input type="text" maxLength="50"
+                           id="u_name" name="u_name" 
+                           class="form-control login-input"
+                           placeholder="Enter Username" 
+                           required>
+                </div>
+                <div class="input-group col-xs-offset-1 col-xs-10 col-xs-offset-1">
+                    <label for="u_pwd"></label>
+                    <input type="password" 
+                           id="u_pwd" name="u_pwd" 
+                           class="form-control login-input"
+                           placeholder="Password" 
+                           required>
+                </div>
                 <label><input type="checkbox" checked="checked"> 
                     Keep me signed in.</label>
+                <button type="submit" class="btn btn-default 
+                    col-xs-offset-1 my-btn col-xs-10 col-xs-offset-1">Login</button>
             </form>
-            <div class="new-user">
+            <div class="new-user col-xs-12">
                 <h5>New to BoarDex?</h5>
                 <a id="createAccountSubmit" href="signup.html">Create your BoarDex account</a>
             </div>
