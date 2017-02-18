@@ -6,6 +6,7 @@
 SRCS="header.sass
 	  login.sass
       sidebar.sass
+      gameinfo.sass
      "
 
 ################################################################################
