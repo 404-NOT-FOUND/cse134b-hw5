@@ -7,6 +7,7 @@ SRCS="header.sass
 	  login.sass
       sidebar.sass
       list.sass
+      recommend-list.sass
      "
 
 ################################################################################
