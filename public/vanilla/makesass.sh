@@ -9,6 +9,7 @@ SRCS="sidebar.sass
       login.sass
       ratings.sass
       recommend-list.sass
+      master.sass
      "
 
 ################################################################################

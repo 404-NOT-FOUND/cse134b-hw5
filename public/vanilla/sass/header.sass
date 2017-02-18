@@ -6,7 +6,7 @@ $search-width: 500px
 $search-height: 50px
 
 body
-  margin-top: 120px
+  margin-top: $header-height+50px
 
 header
   background-color: $header-color
@@ -17,13 +17,15 @@ header
   position: fixed
   top: 0px
   width: 100%
+  z-index: 100
+  border-bottom: 7px solid #e0e0e0
 
   h1
     display: inline-block
     font-size: 50px
     margin-top: 20px
     text-shadow: 3px 3px 13px gray
-    
+
     a
       color: #fff
       text-decoration: none
@@ -34,7 +36,7 @@ header
   margin-top: $header-height/2 - $search-height/2
   position: absolute
   white-space: nowrap
-  
+
   #searchbox
     border: none
     border-radius: 5px 0px 0px 5px
@@ -63,14 +65,14 @@ header
     right: 150px
     text-align: center
     text-decoration: none
-    width: 100px 
+    width: 100px
 
   #signin
     @extend #signup
     right: 40px
 
 
-.boardex-dex 
+.boardex-dex
   color: gray
 
-      
+
