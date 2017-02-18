@@ -8,6 +8,7 @@ SRCS="header.sass
       sidebar.sass
       list.sass
       ratings.sass
+      recommend-list.sass
      "
 
 ################################################################################
