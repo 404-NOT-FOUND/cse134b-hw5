@@ -8,6 +8,7 @@
     <link href="css/header.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
     <link href="css/ratings.css" rel="stylesheet">
+    <link href="css/recommend-list.css" rel="stylesheet">
 </head>
 <body>
 
@@ -77,7 +78,7 @@
                     </div>
                 </nav>
             </div>
-            
+
             <div class="col-md-10 col-lg-10">
                 <div class="gameinfo">
                     <div class="intro row">
@@ -161,14 +162,86 @@
                         </main>
                     </div>
                 </div>
+
+                    <div class="ratings row">
+                        <ul>
+                            <li>Fun:
+                                <form class="rating-stars">
+                                       <label><input type="radio" name="fun" value="1"></label><!--
+                                    --><label><input type="radio" name="fun" value="2"></label><!--
+                                    --><label><input type="radio" name="fun" value="3"></label><!--
+                                    --><label><input type="radio" name="fun" value="4"></label><!--
+                                    --><label><input type="radio" name="fun" value="5"></label>
+                                </form>
+                            </li>
+                            <li>Difficulty:
+                                <form class="rating-stars">
+                                       <label><input type="radio" name="difficulty" value="1"></label><!--
+                                    --><label><input type="radio" name="difficulty" value="2"></label><!--
+                                    --><label><input type="radio" name="difficulty" value="3"></label><!--
+                                    --><label><input type="radio" name="difficulty" value="4"></label><!--
+                                    --><label><input type="radio" name="difficulty" value="5"></label>
+                                </form>
+                            </li>
+                            <li>Challenging:
+                                <form class="rating-stars">
+                                       <label><input type="radio" name="challenging" value="1"></label><!--
+                                    --><label><input type="radio" name="challenging" value="2"></label><!--
+                                    --><label><input type="radio" name="challenging" value="3"></label><!--
+                                    --><label><input type="radio" name="challenging" value="4"></label><!--
+                                    --><label><input type="radio" name="challenging" value="5"></label>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="recommend">
                     <p>You might also like:</p>
-                    <ul>
-                        <li><a href="info.html">Chess</a></li>
-                        <li><a href="info.html">Chinese Chess</a></li>
-                        <li><a href="info.html">Nim</a></li>
-                    </ul>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="myCarousel" class="carousel slide multi-item-carousel" data-ride="carousel">
+                            <!-- wrapper for carousel items -->
+                                <div class="recommend-list carousel-inner">
+                                    <div class="board-item item active">
+                                        <div class="col-xs-4">
+                                            <a href="info.html">
+                                                <img class="img-circle board-img"
+                                                src="../img/board-chess-min.jpg" alt="Chess">
+                                                <p class="board-name">Chess</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="board-item item active">
+                                        <div class="col-xs-4">
+                                            <a href="info.html">
+                                                <img class="img-circle board-img"
+                                                src="../img/board-chinese-chess-min.jpg" alt="Chinese Chess">
+                                                <p class="board-name">Chinese Chess</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="board-item item active">
+                                        <div class="col-xs-4">
+                                            <a href="info.html">
+                                                <img class="img-circle board-img"
+                                                src="../img/board-nim-min.jpg" alt="Nim">
+                                                <p class="board-name">Nim</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> <!-- end of recommand list -->
+                                <!-- Carousel controls -->
+                                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div> <!-- end of carousel -->
+                        </div> <!-- end of col-md-12 -->
+                    </div> <!-- end of row -->
+                </div> <!-- recommand -->
             </div>
         </div>
     </div>
