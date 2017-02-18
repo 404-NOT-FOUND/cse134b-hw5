@@ -11,16 +11,26 @@
 
     <header class="navbar navbar-default">
         <div class="container-fluid">
-            <h1><a class="navbar-brand" href="index.html">BoarDex</a></h1>
-            <form class="navbar-form navbar-left" role="search" id="navBarSearchForm">
-                <div class="form-group">
-                    <input type="text" class="form-control search" placeholder="Search for a game">
+            <div class="row">
+                <div class="col-sm-3 col-lg-2">
+                    <h1><a class="navbar-brand" href="index.html">BoarDex</a></h1>
                 </div>
-                <button type="submit" class="btn btn-default my-btn">Search</button>
-            </form>
-            <div class="pull-right">
-                <a href="signup.html" class="btn btn-default navbar-btn signin-btn">Sign Up</a>
-                <a href="login.html" class="btn btn-default navbar-btn signin-btn">Sign In</a>
+                <div class="hidden-xs col-sm-7 col-lg-7">
+                    <form class="navbar-form navbar-left" role="search" id="navBarSearchForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control search" placeholder="Search for a game">
+                            <button type="submit" class="btn btn-default my-btn">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-2 col-lg-3">
+                    <div class="pull-right">
+                        <span class="hidden-xs hidden-sm">
+                            <a href="signup.html" class="btn btn-default navbar-btn signin-btn">Sign Up</a>
+                        </span>
+                        <a href="login.html" class="btn btn-default navbar-btn signin-btn">Sign In</a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
