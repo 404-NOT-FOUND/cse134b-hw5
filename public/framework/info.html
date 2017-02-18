@@ -144,45 +144,49 @@
                 
                 <div class="recommend">
                     <p>You might also like:</p>
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <!-- Carousel indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#mycarousel" data-slide-to"0" class="active"></li>
-                            <li data-target="#mycarousel" data-slide-to"1"></li>
-                            <li data-target="#mycarousel" data-slide-to"2"></li>
-                        </ol>
-                        <!-- wrapper for carousel items -->
-                        <div class="recommend-list carousel-inner">
-                            <div class="board-item item active">
-                                <a href="info.html">
-                                    <img class="img-circle board-img"
-                                        src="../img/board-chess-min.jpg" alt="Chess">
-                                    <p class="board-name">Chess</p>
-                                </a>
-                            </div>
-                            <div class="board-item item">
-                                <a href="info.html">
-                                    <img class="img-circle board-img"
-                                        src="../img/board-chinese-chess-min.jpg" alt="Chinese Chess">
-                                    <p class="board-name">Chinese Chess</p>
-                                </a>
-                            </div>
-                            <div class="board-item item">
-                                <a href="info.html">
-                                    <img class="img-circle board-img"
-                                        src="../img/board-nim-min.jpg" alt="Nim">
-                                    <p class="board-name">Nim</p>
-                                </a>
-                            </div>
-                        </div> <!-- end of recommand list -->
-                        <!-- Carousel controls -->
-                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-"></span>
-                        </a>
-                    </div> <!-- end of carousel -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="myCarousel" class="carousel slide multi-item-carousel" data-ride="carousel">
+                            <!-- wrapper for carousel items -->
+                            <div class="recommend-list carousel-inner">
+                                <div class="board-item item active">
+                                    <div class="col-xs-4">
+                                        <a href="info.html">
+                                            <img class="img-circle board-img"
+                                            src="../img/board-chess-min.jpg" alt="Chess">
+                                            <p class="board-name">Chess</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="board-item item active">
+                                    <div class="col-xs-4">
+                                        <a href="info.html">
+                                            <img class="img-circle board-img"
+                                            src="../img/board-chinese-chess-min.jpg" alt="Chinese Chess">
+                                            <p class="board-name">Chinese Chess</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="board-item item active">
+                                    <div class="col-xs-4">
+                                        <a href="info.html">
+                                            <img class="img-circle board-img"
+                                            src="../img/board-nim-min.jpg" alt="Nim">
+                                            <p class="board-name">Nim</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div> <!-- end of recommand list -->
+                            <!-- Carousel controls -->
+                            <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div> <!-- end of carousel -->
+                    </div> <!-- end of col-md-12 -->
+                </div> <!-- end of row -->
                 </div> <!-- recommand -->
             </div>
         </div>
