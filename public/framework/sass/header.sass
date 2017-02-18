@@ -1,3 +1,5 @@
+$search-box-height: 50px
+
 header
   height: 100px
   border: none !important
@@ -10,21 +12,30 @@ header
     .navbar-brand
       font-size: 50px
 
-  .my-btn 
+  .my-btn
     border: none
-    height: 50px
+    height: $search-box-height
     width: 100px
+    margin-left: 1px
 
   .signin-btn
     @extend .my-btn
-    height: 50px
     padding-top: 15px
+    position: absolute
+    right: 10px
 
-  #navBarSearchForm 
+  .signup-btn
+    @extend .signin-btn
+    right: 10px+100px+5px
+
+  #navBarSearchForm
     width: 100%
     div
       width: 100%
-    input[type=text] 
-      border: none
-      height: 50px
-      width: 75%
+      input[type=text]
+        border: none
+        height: $search-box-height
+        width: 75%
+      .my-btn
+        position: absolute
+
