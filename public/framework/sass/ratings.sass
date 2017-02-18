@@ -1,0 +1,50 @@
+$unchecked-star: '\2606'
+$unchecked-color: #ccc
+$checked-star: '\2605'
+$checked-color: #ffd700
+$star-size: 20px
+
+.ratings-row
+	line-height: $star-size
+
+	ul
+		list-style: none
+		padding-left: 0
+
+		li
+			display: inline-block
+			margin-right: 10px
+
+	.rating-stars
+		display: inline-block
+		margin-left: 0
+		font-size: 0
+		float: left
+
+		*
+			font-size: $star-size
+
+		& > input
+			display: none
+
+			& + label
+				display: inline-block
+				overflow: hidden
+				text-indent: 9999px
+				width: $star-size
+				white-space: nowrap
+				cursor: pointer
+				float: right
+
+				&:before
+					display: inline-block
+					text-indent: -9999px
+					content: $unchecked-star
+					color: $unchecked-color
+
+			&:checked + label
+			&:checked ~ label:before,
+			& + label:hover ~ label:before,
+			& + label:hover:before
+				content: $checked-star
+				color: $checked-color
