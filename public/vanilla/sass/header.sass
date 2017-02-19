@@ -1,4 +1,5 @@
 @import button
+@import devices
 
 $logo-color-light: #000
 $logo-color-dark: #0db7ab
@@ -56,11 +57,15 @@ header
   #search-btn
     border-radius: 0px 5px 5px 0px
 
+@media #{$phones}
+  .searchbar
+    display: none
+
 .login
   display: inline-block
   white-space: nowrap
 
-  #signup
+  #signin
     font-weight: bolder
     border-radius: 5px
     color: white
@@ -69,16 +74,19 @@ header
     margin-top: -42px
     padding-top: 17px
     position: absolute
-    right: 150px
     text-align: center
     text-decoration: none
     width: 100px
     background-color: $button-color
-
-  #signin
-    @extend #signup
     right: 40px
 
+  #signup
+    @extend #signin
+    right: 150px
+
+@media #{$phones}
+  #signup
+    display: none
 
 .boardex-dex
   color: $logo-color-dark
