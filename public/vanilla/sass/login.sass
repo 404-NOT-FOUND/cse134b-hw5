@@ -1,0 +1,64 @@
+@import button
+
+$height: 420px
+$width: 500px
+$input-width: 300px
+
+body
+  text-align: center
+
+  .sign-in-box
+    background-color: #f9f9f9
+    position: absolute
+    height: $height
+    width: $width
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    margin-top: 50px
+    padding-top: 20px
+
+  .sign-up-box
+    @extend .sign-in-box
+    height: 500px
+
+  button
+    border-radius: 0px
+    width: $input-width
+    margin-top: 10px
+    margin-bottom: 30px
+
+  .info-box
+    input
+      height: 50px
+      width: $input-width
+      margin-top: 5px
+      border: none
+      font-size: 10pt
+      padding-left: 10px
+
+
+.new-user
+  line-height: 0px
+  
+  #createAccountSubmit
+    text-decoration: none
+
+.existed-user
+  @extend .new-user
+
+  #login
+    text-decoration: none
+
+ul
+  list-style-type: none
+  padding-left: 0px
+  margin-bottom: 20px
+
+footer
+  position: fixed
+  bottom: 0
+  text-align: center
+  width: 100%

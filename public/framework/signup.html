@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create account</title>
+</head>
+<body>
+    <main>
+        <div class="sign-up-box">
+            <h1>Create account</h1>
+            <form action="index.html" method="post">
+                <ul>
+                    <li>
+                        <label for="u_name">Your name</label>
+                        <input type="text" maxLength="50"
+                               id="u_name" name="u_name" 
+                               placeholder="Enter your name" 
+                               required>
+                    </li>
+                    <li>
+                        <label for="u_email">Email</label>
+                        <input type="email" maxLength="64"
+                               id="u_email" name="u_email" 
+                               placeholder="Enter a valid email"
+                               required>
+                    </li>
+                    <li>
+                        <label for="u_pwd">Password</label>
+                        <input type="password" maxlength="1024" autocomplete="off"
+                               id="u_pwd" name="u_pwd" 
+                               placeholder="at least 6 characters" required>
+                    </li>
+                    <li>
+                        <label for="u_pwd_check">Password again</label>
+                        <input type="password" 
+                               id="u_pwd_check" name="u_pwd_check" 
+                               required>
+                    </li>
+                </ul>
+                <button type="submit">Create your BoarDex account</button>
+            </form>
+            <div class="existed-user">
+                <h5>Already have an account?</h5>
+                <a id="login" href="login.html">Sign in</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p><small>&copy; 2017, FLJ Corporation</small></p>
+    </footer>
+</body>
+</html>
