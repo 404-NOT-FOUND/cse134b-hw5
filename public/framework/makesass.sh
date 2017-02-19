@@ -2,7 +2,13 @@
 # makesass.sh
 
 # add your .sass source files to the list
-SRCS="sidebar.sass
+
+SRCS="header.sass
+	  login.sass
+      sidebar.sass
+      list.sass
+      ratings.sass
+      recommend-list.sass
      "
 
 ################################################################################

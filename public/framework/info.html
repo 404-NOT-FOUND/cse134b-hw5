@@ -5,20 +5,42 @@
     <meta charset="UTF-8">
     <title>Game Info | BoarDex</title>
     <link href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
+    <link href="css/ratings.css" rel="stylesheet">
+    <link href="css/recommend-list.css" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <h1><a href="../index.html">BoarDex</a></h1>
-        <input name="searchbox" type="search"
-               placeholder="Search for a game">
-        <button type="submit">Search</button>
+    <header class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3 col-lg-2">
+                    <h1><a class="navbar-brand" href="index.html">BoarDex</a></h1>
+                </div>
+                <div class="hidden-xs col-sm-7 col-lg-7">
+                    <form class="navbar-form navbar-left" role="search" id="navBarSearchForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control search" placeholder="Search for a game">
+                            <button type="submit" class="btn btn-default my-btn">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-2 col-lg-3">
+                    <div class="pull-right">
+                        <span class="hidden-xs hidden-sm">
+                            <a href="signup.html" class="btn btn-default navbar-btn signup-btn">Sign Up</a>
+                        </span>
+                        <a href="login.html" class="btn btn-default navbar-btn signin-btn">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="hidden-sm col-lg-2">
+            <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
                 <nav class="navbar navbar-default navbar-fixed-side">
                     <div class="sidebar">
                         <h2>Tags</h2>
@@ -42,87 +64,151 @@
                                 <li>
                                     <div class="category">Play time</div>
                                     <ul>
-                                        <li><label><input type="radio" name="age"> under 10 minutes</label></li>
-                                        <li><label><input type="radio" name="age"> under 30 minutes</label></li>
-                                        <li><label><input type="radio" name="age"> under 60 minutes</label></li>
-                                        <li><label><input type="radio" name="age"> over 60 minutes</label></li>
+                                        <li><label><input type="radio" name="time"> under 10 minutes</label></li>
+                                        <li><label><input type="radio" name="time"> under 30 minutes</label></li>
+                                        <li><label><input type="radio" name="time"> under 60 minutes</label></li>
+                                        <li><label><input type="radio" name="time"> over 60 minutes</label></li>
                                     </ul>
                                 </li>
                             </ul>
                             <div class="filter-button">
-                                <button type="submit">Apply Filters</button>
+                                <button type="submit" class="btn btn-default">Apply Filters</button>
                             </div>
                         </form>
                     </div>
                 </nav>
             </div>
-            
-            <div class="col-lg-10">
+
+            <div class="col-md-10 col-lg-10">
                 <div class="gameinfo">
-                    <div class="intro">
+                    <div class="intro row">
                         <main>
-                        <h1>Battleship</h1>
-                
-                        <figure>
-                            <img src="http://2.bp.blogspot.com/-XnwpQbtM7KQ/VoVGj1gZhYI/AAAAAAAADAc/-HBVvBVzFv0/s320/battleshipGame.jpg">
-                            <figcaption>Battleship game board</figcaption>
-                        </figure>
-                
-                        <p>Battleship (also Battleships or Sea Battle) is a guessing game for
-                        two players. It's played on ruled grids (paper or board) on which the
-                        players' fleets of ships (including battleships) are marked. The locations
-                        of the fleet are concealed from the other player. Players alternate turns
-                        taking 'shots' at the other player's fleet. The objective of the game is to
-                        destroy the opposing player's fleet. It is known worldwide as a pencil and
-                        paper game which dates from World War&nbsp;I. It was published by various
-                        companies as a pad-and-pencil game in the 1930s, and was released as a
-                        plastic board game by Milton Bradley in 1967. The game has spawned
-                        electronic versions, video games, smart device apps and films
-                        (Source: <a href="https://en.wikipedia.org/wiki/Battleship_(game)">Wikipedia</a>).</p>
+                        <div class="col-sm-12 col-lg-8">
+                            <h1>Battleship</h1>
+                            <h5>
+                              <a href="#">#board</a>
+                              <a href="#">#2players</a>
+                              <a href="#">#10andunder</a>
+                              <a href="#">#under30mins</a>
+                            </h5>
+                            <div class="ratings-row">
+                                <ul>
+                                    <li>
+                                        <form class="rating-stars">
+                                               <input type="radio" name="fun" value="1" id="fstar5"><!--
+                                            --><label for="fstar5"></label><!--
+                                            --><input type="radio" name="fun" value="2" id="fstar4"><!--
+                                            --><label for="fstar4"></label><!--
+                                            --><input type="radio" name="fun" value="3" id="fstar3" checked="checked"><!--
+                                            --><label for="fstar3"></label><!--
+                                            --><input type="radio" name="fun" value="4" id="fstar2"><!--
+                                            --><label for="fstar2"></label><!--
+                                            --><input type="radio" name="fun" value="5" id="fstar1"><!--
+                                            --><label for="fstar1"></label>
+                                        </form>&nbsp;Fun
+                                    </li>
+                                    <li>
+                                        <form class="rating-stars">
+                                               <input type="radio" name="difficulty" value="5" id="dstar5"><!--
+                                            --><label for="dstar5"></label><!--
+                                            --><input type="radio" name="difficulty" value="4" id="dstar4"><!--
+                                            --><label for="dstar4"></label><!--
+                                            --><input type="radio" name="difficulty" value="3" id="dstar3"><!--
+                                            --><label for="dstar3"></label><!--
+                                            --><input type="radio" name="difficulty" value="2" id="dstar2" checked="checked"><!--
+                                            --><label for="dstar2"></label><!--
+                                            --><input type="radio" name="difficulty" value="1" id="dstar1"><!--
+                                            --><label for="dstar1"></label>
+                                            
+                                        </form>&nbsp;Difficulty
+                                    </li>
+                                    <li>
+                                        <form class="rating-stars">
+                                               <input type="radio" name="challenging" value="5" id="cstar5"><!--
+                                            --><label for="cstar5"></label><!--
+                                            --><input type="radio" name="challenging" value="4" id="cstar4" checked="checked"><!--
+                                            --><label for="cstar4"></label><!--
+                                            --><input type="radio" name="challenging" value="3" id="cstar3"><!--
+                                            --><label for="cstar3"></label><!--
+                                            --><input type="radio" name="challenging" value="2" id="cstar2"><!--
+                                            --><label for="cstar2"></label><!--
+                                            --><input type="radio" name="challenging" value="1" id="cstar1"><!--
+                                            --><label for="cstar1"></label>
+                                        </form>&nbsp;Challenging
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>Battleship (also Battleships or Sea Battle) is a guessing game for
+                            two players. It's played on ruled grids (paper or board) on which the
+                            players' fleets of ships (including battleships) are marked. The locations
+                            of the fleet are concealed from the other player. Players alternate turns
+                            taking 'shots' at the other player's fleet. The objective of the game is to
+                            destroy the opposing player's fleet. It is known worldwide as a pencil and
+                            paper game which dates from World War&nbsp;I. It was published by various
+                            companies as a pad-and-pencil game in the 1930s, and was released as a
+                            plastic board game by Milton Bradley in 1967. The game has spawned
+                            electronic versions, video games, smart device apps and films
+                            (Source: <a href="https://en.wikipedia.org/wiki/Battleship_(game)">Wikipedia</a>).</p>
+                        </div>
+
+                        <div class="col-sm-0 col-lg-4">
+                            <figure class="figure">
+                                <img class="center-block"
+                                     src="http://2.bp.blogspot.com/-XnwpQbtM7KQ/VoVGj1gZhYI/AAAAAAAADAc/-HBVvBVzFv0/s320/battleshipGame.jpg"
+                                     alt="The battleship game">
+                                <figcaption class="figure-caption text-center">Battleship game board</figcaption>
+                            </figure>
+                        </div>
                         </main>
                     </div>
-                
-                    <div class="ratings">
-                        <ul>
-                            <li>Fun:
-                                <form class="rating-stars">
-                                       <label><input type="radio" name="fun" value="1"></label><!--
-                                    --><label><input type="radio" name="fun" value="2"></label><!--
-                                    --><label><input type="radio" name="fun" value="3"></label><!--
-                                    --><label><input type="radio" name="fun" value="4"></label><!--
-                                    --><label><input type="radio" name="fun" value="5"></label>
-                                </form>
-                            </li>
-                            <li>Difficulty:
-                                <form class="rating-stars">
-                                       <label><input type="radio" name="difficulty" value="1"></label><!--
-                                    --><label><input type="radio" name="difficulty" value="2"></label><!--
-                                    --><label><input type="radio" name="difficulty" value="3"></label><!--
-                                    --><label><input type="radio" name="difficulty" value="4"></label><!--
-                                    --><label><input type="radio" name="difficulty" value="5"></label>
-                                </form>
-                            </li>
-                            <li>Challenging:
-                                <form class="rating-stars">
-                                       <label><input type="radio" name="challenging" value="1"></label><!--
-                                    --><label><input type="radio" name="challenging" value="2"></label><!--
-                                    --><label><input type="radio" name="challenging" value="3"></label><!--
-                                    --><label><input type="radio" name="challenging" value="4"></label><!--
-                                    --><label><input type="radio" name="challenging" value="5"></label>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-                
+                <hr>
                 <div class="recommend">
                     <p>You might also like:</p>
-                    <ul>
-                        <li><a href="info.html">Chess</a></li>
-                        <li><a href="info.html">Chinese Chess</a></li>
-                        <li><a href="info.html">Nim</a></li>
-                    </ul>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="myCarousel" class="carousel slide multi-item-carousel" data-ride="carousel">
+                            <!-- wrapper for carousel items -->
+                                <div class="recommend-list carousel-inner">
+                                    <div class="board-item item active">
+                                        <div class="col-xs-4">
+                                            <a href="info.html">
+                                                <img class="img-circle board-img"
+                                                src="../img/board-chess-min.jpg" alt="Chess">
+                                                <p class="board-name">Chess</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="board-item item active">
+                                        <div class="col-xs-4">
+                                            <a href="info.html">
+                                                <img class="img-circle board-img"
+                                                src="../img/board-chinese-chess-min.jpg" alt="Chinese Chess">
+                                                <p class="board-name">Chinese Chess</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="board-item item active">
+                                        <div class="col-xs-4">
+                                            <a href="info.html">
+                                                <img class="img-circle board-img"
+                                                src="../img/board-nim-min.jpg" alt="Nim">
+                                                <p class="board-name">Nim</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> <!-- end of recommand list -->
+                                <!-- Carousel controls -->
+                                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div> <!-- end of carousel -->
+                        </div> <!-- end of col-md-12 -->
+                    </div> <!-- end of row -->
+                </div> <!-- recommand -->
             </div>
         </div>
     </div>
