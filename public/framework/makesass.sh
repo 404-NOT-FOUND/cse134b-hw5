@@ -9,6 +9,7 @@ SRCS="header.sass
       list.sass
       ratings.sass
       recommend-list.sass
+      master.sass
      "
 
 ################################################################################
