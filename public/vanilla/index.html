@@ -3,82 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <title>Game List | BoarDex</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sidebar.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/list.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 <body>
 
     <header>
-        <h1><a href="../index.html">BoarDex</a></h1>
-        <input name="searchbox" type="search"
-               placeholder="Search for a game">
-        <button type="submit">Search</button>
+        <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
+        <div class="searchbar">
+            <input id="searchbox" type="search"
+                   placeholder="Search for a game" />
+            <button type="submit" id="search-btn">Search</button>
+        </div>
+        <div class="login">
+            <a href="signup.html" id="signup">Sign Up</a>
+        </div>
+        <div class="login">
+            <a href="login.html" id="signin">Sign In</a>
+        </div>
     </header>
 
     <div class="sidebar">
         <h1>Tags</h1>
         <form>
             <ul>
-                <li><label><input type="checkbox"> Card games</label></li>
-                <li><label><input type="checkbox"> Paper and pen</label></li>
-                <li><label><input type="checkbox"> For children</label></li>
-                <li><label><input type="checkbox"> Quick games</label></li>
+                <li><div class="category">Materials</div>
+                <ul>
+                    <li><label><input type="radio" name="material"> Cards</label></li>
+                    <li><label><input type="radio" name="material"> Paper and Pen</label></li>
+                    <li><label><input type="radio" name="material"> Boards</label></li>
+                    <li><label><input type="radio" name="material"> Poker Cards</label></li>
+                </ul>
+                </li>
+                <li><div class="category">Age</div>
+                <ul>
+                    <li><label><input type="radio" name="age"> under 10</label></li>
+                    <li><label><input type="radio" name="age"> under 16</label></li>
+                    <li><label><input type="radio" name="age"> adults</label></li>
+                </ul>
+                </li>
+                <li>
+                    <div class="category">Play time</div>
+                    <ul>
+                        <li><label><input type="radio" name="time"> under 10 minutes</label></li>
+                        <li><label><input type="radio" name="time"> under 30 minutes</label></li>
+                        <li><label><input type="radio" name="time"> under 60 minutes</label></li>
+                        <li><label><input type="radio" name="time"> over 60 minutes</label></li>
+                    </ul>
+                </li>
             </ul>
-            <button type="submit">Apply Filters</button>
+            <div class="filter-button">
+                <button type="submit">Apply Filters</button>
+            </div>
         </form>
     </div>
 
-    <h1>Top Games</h1>
-
-    <div class="list">
-        <ul>
-            <li>
-                <a href="info.html">
-                    <img src="https://cf.geekdo-images.com/images/pic1269874.jpg" alt="Smash Up" height="200">
-                </a>
+    <main>
+        <h1>Top Games</h1>
+        <ul class="board-list">
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-smash-up-min.jpg" alt="Smash Up">
+                <p class="board-name">Smash Up</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                    <img src="https://cf.geekdo-images.com/images/pic2582929.jpg" alt="Codenames" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-code-names-min.jpg" alt="Codenames">
+                <p class="board-name">Codenames</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                    <img src="https://cf.geekdo-images.com/images/pic2419375.jpg" alt="Catan" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-catan-min.jpg" alt="Catan">
+                <p class="board-name">Catan</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/7/77/Twilight-imperium-layout_12.jpg" alt="Twilight Imperium" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-twilight-imp-min.jpg" alt="Twilight Imperium">
+                <p class="board-name">Twilight Imperium</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                    <img src="https://cf.geekdo-images.com/images/pic361592_lg.jpg" alt="Twilight Struggle" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-twilight-struggle-min.jpg" alt="Twilight Struggle">
+                <p class="board-name">Twilight Struggle</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                  <img src="https://cf.geekdo-images.com/images/pic2452831_md.png" alt="Pandemic Legacy Season 1" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-pandemic-min.png" alt="Pandemic Legacy Season 1">
+                <p class="board-name">Pandemic Legacy Season 1</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                    <img src="https://cf.geekdo-images.com/images/pic2663291_md.jpg" alt="Through the Ages: A New Story of Civilization" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-through-min.jpg" alt="Through the Ages: A New Story of Civilization">
+                <p class="board-name">Through the Ages: A New Story of Civilization</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                    <img src="https://cf.geekdo-images.com/images/pic3163924_md.jpg" alt="Scythe" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-scythe-min.jpg" alt="Scythe">
+                <p class="board-name">Scythe</p>
+            </a>
             </li>
-            <li>
-                <a href="info.html">
-                    <img src="https://cf.geekdo-images.com/images/pic1421682_md.jpg" alt="Mage Knight: The Lost Legion" height="200">
-                </a>
+            <li class="board-item">
+            <a href="info.html">
+                <img class="board-img" 
+                     src="../img/board-mega-knight-min.jpg" alt="Mage Knight: The Lost Legion">
+                <p class="board-name">Mage Knight: The Lost Legion</p>
+            </a>
             </li>
         </ul>
-    </div>
-    
-    
-    
+    </main>
+
 </body>
 </html>

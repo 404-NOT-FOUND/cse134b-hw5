@@ -1,0 +1,102 @@
+@import button
+@import devices
+
+$logo-color-light: #000
+$logo-color-dark: #0db7ab
+
+// $header-color: #ffb03b
+$header-color: #fff
+$header-shadow-color: #eee
+$header-height: 100px
+$search-width: 500px
+$search-height: 50px
+
+body
+  margin-top: $header-height+50px
+
+header
+  background-color: $header-color
+  font-family: 'Corbel', sans-serif
+  height: $header-height
+  margin-left: -10px
+  padding-left: 20px
+  position: fixed
+  top: 0px
+  width: 100%
+  z-index: 100
+  border-bottom: 1px solid $header-shadow-color
+
+  h1
+    display: inline-block
+    font-size: 50px
+    margin-top: 20px
+    // text-shadow: 3px 3px 13px gray
+
+    a
+      color: $logo-color-light
+      text-decoration: none
+
+.searchbar
+  display: inline-block
+  margin-left: 20px
+  margin-top: $header-height/2 - $search-height/2
+  position: absolute
+  white-space: nowrap
+
+  #searchbox
+    margin-left: 30px
+    border: none
+    border-radius: 5px 0px 0px 5px
+    font-size: 10pt
+    height: $search-height
+    padding-left: 10px
+    vertical-align: top
+    width: 40vw
+    background-color: #f4f4f4
+    transition: background-color 0.3s
+
+  #searchbox:hover
+    background-color: #e4e4e4
+
+  #search-btn
+    border-radius: 0px 5px 5px 0px
+
+@media #{$phones}
+  .searchbar
+    display: none
+
+.login
+  display: inline-block
+  white-space: nowrap
+
+  #signin
+    font-weight: bolder
+    border-radius: 5px
+    color: white
+    font-size: 10pt
+    height: 33px
+    margin-top: -42px
+    padding-top: 17px
+    position: absolute
+    text-align: center
+    text-decoration: none
+    width: 100px
+    background-color: $button-color
+    right: 40px
+    transition: background-color 0.3s
+
+  #signin:hover
+    background-color: #005852
+
+  #signup
+    @extend #signin
+    right: 150px
+
+@media #{$phones}
+  #signup
+    display: none
+
+.boardex-dex
+  color: $logo-color-dark
+
+

@@ -1,0 +1,63 @@
+@import button
+
+$height: 420px
+$width: 500px
+$input-width: 300px
+
+body
+  text-align: center
+
+  h1
+    margin-bottom: 30px
+
+  input[type="checkbox"]
+    margin: 20px 0px 10px 0px
+
+  .sign-in-box
+    color: white
+    background-color: #ff7912
+    position: absolute
+    height: $height
+    margin-top: 50px
+    padding-top: 20px
+    button
+      background-color: #ffac6c
+    a
+      color: #ffef9f
+    a:visited
+      color: #8b3e00
+
+  .sign-up-box
+    @extend .sign-in-box
+    height: 500px
+
+.login-input
+  border: none !important
+  height: 50px
+
+.my-btn 
+  border: none !important
+  height: 50px
+
+.my-btn1 
+  @extend .my-btn
+  margin-top: 20px
+
+.new-user
+  line-height: 0px
+  margin-top: 20px
+
+  #createAccountSubmit
+    text-decoration: none
+
+.existed-user
+  @extend .new-user
+
+  #login
+    text-decoration: none
+
+footer
+  position: fixed
+  bottom: 0
+  text-align: center
+  width: 100%
