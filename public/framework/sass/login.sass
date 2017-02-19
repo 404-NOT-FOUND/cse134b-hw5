@@ -1,3 +1,5 @@
+@import button
+
 $height: 420px
 $width: 500px
 $input-width: 300px
@@ -12,11 +14,16 @@ body
     margin: 20px 0px 10px 0px
 
   .sign-in-box
-    background-color: #f9f9f9
+    color: white
+    background-color: #ff7912
     position: absolute
     height: $height
     margin-top: 50px
     padding-top: 20px
+    a
+      color: #ffef9f
+    a:visited
+      color: #8b3e00
 
   .sign-up-box
     @extend .sign-in-box
