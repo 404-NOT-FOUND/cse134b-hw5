@@ -50,7 +50,7 @@ fi
 
 html_files="$(echo $staged_files | tr " " "\n" | grep "html")"
 if [[ $html_files != "" ]]; then
-    printf "Checking modified HTML files... "
+    printf "Checking modified HTML files...\n"
     printf "$REDCOLOR$html_files$NONECOLOR\n"
     assert_continue "Have you run the validator against them?"
 fi
