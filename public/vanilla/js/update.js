@@ -1,5 +1,6 @@
+(function() {
   // Initialize Firebase
-  var config = {
+  const config = {
     apiKey: "AIzaSyDgNzcJS-zqj-I3yUUXJp7EXp-6Vd6XsOo",
     authDomain: "boardex-b8a9e.firebaseapp.com",
     databaseURL: "https://boardex-b8a9e.firebaseio.com",
@@ -8,4 +9,7 @@
   };
   firebase.initializeApp(config);
 
+  // get a reference to the database service
+  var database = firebase.database();
 
+}());
