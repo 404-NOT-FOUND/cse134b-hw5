@@ -21,10 +21,10 @@ assert_continue () {
 
 staged_files="$(git status -s | grep -e "^[A-Z]" | awk '{print $2}')"
 if [[ $staged_files = "" ]]; then
-    printf "Nothing added to commit\n"
+    echo "Nothing added to commit"
     exit
 fi
-printf "You have git added the following files:\n"
+echo "You have git added the following files:"
 printf "$REDCOLOR$staged_files$NONECOLOR\n"
 assert_continue "Are these the files you want to commit?"
 printf "\n"
@@ -33,10 +33,10 @@ printf "\n"
 printf 'Checking unexpanded tabs... '
 result="$(grep -l $'\t' $staged_files)"
 if [[ $result = "" ]]; then
-    printf "OK\n"
+    echo "OK"
 else
     printf "\n$REDCOLOR$result$NONECOLOR\n"
-    printf "Please remove unexpanded tabs and commit again\n"
+    echo "Please remove unexpanded tabs and commit again"
     exit 1
 fi
 printf "\n"
@@ -45,7 +45,7 @@ printf "\n"
 printf 'Checking TODO flags... '
 result="$(grep --color -in 'todo' $staged_files)"
 if [[ $result = "" ]]; then
-    printf "Clear\n"
+    echo "Clear"
 else
     printf "\n"
     grep --color -in 'todo' $staged_files
@@ -57,7 +57,7 @@ printf "\n"
 printf "Checking modified HTML files... "
 html_files="$(echo $staged_files | tr " " "\n" | grep "html")"
 if [[ $html_files = "" ]]; then
-    printf "Clear\n"
+    echo "Clear"
 else
     printf "$REDCOLOR$html_files$NONECOLOR\n"
     assert_continue "Have you run the validator against them?"
@@ -68,7 +68,7 @@ printf "\n"
 assert_continue "Have you tested your pages?"
 printf "\n"
 
-printf "Committing...\n"
+echo "Committing..."
 if [[ $# -eq 1 ]]; then
     git commit -m $1
 else
