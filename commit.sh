@@ -32,8 +32,8 @@ assert_continue "Are these the files you want to commit?"
 
 result="$(grep -l $'\t' $staged_files)"
 if [[ $result != "" ]]; then
-    printf 'The following files contain unexpanded tabs... '
-    printf "\n$REDCOLOR$result$NONECOLOR\n"
+    echo "The following files contain unexpanded tabs..."
+    printf "$REDCOLOR$result$NONECOLOR\n"
     echo "Please remove unexpanded tabs and commit again"
     exit 1
 fi
@@ -41,8 +41,7 @@ fi
 
 result="$(grep --color -in 'todo' $staged_files)"
 if [[ $result != "" ]]; then
-    printf 'Checking TODO flags... '
-    printf "\n"
+    echo "Checking TODO flags..."
     grep --color -in 'todo' $staged_files
     assert_continue "Are you sure you want to keep all these flags?"
 fi
@@ -50,7 +49,7 @@ fi
 
 html_files="$(echo $staged_files | tr " " "\n" | grep "html")"
 if [[ $html_files != "" ]]; then
-    printf "Checking modified HTML files...\n"
+    echo "Checking modified HTML files..."
     printf "$REDCOLOR$html_files$NONECOLOR\n"
     assert_continue "Have you run the validator against them?"
 fi
