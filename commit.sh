@@ -20,6 +20,10 @@ assert_continue () {
 ################################################################################
 
 staged_files="$(git status -s | grep -e "^[A-Z]" | awk '{print $2}')"
+if [[ $staged_files = "" ]]; then
+    printf "Nothing added to commit\n"
+    exit
+fi
 printf "You have git added the following files:\n"
 printf "$REDCOLOR$staged_files$NONECOLOR\n"
 assert_continue "Are these the files you want to commit?"
