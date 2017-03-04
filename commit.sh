@@ -15,6 +15,7 @@ assert_continue () {
             ;;
     esac
     printf "\n"
+    printf "\n"
 }
 
 ################################################################################
@@ -27,46 +28,35 @@ fi
 echo "You have git added the following files:"
 printf "$REDCOLOR$staged_files$NONECOLOR\n"
 assert_continue "Are these the files you want to commit?"
-printf "\n"
 
 
-printf 'Checking unexpanded tabs... '
 result="$(grep -l $'\t' $staged_files)"
-if [[ $result = "" ]]; then
-    echo "OK"
-else
+if [[ $result != "" ]]; then
+    printf 'The following files contain unexpanded tabs... '
     printf "\n$REDCOLOR$result$NONECOLOR\n"
     echo "Please remove unexpanded tabs and commit again"
     exit 1
 fi
-printf "\n"
 
 
-printf 'Checking TODO flags... '
 result="$(grep --color -in 'todo' $staged_files)"
-if [[ $result = "" ]]; then
-    echo "Clear"
-else
+if [[ $result != "" ]]; then
+    printf 'Checking TODO flags... '
     printf "\n"
     grep --color -in 'todo' $staged_files
     assert_continue "Are you sure you want to keep all these flags?"
 fi
-printf "\n"
 
 
-printf "Checking modified HTML files... "
 html_files="$(echo $staged_files | tr " " "\n" | grep "html")"
-if [[ $html_files = "" ]]; then
-    echo "Clear"
-else
+if [[ $html_files != "" ]]; then
+    printf "Checking modified HTML files... "
     printf "$REDCOLOR$html_files$NONECOLOR\n"
     assert_continue "Have you run the validator against them?"
 fi
-printf "\n"
 
 
 assert_continue "Have you tested your pages?"
-printf "\n"
 
 echo "Committing..."
 if [[ $# -eq 1 ]]; then
