@@ -60,7 +60,7 @@ assert_continue "Have you tested your pages?"
 
 echo "Committing..."
 if [[ $# -eq 1 ]]; then
-    git commit -m $1
+    git commit -m "$1"
 else
     git commit
 fi
