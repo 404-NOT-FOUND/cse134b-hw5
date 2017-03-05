@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
         data: {
             title     : '',
             desc      : '',
-            img_url   : '',
+            img       : '',
             player_min: '',
             player_max: '',
             age       : '',
@@ -22,14 +22,14 @@ window.addEventListener('load', function() {
             addGame: function () {
                 console.debug(this.title.trim()      );
                 console.debug(this.desc.trim()       );
-                console.debug(this.img_url.trim()    );
+                console.debug(this.img               );
                 console.debug(this.player_min.trim() );
                 console.debug(this.player_max.trim() );
                 console.debug(this.age.trim());
 
                 if (this.title.trim() &&
                     this.desc.trim() &&
-                    this.img_url.trim() &&
+                    // this.img.trim() &&
                     this.player_min.trim() &&
                     this.player_max.trim() &&
                     this.age.trim()
@@ -38,13 +38,28 @@ window.addEventListener('load', function() {
                        ref.push({
                            'title':      this.title,
                            'desc':       this.desc,
-                           'img_url':    this.img_url,
+                           'img':        this.img,
                            'player_min': this.player_min,
                            'player_max': this.player_max,
                            'age':        this.age,
                        });
                    }
-            }
+            },
+            onFileChange(e) {
+                var files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);
+            },
+            createImage(file) {
+                var image = new Image();
+                var reader = new FileReader();
+                var vm = this;
+                reader.onload = e => {
+                    vm.img = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
         }
     });
 });

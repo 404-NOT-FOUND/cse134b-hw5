@@ -38,11 +38,11 @@
                 <li>
                 <div class="game-img">
                     <label>
-                        Image URL
-                        <input type="url"
+                        Image
+                        <input type="file"
                                id="game_img"
-                               v-model="img_url"
-                               placeholder="URL of the game image"
+                               accept="image/*"
+                               @change="onFileChange"
                                required>
                     </label>
                 </div>
