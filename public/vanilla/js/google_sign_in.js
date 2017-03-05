@@ -42,5 +42,17 @@
             var credential = error.credential;
         });
     })
+
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            console.log(user);
+            console.log('logged in');
+            document.location.href = 'index.html';
+
+        } else {
+            console.log('not logged in');
+        
+    });
+
 }());
 
