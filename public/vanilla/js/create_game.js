@@ -46,13 +46,13 @@ window.addEventListener('load', function() {
                     });
                 }
             },
-            onFileChange(e) {
+            onFileChange: function(e) {
                 var files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
                     return;
                 this.createImage(files[0]);
             },
-            createImage(file) {
+            createImage: function(file) {
                 var image = new Image();
                 var reader = new FileReader();
                 var vm = this;
