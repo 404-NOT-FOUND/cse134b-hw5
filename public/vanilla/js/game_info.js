@@ -41,7 +41,18 @@ window.addEventListener('load', function () {
                 this.age        = game.age;
                 // TODO game not found
             });
-        },
+        }, // end of created
+
+        methods: {
+            updateGame: function() {
+                console.debug(this.title);
+                console.log(this.key);
+                console.debug('updating');
+            }
+
+        } // end of method
     });
 });
+
+
 
