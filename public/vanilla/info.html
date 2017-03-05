@@ -63,7 +63,7 @@
     </div>
 
     <main>
-        <div class="gameinfo" id="game_info">
+        <div id="game_info" class="gameinfo">
             <div class="intro">
                 <h1>{{ title }}</h1>
                 <button type="button" @click="updateGame">
@@ -74,6 +74,7 @@
                   <a href="#">#2players</a>
                   <a href="#">#10andunder</a>
                   <a href="#">#under30mins</a>
+                  <!-- TODO tags -->
                 </h5>
                 <div class="ratings-row">
                     <ul>
@@ -124,7 +125,6 @@
                 </div>
                  <figure>
                     <img :src="img">
-                    <figcaption>Battleship game board</figcaption>
                 </figure>
                 <p>{{ desc }}</p>
             </div>
@@ -169,9 +169,11 @@
     <pre id="board_game"></pre>
     <ul id="list"></ul>
     </main>
-    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="js/init_firebase.js"></script>
     <script src="js/update.js"></script>
+    <script src="js/get_game.js"></script>
 </body>
 </html>

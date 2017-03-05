@@ -1,17 +1,7 @@
 Vue.use(VueFire);
 
-// Initialize Firebase
-const config = {
-    apiKey: "AIzaSyDgNzcJS-zqj-I3yUUXJp7EXp-6Vd6XsOo",
-    authDomain: "boardex-b8a9e.firebaseapp.com",
-    databaseURL: "https://boardex-b8a9e.firebaseio.com",
-    storageBucket: "boardex-b8a9e.appspot.com",
-    messagingSenderId: "762957983152"
-};
-
 // set base database
-var app = firebase.initializeApp(config);
-var db = app.database();
+var db = firebase.database();
 var ref = db.ref('games');
 
 window.addEventListener('load', function () {
