@@ -29,7 +29,6 @@ window.addEventListener('load', function() {
 
                 if (this.title.trim() &&
                     this.desc.trim() &&
-                    // this.img.trim() &&
                     this.player_min.trim() &&
                     this.player_max.trim() &&
                     this.age.trim()
