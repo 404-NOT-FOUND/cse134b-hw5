@@ -22,26 +22,31 @@ window.addEventListener('load', function () {
     var vm = new Vue({
         el: "#game_info",
         data: {
-            title     : '',
-            desc      : '',
-            img       : '',
-            player_min: '',
-            player_max: '',
-            age       : '',
+            key       : '',
+            game      : '',
         },
         created: function() {
             ref.orderByChild('title').equalTo(args.title).on('child_added', snap => {
-                game = snap.val();
-                console.log(game);
-                this.title      = game.title;
-                this.desc       = game.desc;
-                this.img        = game.img;
-                this.player_min = game.player_min;
-                this.player_max = game.player_max;
-                this.age        = game.age;
+                this.key = snap.key;
+                this.game = snap.val();
                 // TODO game not found
+                ref.child(this.key).on('child_changed', snap => {
+                    this.game[snap.key] = snap.val();
+                });
             });
-        },
-    });
-});
+        }, // end of created
+        methods: {
+            updateGame: function() {
+                console.log('updating');
+                ref.child(this.key).update({
+                    'desc': this.game.desc + ' hey',
+                    'player_min': parseInt(this.game.player_min) + 1,
+                }).then(console.log('updated'));
+            }
+
+        } // end of method
+    }); // end of vue
+}); // end of listener
+
+
 
