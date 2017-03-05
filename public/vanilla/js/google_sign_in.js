@@ -15,12 +15,12 @@
     _loginBtn.addEventListener('click', e => {
 
         firebase.auth().getRedirectResult().then(function(result) {
-           /*if (result.credential) {
+           if (result.credential) {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 var token = result.credential.accessToken;
             }
             // The signed-in user info.
-            var user = result.user;*/
+            var user = result.user;
             if (!user) {
                 // User not logged in, start login.
                 console.log('redirect to sign in with google');
