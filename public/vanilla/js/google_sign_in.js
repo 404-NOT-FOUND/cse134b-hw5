@@ -22,7 +22,6 @@
             }
             // The signed-in user info.
             var user = result.user;
-            document.location.href = 'index.html';
         }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -33,6 +32,7 @@
             var credential = error.credential;
             // ...
         });
+        document.location.href = 'index.html';
     })
 }());
 
