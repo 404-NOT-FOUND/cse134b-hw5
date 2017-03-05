@@ -13,13 +13,6 @@
 
     // when loginBtn is clicked, collect user info
     _loginBtn.addEventListener('click', e => {
-       if (!user) {
-            // User not logged in, start login.
-            firebase.auth().signInWithRedirect(provider);
-        } else {
-            // user logged in, go to home page.
-            document.location.href = 'index.html';
-        }
 
         firebase.auth().getRedirectResult().then(function(result) {
             if (result.credential) {
@@ -28,6 +21,13 @@
             }
             // The signed-in user info.
             var user = result.user;
+            if (!user) {
+                // User not logged in, start login.
+                firebase.auth().signInWithRedirect(provider);
+            } else {
+                // user logged in, go to home page.
+                document.location.href = 'index.html';
+            }
         }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
