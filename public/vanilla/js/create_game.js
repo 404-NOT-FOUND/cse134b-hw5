@@ -37,12 +37,12 @@ window.addEventListener('load', function() {
                 if (is_valid) {
                     console.debug('pushing');
                     ref.push({
-                        'title':      this.title,
-                        'desc':       this.desc,
-                        'img':        this.img,
-                        'player_min': this.player_min,
-                        'player_max': this.player_max,
-                        'age':        this.age,
+                        'title':      title,
+                        'desc':       desc,
+                        'img':        img,
+                        'player_min': player_min,
+                        'player_max': player_max,
+                        'age':        age,
                     });
                 }
             },
