@@ -1,3 +1,5 @@
+Vue.use(VueFire);
+
 // Initialize Firebase
 const config = {
     apiKey: "AIzaSyDgNzcJS-zqj-I3yUUXJp7EXp-6Vd6XsOo",
@@ -7,39 +9,34 @@ const config = {
     messagingSenderId: "762957983152"
 };
 
+// set base database
 var app = firebase.initializeApp(config);
 var db = app.database();
+var ref = db.ref('games');
 
-// get elements;
-const _board_game = document.getElementById('board_game');
-const _ulist = document.getElementById('list');
+window.addEventListener('load', function () {
+    var vm = new Vue({
+        el: "#game_info",
+        data: {
+            title   : 'hey',
+            desc    : '',
+            img_url : '',
+        },
 
-// get the game db ref.
-var dbRefBoardGame = db.ref('board_game');
-var dbRefList = dbRefBoardGame.child('hobbies');
+        firebase: {
+            games: ref
+        },
 
-// sync
-// dbRefBoardGame.on("value", snap => console.log( snap.val()) );
-dbRefBoardGame.on('value', snap => {
-    console.log(snap.val());
-    _board_game.innerText = JSON.stringify(snap.val(), null, 3);
-});
+        methods: {
+            updateGame: function() {
+                console.debug(this.title);
+                console.debug('updating');
+                // ref.child(key).update( {"title": "YOYOYO!" } )
+            }
 
-dbRefList.on('child_added', snap => {
-    const li = document.createElement('li');
-    li.innerText = snap.val();
-    li.id = snap.key;
-    _ulist.appendChild(li);
-});
+        } // end of method
 
-dbRefList.on('child_changed', snap => {
-    const liChanged = document.getElementById(snap.key);
-    liChanged.innerText = snap.val();
-});
+    }); // end of new Vue
 
-dbRefList.on('child_removed', snap => {
-    const liToRemove = document.getElementById(snap.key);
-    liToRemove.remove();
-});
-
+}); // end of listener
 
