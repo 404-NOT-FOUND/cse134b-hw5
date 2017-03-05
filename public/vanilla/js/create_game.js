@@ -29,8 +29,8 @@ window.addEventListener('load', function() {
 
                 is_valid = title && desc && img && player_min && player_max && age;
 
-                if (player_min < 1 || player_max < player_min) {
-                    console.log('bad number of players');
+                if (player_min < 1 || parseInt(player_max) < player_min) {
+                    alert('bad number of players');
                     is_valid = false;
                 }
 
