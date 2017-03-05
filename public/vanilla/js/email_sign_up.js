@@ -21,17 +21,28 @@
         const password = _password.value;
         const passwordCheck = _passwordCheck.value;
 
-        const promise = auth.createUserWithEmailAndPassword(email, password);
-        promise.catch(e => console.log(e.message));
-
-        promise.then(onFulfilled, onRejected);
-
-        function onFulfilled(value) {
-            document.location.href = 'index.html';
+        var matchPassword = false;
+        if(password === passwordCheck) {
+            matchPassword = true;
+        } else {
+            matchPassword = false;
+            alert('Passwords do not match.')
         }
-        function onRejected(error) {
-            alert(error.message);
+
+        if( matchPassword == true ) {
+            const promise = auth.createUserWithEmailAndPassword(email, password);
+            promise.catch(e => console.log(e.message));
+
+            promise.then(onFulfilled, onRejected);
+
+            function onFulfilled(value) {
+                document.location.href = 'index.html';
+            }
+            function onRejected(error) {
+                alert(error.message);
+            }
         }
+        
     });
 
 }());
