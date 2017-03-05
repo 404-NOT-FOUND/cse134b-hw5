@@ -63,14 +63,15 @@
     </div>
 
     <main>
-        <div class="gameinfo">
+        <div id="game_info" class="gameinfo">
             <div class="intro">
-                <h1>Battleship</h1>
+                <h1>{{ title }}</h1>
                 <h5>
                   <a href="#">#board</a>
                   <a href="#">#2players</a>
                   <a href="#">#10andunder</a>
                   <a href="#">#under30mins</a>
+                  <!-- TODO tags -->
                 </h5>
                 <div class="ratings-row">
                     <ul>
@@ -120,20 +121,9 @@
                     </ul>
                 </div>
                  <figure>
-                    <img src="../img/battleshipgame.jpg">
-                    <figcaption>Battleship game board</figcaption>
+                    <img :src="img">
                 </figure>
-                <p>Battleship (also Battleships or Sea Battle) is a guessing game for
-                two players. It's played on ruled grids (paper or board) on which the
-                players' fleets of ships (including battleships) are marked. The locations
-                of the fleet are concealed from the other player. Players alternate turns
-                taking 'shots' at the other player's fleet. The objective of the game is to
-                destroy the opposing player's fleet. It is known worldwide as a pencil and
-                paper game which dates from World War&nbsp;I. It was published by various
-                companies as a pad-and-pencil game in the 1930s, and was released as a
-                plastic board game by Milton Bradley in 1967. The game has spawned
-                electronic versions, video games, smart device apps and films
-                (Source: <a href="https://en.wikipedia.org/wiki/Battleship_(game)">Wikipedia</a>).</p>
+                <p>{{ desc }}</p>
             </div>
         </div>
 
@@ -175,5 +165,10 @@
         </div>
     </main>
 
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="js/init_firebase.js"></script>
+    <script src="js/get_game.js"></script>
 </body>
 </html>
