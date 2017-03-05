@@ -65,7 +65,7 @@
     <main>
         <div id="game_info" class="gameinfo">
             <div class="intro">
-                <h1>{{ title }}</h1>
+                <h1>{{ game.title }}</h1>
                 <button type="button" @click="updateGame">
                     Edit 
                 </button>
@@ -124,9 +124,9 @@
                     </ul>
                 </div>
                  <figure>
-                    <img :src="img">
+                    <img :src="game.img" :alt="game.title">
                 </figure>
-                <p>{{ desc }}</p>
+                <p>{{ game.desc }}</p>
             </div>
         </div>
 
