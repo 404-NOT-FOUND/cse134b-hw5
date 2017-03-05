@@ -64,7 +64,7 @@
         <h1>Top Games</h1>
         <ul class="board-list" id="board_list">
             <li class="board-item" v-for="game in games">
-            <a href="info.html">
+            <a :href="'info.html?t='+game.title">
                 <img class="board-img" :src="game.img" :alt="game.title">
                 <p class="board-name">{{game.title}}</p>
             </a>
@@ -73,6 +73,7 @@
     </main>
 
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-router@2.0.3"></script>
     <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="js/init_firebase.js"></script>
