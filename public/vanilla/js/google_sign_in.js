@@ -14,7 +14,7 @@
     // when loginBtn is clicked, collect user info
     _loginBtn.addEventListener('click', e => {
 
-        firebase.auth().signInWithRedirect(provider);
+        //firebase.auth().signInWithRedirect(provider);
 
         firebase.auth().getRedirectResult().then(function(result) {
            if (result.credential) {
