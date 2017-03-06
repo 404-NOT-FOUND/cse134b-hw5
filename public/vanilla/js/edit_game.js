@@ -83,7 +83,10 @@ auth.onAuthStateChanged(user => {
                 }
             },
             addGame: function () {
-                this.uploadImageWithCallBack(function complete () {
+                requireImg = function () {
+                    console.log('missing image file');
+                };
+                add = function () {
                     console.log('pushing');
                     gamesDatabaseRef.push({
                         'title':      vm.game.title,
@@ -94,10 +97,11 @@ auth.onAuthStateChanged(user => {
                         'age':        vm.game.age,
                         'uid':        auth.currentUser.uid,
                     }).then(console.log('pushed!'));
-                });
+                };
+                this.uploadImageWithCallBack(requireImg, add);
             },
             updateGame: function() {
-                this.uploadImageWithCallBack(function complete () {
+                update = function () {
                     console.log('updating');
                     gamesDatabaseRef.child(vm.game.key).update({
                         'title':      vm.game.title,
@@ -107,7 +111,8 @@ auth.onAuthStateChanged(user => {
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
                     }).then(console.log('updated'));
-                });
+                };
+                this.uploadImageWithCallBack(update, update);
             },
             onGameImageChange: function(e) {
                 var files = e.target.files || e.dataTransfer.files;
@@ -120,9 +125,11 @@ auth.onAuthStateChanged(user => {
                 }
                 reader.readAsDataURL(this.imgFile);
             },
-            uploadImageWithCallBack: function(callback) {
-                if (!this.imgFile)
+            uploadImageWithCallBack: function(noImgCb, uploadCompleteCb) {
+                if (!this.imgFile) {
+                    noImgCb();
                     return;
+                }
                 console.log('uploading image');
                 var imgRef = gamesStorageRef.child(this.game.title+'/image');
                 var uploadTask = imgRef.put(this.imgFile);
@@ -137,7 +144,7 @@ auth.onAuthStateChanged(user => {
                     function complete() {
                         console.log('upload complete!');
                         vm.game.imgUrl = uploadTask.snapshot.downloadURL;
-                        callback();
+                        uploadCompleteCb();
                     }
                 );
             },
