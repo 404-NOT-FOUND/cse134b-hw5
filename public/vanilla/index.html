@@ -63,6 +63,12 @@
     <main>
         <h1>Top Games</h1>
         <ul class="board-list" id="board_list">
+            <li id="add_game_btn" class="board-item">
+            <a href="editgame.html">
+                <img id="add_game_btn_img" class="board-img" src="img/plus.png" alt="add game">
+                <p class="board-name">Add a new game</p>
+            </a>
+            </li>
             <li class="board-item" v-for="game in games">
             <a :href="'info.html?t='+game.title">
                 <img class="board-img" :src="game.imgUrl" :alt="game.title">
