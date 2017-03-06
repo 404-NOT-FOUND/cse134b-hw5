@@ -15,18 +15,27 @@
         ".validate": "
           newData.hasChildren(['title', 'desc', 'imgUrl', 'age', 'playerMin', 'playerMax',])
           &&
-          newData.child('title').val()     !== '' && newData.child('desc').val()      !== '' &&
           newData.child('imgUrl').val()    !== '' && newData.child('age').val()       !== '' &&
           newData.child('playerMin').val() !== '' && newData.child('playerMax').val() !== ''
           ",
         "title": {
           ".validate": "
-            // new game
-            !data.exists() 
-            || // existing game
-            data.val() === newData.val()
-          "
+            ( // new game
+             !data.exists()
+             &&
+             newData.isString() && newData.val() !== '' && newData.val().length < 50
+            )
+            ||
+            ( // existing game
+             data.val() === newData.val()
+            )
+            ",
         },
+        "desc": {
+          ".validate": "
+            newData.isString() && newData.val() !== '' && newData.val().length < 5000
+            ",
+        }
       },
     },
   },
