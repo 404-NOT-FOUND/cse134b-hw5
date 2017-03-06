@@ -50,7 +50,7 @@ window.addEventListener('load', function () {
                     document.location.href = 'index.html';
                 }, function(error) {
                     if (error.code === 'PERMISSION_DENIED') {
-                        alert('Error: You do not have permission to edit this game.');
+                        alert('Error: You do not have permission to delete this game.');
                     } else {
                         alert('Error: ' + error.message);
                     }
