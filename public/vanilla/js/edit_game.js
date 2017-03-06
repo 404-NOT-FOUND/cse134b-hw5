@@ -95,7 +95,12 @@ auth.onAuthStateChanged(user => {
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
                         'uid':        auth.currentUser.uid,
-                    }).then(console.log('pushed!'));
+                    }).then(function(snapshot) {
+                        alert('Game succesfully added.');
+                        document.location.href = 'info.html?t=' + vm.game.title;
+                    }, function(error) {
+                        alert('An error occured when trying to add your game.');
+                    });//console.log('pushed!'));
                 };
                 this.uploadImageWithCallBack(requireImg, add);
             },
@@ -108,7 +113,17 @@ auth.onAuthStateChanged(user => {
                         'playerMin':  vm.game.playerMin,
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
-                    }).then(console.log('updated'));
+                    }).then(function(snapshot) {
+                        alert('Game succesfully updated.');
+                        document.location.href = 'info.html?t=' + vm.game.title;
+                    }, function(error) {
+                        if(error.code === 'PERMISSION_DENIED') {
+                            alert('Error: You do not have permission to edit this game. Redirecting to the home page.');
+                            document.location.href = 'index.html';
+                        } else {
+                            alert('Error: ' + error.message);
+                        }
+                    });
                 };
                 this.uploadImageWithCallBack(update, update);
             },
