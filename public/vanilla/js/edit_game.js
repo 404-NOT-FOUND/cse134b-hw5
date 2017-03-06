@@ -3,6 +3,7 @@ var database = firebase.database();
 var storage = firebase.storage();
 var gamesStorageRef = storage.ref('games');
 var gamesDatabaseRef = database.ref('games');
+const auth = firebase.auth();
 
 Vue.use(VueFire);
 
@@ -18,7 +19,7 @@ parseArgs = function () {
     return args;
 }
 
-window.addEventListener('load', function() {
+auth.onAuthStateChanged(user => {
     var vm = new Vue({
         el: '#game_spec',
         data: {
@@ -91,6 +92,7 @@ window.addEventListener('load', function() {
                         'playerMin':  vm.game.playerMin,
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
+                        'uid':        auth.currentUser.uid,
                     }).then(console.log('pushed!'));
                 });
             },
