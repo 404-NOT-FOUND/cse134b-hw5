@@ -21,12 +21,12 @@ window.addEventListener('load', function() {
         el: '#game_spec',
         data: {
             game: {
-                key: '',
+                key       : '',
                 title     : '',
                 desc      : '',
                 img       : '',
-                playerMin: '',
-                playerMax: '',
+                playerMin : '',
+                playerMax : '',
                 age       : '',
             },
             isUpdateMode: false,
