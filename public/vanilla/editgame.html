@@ -9,15 +9,16 @@
 <body>
     <div class="game-box" id="game_spec">
         <h1>Game Editor</h1>
-        <form @submit.prevent="addGame">
+        <h2 v-if="isUpdateMode">Game Title: {{ game.title }}</h2>
+        <form @submit.prevent="editgame">
             <ul>
-                <li>
+                <li v-if="!isUpdateMode">
                 <div class="game-title">
                     <label>
                         Game title
                         <input type="text" maxLength="50"
                                id="game_title"
-                               v-model="title"
+                               v-model="game.title"
                                placeholder="Game title"
                                required>
                     </label>
@@ -28,7 +29,7 @@
                     <label>
                         Game description
                         <textarea id="game_desc"
-                                  v-model="desc"
+                                  v-model="game.desc"
                                   rows="5" cols="60"
                                   required
                         ></textarea>
@@ -55,12 +56,12 @@
                     <span>
                         <input type="number"
                                id="game_player_min"
-                               v-model="player_min"
+                               v-model="game.playerMin"
                                required>
                         to
                         <input type="number"
                                id="game_player_max"
-                               v-model="player_max"
+                               v-model="game.playerMax"
                                required>
                     </span>
                 </div>
@@ -68,7 +69,7 @@
                 <li>
                 <div class="game-age">
                     <p>Best Age Range</p>
-                    <select id="game_age" v-model="age" required>
+                    <select id="game_age" v-model="game.age" required>
                         <option value="">Select</option>
                         <option>Under 10</option>
                         <option>Under 16</option>
