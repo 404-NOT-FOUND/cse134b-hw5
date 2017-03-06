@@ -23,6 +23,7 @@ auth.onAuthStateChanged(user => {
     var vm = new Vue({
         el: '#game_spec',
         data: {
+            lastImg: '',
             imgFile: '',
             game: {
                 title     : '',
@@ -143,6 +144,11 @@ auth.onAuthStateChanged(user => {
                     noImgCb();
                     return;
                 }
+                if (this.imgFile == this.lastImg) {
+                    // already uploaded
+                    uploadCompleteCb();
+                    return;
+                }
                 console.log('uploading image');
                 var imgRef = gamesStorageRef.child(this.game.title+'/image');
                 var uploadTask = imgRef.put(this.imgFile);
@@ -158,6 +164,7 @@ auth.onAuthStateChanged(user => {
                         console.log('upload complete!');
                         vm.game.imgUrl = uploadTask.snapshot.downloadURL;
                         uploadCompleteCb();
+                        vm.lastImg = vm.imgFile;
                     }
                 );
             },
