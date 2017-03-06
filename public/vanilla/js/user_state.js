@@ -15,6 +15,7 @@
     const _signupBtn = document.getElementById('signup');
     const _signinBtn = document.getElementById('signin');
     const _signoutBtn = document.getElementById('signout');
+    const _addgameBtn = document.getElementById('addgame');
 
     _signoutBtn.addEventListener('click', e => {
         auth.signOut();
@@ -30,6 +31,7 @@
             _signupBtn.classList.add('hide');
             _signinBtn.classList.add('hide');
             _signoutBtn.classList.remove('hide');
+            _addgameBtn.classList.remove('hide');
 
         } else {
             console.log('not logged in');
@@ -37,6 +39,7 @@
             _signupBtn.classList.remove('hide');
             _signinBtn.classList.remove('hide');
             _signoutBtn.classList.add('hide');
+            _addgameBtn.classList.add('hide');
         }
     });
 }());
