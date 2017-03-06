@@ -38,6 +38,9 @@ window.addEventListener('load', function () {
         methods: {
             updateGame: function() {
                 console.log('updating');
+                console.log('redirecting to the edit page');
+                location.href='editgame.html';
+
                 ref.child(this.key).update({
                     'desc': this.game.desc + ' hey',
                     'player_min': parseInt(this.game.player_min) + 1,
