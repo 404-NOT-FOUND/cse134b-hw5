@@ -6,14 +6,10 @@
       "$game": {
         ".write": "
           auth != null &&
-          (
-           ( // new game
-             !data.exists()
-           )
-           ||
-           ( // existing game
-             data.child('uid').val() === auth.uid
-           )
+          ( // new game
+            !data.exists()
+            || // existing game
+            data.child('uid').val() === auth.uid
           )
           ",
         ".validate": "
@@ -24,7 +20,12 @@
           newData.child('playerMin').val() !== '' && newData.child('playerMax').val() !== ''
           ",
         "title": {
-          ".validate": "!data.exists() || data.val() === newData.val()"
+          ".validate": "
+            // new game
+            !data.exists() 
+            || // existing game
+            data.val() === newData.val()
+          "
         },
       },
     },
