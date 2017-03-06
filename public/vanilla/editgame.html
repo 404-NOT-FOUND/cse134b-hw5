@@ -9,9 +9,10 @@
 <body>
     <div class="game-box" id="game_spec">
         <h1>Game Editor</h1>
+        <h2 v-if="isUpdateMode">Game Title: {{ game.title }}</h2>
         <form @submit.prevent="editgame">
             <ul>
-                <li>
+                <li v-if="!isUpdateMode">
                 <div class="game-title">
                     <label>
                         Game title
