@@ -15,6 +15,9 @@
     const _password = document.getElementById("usr_password");
     const _passwordCheck = document.getElementById("usr_password_check");
     const _signupBtn = document.getElementById("signup_btn");
+    const _login = document.getElementById("login");
+
+    console.log(window.location.search);
 
     _signupBtn.addEventListener('click', e => {
         const email = _email.value;
@@ -36,13 +39,25 @@
             promise.then(onFulfilled, onRejected);
 
             function onFulfilled(value) {
-                document.location.href = 'index.html';
+                if(window.location.search == '?newgame'){
+                    document.location.href = 'newgame.html';
+                } else {
+                    document.location.href = 'index.html';
+                }
             }
             function onRejected(error) {
                 alert(error.message);
             }
         }
         
+    });
+
+    _login.addEventListener('click', e => {
+        if(window.location.search == '?newgame'){
+            document.location.href = 'login.html?newgame';
+        } else {
+            document.location.href = 'login.html';
+        }
     });
 
 }());

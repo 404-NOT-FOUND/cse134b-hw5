@@ -20,7 +20,15 @@
     _signoutBtn.addEventListener('click', e => {
         auth.signOut();
 
-        alert("You have succesfully signed out.");
+        alert('You have succesfully signed out.');
+    })
+
+     _addgameBtn.addEventListener('click', e => {
+        if(auth.currentUser) {
+            document.location.href = 'newgame.html';
+        } else {
+            document.location.href = 'signup.html?newgame';
+        }
     })
 
     auth.onAuthStateChanged(user => {
@@ -31,15 +39,12 @@
             _signupBtn.classList.add('hide');
             _signinBtn.classList.add('hide');
             _signoutBtn.classList.remove('hide');
-            _addgameBtn.classList.remove('hide');
-
         } else {
             console.log('not logged in');
             
             _signupBtn.classList.remove('hide');
             _signinBtn.classList.remove('hide');
             _signoutBtn.classList.add('hide');
-            _addgameBtn.classList.add('hide');
         }
     });
 }());
