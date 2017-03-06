@@ -8,13 +8,13 @@
           auth != null && 
           (
            ( // new game
-            !data.exists()
+             !data.exists()
            ) 
            ||
            ( // existing game
-            data.child('uid').val() === auth.uid
-            &&
-            data.child('title').val() === newData.child('title').val()
+             data.child('uid').val() === auth.uid
+             &&
+             data.child('title').val() === newData.child('title').val()
            )
           )
           ",
