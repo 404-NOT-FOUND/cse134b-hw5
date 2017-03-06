@@ -24,7 +24,7 @@ window.addEventListener('load', function() {
         data: {
             imgFile: '',
             game: {
-                key: '',
+                key       : '',
                 title     : '',
                 desc      : '',
                 imgUrl    : '',
