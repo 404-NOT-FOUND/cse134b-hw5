@@ -10,6 +10,7 @@ SRCS="sidebar.sass
       ratings.sass
       recommend-list.sass
       master.sass
+      editgame.sass
      "
 
 ################################################################################

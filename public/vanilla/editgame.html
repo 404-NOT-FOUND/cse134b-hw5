@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Game | BoarDex</title>
+    <link rel="stylesheet" href="css/editgame.css">
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 <body>
@@ -15,7 +16,7 @@
                 <li v-if="!isUpdateMode">
                 <div class="game-title">
                     <label>
-                        Game title
+                        Game title <br>
                         <input type="text" maxLength="50"
                                id="game_title"
                                v-model="game.title"
@@ -27,7 +28,7 @@
                 <li>
                 <div class="game-desc">
                     <label>
-                        Game description
+                        Game description <br>
                         <textarea id="game_desc"
                                   v-model="game.desc"
                                   rows="5" cols="60"
@@ -39,7 +40,7 @@
                 <li>
                 <div class="game-img">
                     <label>
-                        Image
+                        Image <br>
                         <input type="file"
                                id="game_img"
                                accept="image/*"
@@ -51,7 +52,7 @@
                 <li>
                 <div class="game-player">
                     <label for="game_player_min">
-                        Number of Players
+                        Number of Players <br>
                     </label>
                     <span>
                         <input type="number"
