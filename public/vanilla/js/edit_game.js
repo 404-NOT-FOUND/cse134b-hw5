@@ -20,19 +20,13 @@ window.addEventListener('load', function() {
     var vm = new Vue({
         el: '#game_spec',
         data: {
-            title     : '',
-            desc      : '',
-            img       : '',
-            player_min: '',
-            player_max: '',
-            age       : '',
-            game      : {
+            game: {
                 key: '',
                 title     : '',
                 desc      : '',
                 img       : '',
-                player_min: '',
-                player_max: '',
+                playerMin: '',
+                playerMax: '',
                 age       : '',
             },
             isUpdateMode: false,
@@ -41,9 +35,7 @@ window.addEventListener('load', function() {
             games: ref
         },
         created: function () {
-            console.debug('parsing args');
             args = parseArgs();
-            console.debug('args: ' + JSON.stringify(args));
             if (args.title != '') {
                 console.debug('switched to update mode');
                 this.isUpdateMode = true;
@@ -57,19 +49,21 @@ window.addEventListener('load', function() {
         },
         methods: {
             editgame: function () {
-                this.game.title      = this.title.trim();
-                this.game.desc       = this.desc.trim();
-                this.game.img        = this.img;
-                this.game.player_min = this.player_min.trim();
-                this.game.player_max = this.player_max.trim();
-                this.game.age        = this.age.trim();
+                console.log(this.game.desc);
+                this.game.title      = this.game.title.trim();
+                this.game.desc       = this.game.desc.trim();
+                this.game.img        = this.game.img;
+                this.game.playerMin  = this.game.playerMin.trim();
+                this.game.playerMax  = this.game.playerMax.trim();
+                this.game.age        = this.game.age.trim();
 
                 is_valid = this.game.title && this.game.desc && 
                            this.game.img   && this.game.age  &&
-                           this.game.player_min && this.game.player_max;
+                           this.game.playerMin && this.game.playerMax;
 
-                if (this.game.player_min < 1 || 
-                    parseInt(this.game.player_max) < this.game.player_min) {
+                if (this.game.playerMin < 1 || 
+                    parseInt(this.game.playerMax) < this.game.playerMin
+                   ) {
                     alert('bad number of players');
                     is_valid = false;
                 }
@@ -93,8 +87,8 @@ window.addEventListener('load', function() {
                     'title':      this.game.title,
                     'desc':       this.game.desc,
                     'img':        this.game.img,
-                    'player_min': this.game.player_min,
-                    'player_max': this.game.player_max,
+                    'playerMin':  this.game.playerMin,
+                    'playerMax':  this.game.playerMax,
                     'age':        this.game.age,
                 }).then(console.log('pushed'));
             },
@@ -104,8 +98,8 @@ window.addEventListener('load', function() {
                     'title':      this.game.title,
                     'desc':       this.game.desc,
                     'img':        this.game.img,
-                    'player_min': this.game.player_min,
-                    'player_max': this.game.player_max,
+                    'playerMin':  this.game.playerMin,
+                    'playerMax':  this.game.playerMax,
                     'age':        this.game.age,
                 }).then(console.log('updated'));
             },
@@ -120,7 +114,7 @@ window.addEventListener('load', function() {
                 var reader = new FileReader();
                 var vm = this;
                 reader.onload = e => {
-                    vm.img = e.target.result;
+                    vm.game.img = e.target.result;
                 };
                 reader.readAsDataURL(file);
             },
