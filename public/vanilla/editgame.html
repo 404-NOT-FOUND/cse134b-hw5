@@ -5,9 +5,25 @@
     <meta charset="UTF-8">
     <title>Edit Game | BoarDex</title>
     <link rel="stylesheet" href="css/editgame.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 <body>
+    <header>
+        <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
+        <div class="searchbar">
+            <input id="searchbox" type="search"
+                   placeholder="Search for a game" />
+            <button type="submit" id="search-btn">Search</button>
+        </div>
+        <div class="login">
+            <a href="signup.html" id="signup">Sign Up</a>
+        </div>
+        <div class="login">
+            <a href="login.html" id="signin">Sign In</a>
+        </div>
+    </header>
+
     <div class="game-box" id="game_spec">
         <h1>Game Editor</h1>
         <h2 v-if="isUpdateMode">Title: {{ game.title }}</h2>
@@ -54,7 +70,7 @@
                                @change="onGameImageChange">
                     </label>
                     <figure v-if="game.imgUrl">
-                        <img :src="game.imgUrl" alt="cover image"/>
+                        <img :src="game.imgUrl" alt="cover image" width="200px"/>
                         <caption>Current cover image</caption>
                     </figure>
                 </div>
@@ -94,7 +110,7 @@
         </form>
     </div>
     <footer>
-        <p><small>&copy; 2017, FLJ Corporation</small></p>
+       <p><small>&copy; 2017, FLJ Corporation</small></p>
     </footer>
 
     <script src="https://unpkg.com/vue/dist/vue"></script>

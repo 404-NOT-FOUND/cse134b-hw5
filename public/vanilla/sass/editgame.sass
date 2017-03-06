@@ -4,19 +4,24 @@ $height: 615px
 $width: 550px
 $input-width: 400px
 
+
 .game-box
     background-color: #ddd
     position: absolute
-    height: $height
+    //min-height: auto%
+    //height: auto
     width: $width
+    display: table
     top: 0
     left: 0
     right: 0
     bottom: 0
     margin: auto
-    margin-top: 40px
+    margin-top: 150px
+    margin-bottom: 100px
     padding-top: 20px
     padding: 10px
+    vertical-align: center
 
     h1
         text-align: center
@@ -26,6 +31,13 @@ $input-width: 400px
 
     p
         margin-bottom: 0px
+
+    button
+        border-radius: 0px
+        width: $input-width
+        margin-top: 10px
+        margin-bottom: 30px
+        margin-left: 70px
 
     .game-title
         margin-left: 70px
@@ -44,7 +56,8 @@ $input-width: 400px
 
         #game_desc
             @extend #game_title
-            height: 100px
+            height: 150px
+            resize: none
 
     .game-img
         @extend .game-title
@@ -74,13 +87,6 @@ $input-width: 400px
             @extend #game_title
 
 
-button
-    border-radius: 0px
-    width: $input-width
-    margin-top: 10px
-    margin-bottom: 30px
-    margin-left: 70px
-
 ul
     list-style-type: none
     padding-left: 0px
@@ -91,3 +97,4 @@ footer
     bottom: 0
     text-align: center
     width: 100%
+    background-color: white
