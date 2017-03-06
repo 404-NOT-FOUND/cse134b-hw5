@@ -96,7 +96,7 @@ auth.onAuthStateChanged(user => {
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
                         'uid':        auth.currentUser.uid,
-                    }).then(function(snapshot) {
+                    }).then(function(success) {
                         alert('Game succesfully added.');
                         document.location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
@@ -114,7 +114,7 @@ auth.onAuthStateChanged(user => {
                         'playerMin':  vm.game.playerMin,
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
-                    }).then(function(snapshot) {
+                    }).then(function(success) {
                         alert('Game succesfully updated.');
                         document.location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
