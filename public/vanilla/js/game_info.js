@@ -45,11 +45,18 @@ window.addEventListener('load', function () {
             },
             deleteGame: function() {
                 console.log('deleting');
-                ref.child(args.title).remove();
+                ref.child(args.title).remove().then(
+                function(success) {
+                    document.location.href = 'index.html';
+                }, function(error) {
+                    if (error.code === 'PERMISSION_DENIED') {
+                        alert('Error: You do not have permission to edit this game.');
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
+                });
             },
         } // end of method
     }); // end of vue
 }); // end of listener
-
-
 
