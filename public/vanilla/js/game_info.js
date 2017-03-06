@@ -1,5 +1,6 @@
 
 Vue.use(VueFire);
+
 var db = firebase.database();
 var ref = db.ref('games');
 
@@ -24,11 +25,13 @@ window.addEventListener('load', function () {
         data: {
             key       : '',
             game      : '',
+            formattedDesc: '',
         },
         created: function() {
             ref.orderByChild('title').equalTo(args.title).on('child_added', snap => {
                 this.key = snap.key;
                 this.game = snap.val();
+                this.formattedDesc = marked(this.game.desc, { sanitize: true });
                 // TODO game not found
                 ref.child(this.key).on('child_changed', snap => {
                     this.game[snap.key] = snap.val();
@@ -42,9 +45,8 @@ window.addEventListener('load', function () {
                     'desc': this.game.desc + ' hey',
                     'player_min': parseInt(this.game.player_min) + 1,
                 }).then(console.log('updated'));
-            }
-
-        } // end of method
+            },
+        }, // end of method
     }); // end of vue
 }); // end of listener
 
