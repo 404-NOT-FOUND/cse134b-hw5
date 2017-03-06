@@ -53,11 +53,7 @@
     });
 
     _login.addEventListener('click', e => {
-        if(window.location.search == '?newgame'){
-            document.location.href = 'login.html?newgame';
-        } else {
-            document.location.href = 'login.html';
-        }
+        document.location.href = 'login.html' + window.location.search;
     });
 
 }());
