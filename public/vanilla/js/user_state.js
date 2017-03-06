@@ -27,7 +27,7 @@
         if(auth.currentUser) {
             document.location.href = 'newgame.html';
         } else {
-            document.location.href = 'signup.html?newgame';
+            document.location.href = 'login.html?newgame';
         }
     })
 
