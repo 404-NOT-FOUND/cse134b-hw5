@@ -41,6 +41,7 @@ window.addEventListener('load', function() {
                 this.isUpdateMode = true;
 
                 ref.orderByChild('title').equalTo(args.title).on('child_added', snap => {
+                    this.game = snap.val();
                     this.game.key = snap.key;
                     // TODO game not found
                 });
@@ -73,7 +74,6 @@ window.addEventListener('load', function() {
                     return;
                 }
 
-                console.debug(this.game.title);
                 if (this.isUpdateMode) {
                     this.updateGame();
                 } else {
@@ -82,7 +82,6 @@ window.addEventListener('load', function() {
             },
             addGame: function () {
                 console.debug('pushing');
-                console.debug(this.game.title);
                 ref.push({
                     'title':      this.game.title,
                     'desc':       this.game.desc,
