@@ -35,14 +35,18 @@ window.addEventListener('load', function () {
             gameRef.on('child_changed', snap => {
                 this.game[snap.key] = snap.val();
             });
+
         }, // end of created
         methods: {
             updateGame: function() {
                 console.log('updating');
                 console.log('redirecting to the edit page');
                 location.href='editgame.html?t='+this.game.title;
-            }
-
+            },
+            deleteGame: function() {
+                console.log('deleting');
+                ref.child(args.title).remove();
+            },
         } // end of method
     }); // end of vue
 }); // end of listener
