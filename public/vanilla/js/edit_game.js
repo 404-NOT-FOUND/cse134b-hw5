@@ -56,8 +56,8 @@ auth.onAuthStateChanged(user => {
             editgame: function () {
                 this.game.title      = this.game.title.trim();
                 this.game.desc       = this.game.desc.trim();
-                this.game.playerMin  = this.game.playerMin.trim();
-                this.game.playerMax  = this.game.playerMax.trim();
+                this.game.playerMin  = parseInt(this.game.playerMin);
+                this.game.playerMax  = parseInt(this.game.playerMax);
                 this.game.age        = this.game.age.trim();
 
                 is_valid = this.game.title  && this.game.desc &&
@@ -65,7 +65,7 @@ auth.onAuthStateChanged(user => {
                            this.game.playerMin && this.game.playerMax;
 
                 if (this.game.playerMin < 1 ||
-                    parseInt(this.game.playerMax) < this.game.playerMin
+                    this.game.playerMax < this.game.playerMin
                    ) {
                     alert('bad number of players');
                     is_valid = false;
