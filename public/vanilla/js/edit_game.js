@@ -25,7 +25,6 @@ auth.onAuthStateChanged(user => {
         data: {
             imgFile: '',
             game: {
-                key       : '',
                 title     : '',
                 desc      : '',
                 imgUrl    : '',
@@ -44,9 +43,10 @@ auth.onAuthStateChanged(user => {
                 console.log('switched to update mode');
                 this.isUpdateMode = true;
 
-                gamesDatabaseRef.orderByChild('title').equalTo(args.title).on('child_added', snap => {
+                var gameRef = gamesDatabaseRef.child(args.title);
+                gameRef.once('value', snap => {
                     this.game = snap.val();
-                    this.game.key = snap.key;
+                    this.game.title = snap.key;
                     // TODO game not found
                 });
             }
@@ -88,8 +88,7 @@ auth.onAuthStateChanged(user => {
                 };
                 add = function () {
                     console.log('pushing');
-                    gamesDatabaseRef.push({
-                        'title':      vm.game.title,
+                    gamesDatabaseRef.child(vm.game.title).set({
                         'desc':       vm.game.desc,
                         'imgUrl':     vm.game.imgUrl,
                         'playerMin':  vm.game.playerMin,
@@ -103,8 +102,7 @@ auth.onAuthStateChanged(user => {
             updateGame: function() {
                 update = function () {
                     console.log('updating');
-                    gamesDatabaseRef.child(vm.game.key).update({
-                        'title':      vm.game.title,
+                    gamesDatabaseRef.child(vm.game.title).update({
                         'desc':       vm.game.desc,
                         'imgUrl':     vm.game.imgUrl,
                         'playerMin':  vm.game.playerMin,

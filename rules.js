@@ -2,7 +2,6 @@
   "rules": {
     "games": {
       ".read": true,
-      ".indexOn": "title",
       "$game": {
         ".write": "
           auth != null &&
@@ -13,24 +12,11 @@
           )
           ",
         ".validate": "
-          newData.hasChildren(['title', 'desc', 'imgUrl', 'age', 'playerMin', 'playerMax',])
+          newData.hasChildren(['desc', 'imgUrl', 'age', 'playerMin', 'playerMax',])
           &&
           newData.child('age').val()       !== '' &&
           newData.child('playerMin').val() !== '' && newData.child('playerMax').val() !== ''
           ",
-        "title": {
-          ".validate": "
-            ( // new game
-             !data.exists()
-             &&
-             newData.isString() && newData.val() !== '' && newData.val().length < 50
-            )
-            ||
-            ( // existing game
-             data.val() === newData.val()
-            )
-            ",
-        },
         "desc": {
           ".validate": "
             newData.isString() && newData.val() !== '' && newData.val().length < 5000
