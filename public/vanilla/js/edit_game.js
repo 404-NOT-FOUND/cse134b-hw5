@@ -82,28 +82,30 @@ window.addEventListener('load', function() {
                 }
             },
             addGame: function () {
-                this.uploadGameImage();
-                console.log('pushing');
-                gamesDatabaseRef.push({
-                    'title':      vm.game.title,
-                    'desc':       vm.game.desc,
-                    'imgUrl':     vm.game.imgUrl,
-                    'playerMin':  vm.game.playerMin,
-                    'playerMax':  vm.game.playerMax,
-                    'age':        vm.game.age,
-                }).then(console.log('pushed!'));
+                this.uploadImageWithCallBack(function complete () {
+                    console.log('pushing');
+                    gamesDatabaseRef.push({
+                        'title':      vm.game.title,
+                        'desc':       vm.game.desc,
+                        'imgUrl':     vm.game.imgUrl,
+                        'playerMin':  vm.game.playerMin,
+                        'playerMax':  vm.game.playerMax,
+                        'age':        vm.game.age,
+                    }).then(console.log('pushed!'));
+                });
             },
             updateGame: function() {
-                this.uploadGameImage();
-                console.log('updating');
-                gamesDatabaseRef.child(this.game.key).update({
-                    'title':      this.game.title,
-                    'desc':       this.game.desc,
-                    'imgUrl':     this.game.imgUrl,
-                    'playerMin':  this.game.playerMin,
-                    'playerMax':  this.game.playerMax,
-                    'age':        this.game.age,
-                }).then(console.log('updated'));
+                this.uploadImageWithCallBack(function complete () {
+                    console.log('updating');
+                    gamesDatabaseRef.child(vm.game.key).update({
+                        'title':      vm.game.title,
+                        'desc':       vm.game.desc,
+                        'imgUrl':     vm.game.imgUrl,
+                        'playerMin':  vm.game.playerMin,
+                        'playerMax':  vm.game.playerMax,
+                        'age':        vm.game.age,
+                    }).then(console.log('updated'));
+                });
             },
             onGameImageChange: function(e) {
                 var files = e.target.files || e.dataTransfer.files;
@@ -111,19 +113,17 @@ window.addEventListener('load', function() {
                     return;
                 this.imgFile = files[0];
                 var reader = new FileReader();
-                var vm = this;
                 reader.onload = function(e) {
                     vm.game.imgUrl = e.target.result;
                 }
                 reader.readAsDataURL(this.imgFile);
             },
-            uploadGameImage: function() {
+            uploadImageWithCallBack: function(callback) {
                 if (!this.imgFile)
                     return;
                 console.log('uploading image');
                 var imgRef = gamesStorageRef.child(this.game.title+'/image');
                 var uploadTask = imgRef.put(this.imgFile);
-                var vm = this;
                 uploadTask.on('state_changed',
                     function progress(snap) {
                         var progress = (snap.bytesTransferred / snap.totalBytes) * 100;
@@ -135,6 +135,7 @@ window.addEventListener('load', function() {
                     function complete() {
                         console.log('upload complete!');
                         vm.game.imgUrl = uploadTask.snapshot.downloadURL;
+                        callback();
                     }
                 );
             },
