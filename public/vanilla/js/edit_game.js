@@ -1,6 +1,8 @@
 
-var db = firebase.database();
-var ref = db.ref('games');
+var database = firebase.database();
+var storage = firebase.storage();
+var gamesStorageRef = storage.ref('games');
+var gamesDatabaseRef = database.ref('games');
 
 Vue.use(VueFire);
 
@@ -20,11 +22,12 @@ window.addEventListener('load', function() {
     var vm = new Vue({
         el: '#game_spec',
         data: {
+            imgFile: '',
             game: {
                 key       : '',
                 title     : '',
                 desc      : '',
-                img       : '',
+                imgUrl    : '',
                 playerMin : '',
                 playerMax : '',
                 age       : '',
@@ -32,37 +35,35 @@ window.addEventListener('load', function() {
             isUpdateMode: false,
         },
         firebase: {
-            games: ref
+            games: gamesDatabaseRef
         },
         created: function () {
             args = parseArgs();
             if (args.title != '') {
-                console.debug('switched to update mode');
+                console.log('switched to update mode');
                 this.isUpdateMode = true;
 
-                ref.orderByChild('title').equalTo(args.title).on('child_added', snap => {
+                gamesDatabaseRef.orderByChild('title').equalTo(args.title).on('child_added', snap => {
                     this.game = snap.val();
                     this.game.key = snap.key;
                     // TODO game not found
                 });
             }
-            else { console.debug('switched to add mode'); }
+            else { console.log('switched to add mode'); }
         },
         methods: {
             editgame: function () {
-                console.log(this.game.desc);
                 this.game.title      = this.game.title.trim();
                 this.game.desc       = this.game.desc.trim();
-                this.game.img        = this.game.img;
                 this.game.playerMin  = this.game.playerMin.trim();
                 this.game.playerMax  = this.game.playerMax.trim();
                 this.game.age        = this.game.age.trim();
 
-                is_valid = this.game.title && this.game.desc && 
-                           this.game.img   && this.game.age  &&
+                is_valid = this.game.title  && this.game.desc &&
+                           this.game.imgUrl && this.game.age  &&
                            this.game.playerMin && this.game.playerMax;
 
-                if (this.game.playerMin < 1 || 
+                if (this.game.playerMin < 1 ||
                     parseInt(this.game.playerMax) < this.game.playerMin
                    ) {
                     alert('bad number of players');
@@ -81,41 +82,61 @@ window.addEventListener('load', function() {
                 }
             },
             addGame: function () {
-                console.debug('pushing');
-                ref.push({
-                    'title':      this.game.title,
-                    'desc':       this.game.desc,
-                    'img':        this.game.img,
-                    'playerMin':  this.game.playerMin,
-                    'playerMax':  this.game.playerMax,
-                    'age':        this.game.age,
-                }).then(console.log('pushed'));
+                this.uploadGameImage();
+                console.log('pushing');
+                gamesDatabaseRef.push({
+                    'title':      vm.game.title,
+                    'desc':       vm.game.desc,
+                    'imgUrl':     vm.game.imgUrl,
+                    'playerMin':  vm.game.playerMin,
+                    'playerMax':  vm.game.playerMax,
+                    'age':        vm.game.age,
+                }).then(console.log('pushed!'));
             },
             updateGame: function() {
-                console.debug('updating');
-                ref.child(this.game.key).update({
+                this.uploadGameImage();
+                console.log('updating');
+                gamesDatabaseRef.child(this.game.key).update({
                     'title':      this.game.title,
                     'desc':       this.game.desc,
-                    'img':        this.game.img,
+                    'imgUrl':     this.game.imgUrl,
                     'playerMin':  this.game.playerMin,
                     'playerMax':  this.game.playerMax,
                     'age':        this.game.age,
                 }).then(console.log('updated'));
             },
-            onFileChange: function(e) {
+            onGameImageChange: function(e) {
                 var files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
                     return;
-                this.createImage(files[0]);
-            },
-            createImage: function(file) {
-                var image = new Image();
+                this.imgFile = files[0];
                 var reader = new FileReader();
                 var vm = this;
-                reader.onload = e => {
-                    vm.game.img = e.target.result;
-                };
-                reader.readAsDataURL(file);
+                reader.onload = function(e) {
+                    vm.game.imgUrl = e.target.result;
+                }
+                reader.readAsDataURL(this.imgFile);
+            },
+            uploadGameImage: function() {
+                if (!this.imgFile)
+                    return;
+                console.log('uploading image');
+                var imgRef = gamesStorageRef.child(this.game.title+'/image');
+                var uploadTask = imgRef.put(this.imgFile);
+                var vm = this;
+                uploadTask.on('state_changed',
+                    function progress(snap) {
+                        var progress = (snap.bytesTransferred / snap.totalBytes) * 100;
+                        console.log('uploading image: ' + progress);
+                    },
+                    function error(err) {
+                        console.log('upload failed!');
+                    },
+                    function complete() {
+                        console.log('upload complete!');
+                        vm.game.imgUrl = uploadTask.snapshot.downloadURL;
+                    }
+                );
             },
         }
     });

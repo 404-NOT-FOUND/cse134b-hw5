@@ -10,13 +10,13 @@
 <body>
     <div class="game-box" id="game_spec">
         <h1>Game Editor</h1>
-        <h2 v-if="isUpdateMode">Game Title: {{ game.title }}</h2>
+        <h2 v-if="isUpdateMode">Title: {{ game.title }}</h2>
         <form @submit.prevent="editgame">
             <ul>
                 <li v-if="!isUpdateMode">
                 <div class="game-title">
                     <label>
-                        Game title <br>
+                        <p>Title</p>
                         <input type="text" maxLength="50"
                                id="game_title"
                                v-model="game.title"
@@ -28,7 +28,7 @@
                 <li>
                 <div class="game-desc">
                     <label>
-                        Game description <br>
+                        <p>Description</p>
                         <textarea id="game_desc"
                                   v-model="game.desc"
                                   rows="5" cols="60"
@@ -40,19 +40,29 @@
                 <li>
                 <div class="game-img">
                     <label>
-                        Image <br>
-                        <input type="file"
-                               id="game_img"
+                        <p>Image</p>
+                        <input v-if="!isUpdateMode"
+                               type="file"
+                               id="game_img_add"
                                accept="image/*"
-                               @change="onFileChange"
+                               @change="onGameImageChange"
                                required>
+                        <input v-else
+                               type="file"
+                               id="game_img_update"
+                               accept="image/*"
+                               @change="onGameImageChange">
                     </label>
+                    <figure v-if="game.imgUrl">
+                        <img :src="game.imgUrl" alt="cover image"/>
+                        <caption>Current cover image</caption>
+                    </figure>
                 </div>
                 </li>
                 <li>
                 <div class="game-player">
                     <label for="game_player_min">
-                        Number of Players <br>
+                        <p>Number of Players</p>
                     </label>
                     <span>
                         <input type="number"
@@ -69,7 +79,7 @@
                 </li>
                 <li>
                 <div class="game-age">
-                    <p>Best Age Range</p>
+                    <p>Age Range</p>
                     <select id="game_age" v-model="game.age" required>
                         <option value="">Select</option>
                         <option>Under 10</option>
