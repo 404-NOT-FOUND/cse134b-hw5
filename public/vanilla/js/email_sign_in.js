@@ -16,6 +16,7 @@
     const _email = document.getElementById('usr_email');
     const _password = document.getElementById('usr_pwd');
     const _loginBtn = document.getElementById('login_btn');
+    const _signupBtn = document.getElementById('signup_btn')
 
     // when loginBtn is clicked, collect user info
     _loginBtn.addEventListener('click', e => {
@@ -33,6 +34,10 @@
         function onRejected(error) {
             alert(error.message);
         }
-    })
+    });
+
+    _signupBtn.addEventListener('click', e => {
+        document.location.href = 'signup.html' + window.location.search;
+    });
 }());
 
