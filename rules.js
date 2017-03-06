@@ -8,7 +8,7 @@
           auth != null && 
           (
            !data.exists() ||
-           data.child('uid').val() === auth.id
+           data.child('uid').val() === auth.uid
           )
           ",
       },
