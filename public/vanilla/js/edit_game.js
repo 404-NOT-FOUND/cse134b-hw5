@@ -109,8 +109,10 @@ window.addEventListener('load', function() {
             },
             onGameImageChange: function(e) {
                 var files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
+                if (!files.length) {
+                    vm.game.imgUrl = '';
                     return;
+                }
                 this.imgFile = files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
