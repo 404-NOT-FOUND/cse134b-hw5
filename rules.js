@@ -7,8 +7,15 @@
         ".write": "
           auth != null && 
           (
-           !data.exists() ||
-           data.child('uid').val() === auth.uid
+           ( // new game
+            !data.exists()
+           ) 
+           ||
+           ( // existing game
+            data.child('uid').val() === auth.uid
+            &&
+            data.child('title').val() === newData.child('title').val()
+           )
           )
           ",
       },
