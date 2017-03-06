@@ -18,6 +18,9 @@
            )
           )
           ",
+        ".validate": "
+          newData.hasChildren(['title', 'desc', 'imgUrl', 'age', 'playerMin', 'playerMax',])
+          ",
       },
     },
   },
