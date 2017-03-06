@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
             updateGame: function() {
                 console.log('updating');
                 console.log('redirecting to the edit page');
-                location.href='editgame.html';
+                location.href='editgame.html?t='+this.game.title;
 
                 ref.child(this.key).update({
                     'desc': this.game.desc + ' hey',
