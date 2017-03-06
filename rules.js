@@ -5,22 +5,27 @@
       ".indexOn": "title",
       "$game": {
         ".write": "
-          auth != null && 
+          auth != null &&
           (
            ( // new game
              !data.exists()
-           ) 
+           )
            ||
            ( // existing game
              data.child('uid').val() === auth.uid
-             &&
-             data.child('title').val() === newData.child('title').val()
            )
           )
           ",
         ".validate": "
           newData.hasChildren(['title', 'desc', 'imgUrl', 'age', 'playerMin', 'playerMax',])
+          &&
+          newData.child('title').val()     !== '' && newData.child('desc').val()      !== '' &&
+          newData.child('imgUrl').val()    !== '' && newData.child('age').val()       !== '' &&
+          newData.child('playerMin').val() !== '' && newData.child('playerMax').val() !== ''
           ",
+        "title": {
+          ".validate": "!data.exists() || data.val() === newData.val()"
+        },
       },
     },
   },
