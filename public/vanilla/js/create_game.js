@@ -36,17 +36,8 @@ window.addEventListener('load', function() {
                 }
 
                 if (is_valid) {
-                    console.debug('pushing');
-                    gamesDatabaseRef.push({
-                        'title':      title,
-                        'desc':       desc,
-                        'player_min': player_min,
-                        'player_max': player_max,
-                        'age':        age,
-                    }).then(console.log('pushed!'));
-
                     console.log('uploading image');
-                    var imgRef = gamesStorageRef.child(title+'/'+this.imgFile.name);
+                    var imgRef = gamesStorageRef.child(title+'/image');
                     var uploadTask = imgRef.put(this.imgFile);
                     uploadTask.on('state_changed',
                         function progress(snap) {
@@ -54,9 +45,23 @@ window.addEventListener('load', function() {
                             console.log('uploading image: ' + progress);
                         },
                         function error(err) {
+                            console.log('upload failed!');
+                            console.log('game NOT created');
                         },
                         function complete() {
                             console.log('upload complete!');
+                            var imgUrl = uploadTask.snapshot.downloadURL;
+                            console.debug('imgUrl = ' + imgUrl);
+
+                            console.debug('pushing');
+                            gamesDatabaseRef.push({
+                                'title':      title,
+                                'desc':       desc,
+                                'imgUrl':     imgUrl,
+                                'player_min': player_min,
+                                'player_max': player_max,
+                                'age':        age,
+                            }).then(console.log('pushed!'));
                         }
                     );
                 }
