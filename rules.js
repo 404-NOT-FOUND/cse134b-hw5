@@ -15,7 +15,7 @@
         ".validate": "
           newData.hasChildren(['title', 'desc', 'imgUrl', 'age', 'playerMin', 'playerMax',])
           &&
-          newData.child('imgUrl').val()    !== '' && newData.child('age').val()       !== '' &&
+          newData.child('age').val()       !== '' &&
           newData.child('playerMin').val() !== '' && newData.child('playerMax').val() !== ''
           ",
         "title": {
@@ -34,6 +34,13 @@
         "desc": {
           ".validate": "
             newData.isString() && newData.val() !== '' && newData.val().length < 5000
+            ",
+        },
+        "imgUrl": {
+          ".validate": "
+            newData.isString() &&
+            // accept only images from our storage
+            newData.val().matches(/^https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/boardex-b8a9e.appspot.com/)
             ",
         }
       },
