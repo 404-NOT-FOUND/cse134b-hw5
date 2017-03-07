@@ -25,6 +25,9 @@
             <a href="signup.html" id="signup">Sign Up</a>
             <a href="login.html" id="signin">Sign In</a>
         </div>
+        <div class="login">
+            <button id="signout" class="hide">Sign Out</button>
+        </div>
     </header>
 
     <div class="sidebar">
@@ -67,7 +70,7 @@
             <div class="intro">
                 <h1>{{ game.title }}</h1>
                 <button type="button" id="edit_btn" @click="updateGame">
-                    Edit 
+                    Edit
                 </button>
                 <button type="button" id="delete_btn" @click="deleteGame">
                     Delete
@@ -107,7 +110,7 @@
                                 --><label for="dstar2"></label><!--
                                 --><input type="radio" name="difficulty" value="1" id="dstar1"><!--
                                 --><label for="dstar1"></label>
-                                
+
                             </form>&nbsp;Difficulty
                         </li>
                         <li>
@@ -172,10 +175,13 @@
     <pre id="board_game"></pre>
     <ul id="list"></ul>
     </main>
+
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="js/init_firebase.js"></script>
     <script src="js/game_info.js"></script>
+    <script src="js/user_state.js"></script>
+
 </body>
 </html>

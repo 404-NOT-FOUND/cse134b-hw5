@@ -23,6 +23,9 @@
         <div class="login">
             <a href="login.html" id="signin">Sign In</a>
         </div>
+        <div class="login">
+            <button id="signout" class="hide">Sign Out</button>
+        </div>
     </header>
 
     <div class="sidebar">
@@ -64,8 +67,8 @@
         <h1>Top Games</h1>
         <ul class="board-list" id="board_list">
             <li id="add_game_btn" class="board-item">
-            <a href="editgame.html">
-                <img id="add_game_btn_img" class="board-img" src="img/plus.png" alt="add game">
+            <a href="editgame.html?newgame">
+                <img id="add_game_btn_img" class="board-img" src="img/plus.png" alt="Add Game">
                 <p class="board-name">Add a new game</p>
             </a>
             </li>
@@ -84,5 +87,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="js/init_firebase.js"></script>
     <script src="js/read_list.js"></script>
+    <script src="js/user_state.js"></script>
+
 </body>
 </html>
