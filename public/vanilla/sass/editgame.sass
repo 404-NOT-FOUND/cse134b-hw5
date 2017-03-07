@@ -1,0 +1,100 @@
+@import button
+
+$height: 615px
+$width: 550px
+$input-width: 400px
+
+
+.game-box
+    background-color: #ddd
+    position: absolute
+    //min-height: auto%
+    //height: auto
+    width: $width
+    display: table
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    margin-top: 150px
+    margin-bottom: 100px
+    padding-top: 20px
+    padding: 10px
+    vertical-align: center
+
+    h1
+        text-align: center
+
+    h2
+        margin-left: 70px
+
+    p
+        margin-bottom: 0px
+
+    button
+        border-radius: 0px
+        width: $input-width
+        margin-top: 10px
+        margin-bottom: 30px
+        margin-left: 70px
+
+    .game-title
+        margin-left: 70px
+
+        #game_title
+            height: 30px
+            width: $input-width
+            margin-top: 5px
+            border: none
+            font-size: 10pt
+            padding-left: 10px
+            margin-bottom: 5px
+
+    .game-desc
+        @extend .game-title
+
+        #game_desc
+            @extend #game_title
+            height: 150px
+            resize: none
+
+    .game-img
+        @extend .game-title
+
+        #game_img_add
+            @extend #game_title
+            padding-left: 0px
+
+        #game_img_update
+            @extend #game_img_add
+
+    .game-player
+        @extend .game-title
+
+        #game_player_min
+            @extend #game_title
+            width: $input-width/2 - 15
+            text-align: center
+
+        #game_player_max
+            @extend #game_player_min
+
+    .game-age
+        @extend .game-title
+
+        #game_age
+            @extend #game_title
+
+
+ul
+    list-style-type: none
+    padding-left: 0px
+    margin-bottom: 20px
+
+footer
+    position: fixed
+    bottom: 0
+    text-align: center
+    width: 100%
+    background-color: white

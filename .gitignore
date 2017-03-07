@@ -1,1 +1,5 @@
 firebase-debug.log
+*.css
+*~
+css/
+.sass-cache/

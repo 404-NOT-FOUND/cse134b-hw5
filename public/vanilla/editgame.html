@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Game | BoarDex</title>
+    <link rel="stylesheet" href="css/editgame.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
+        <div class="searchbar">
+            <input id="searchbox" type="search"
+                   placeholder="Search for a game" />
+            <button type="submit" id="search-btn">Search</button>
+        </div>
+        <div class="login">
+            <a href="signup.html" id="signup">Sign Up</a>
+        </div>
+        <div class="login">
+            <a href="login.html" id="signin">Sign In</a>
+        </div>
+        <div class="login">
+            <button id="signout" class="hide">Sign Out</button>
+        </div>
+    </header>
+
+    <div class="game-box" id="game_spec">
+        <h1>Game Editor</h1>
+        <h2 v-if="isUpdateMode">Title: {{ game.title }}</h2>
+        <form @submit.prevent="editgame">
+            <ul>
+                <li v-if="!isUpdateMode">
+                <div class="game-title">
+                    <label>
+                        <p>Title</p>
+                        <input type="text" maxLength="50"
+                               id="game_title"
+                               v-model="game.title"
+                               placeholder="Game title"
+                               required>
+                    </label>
+                </div>
+                </li>
+                <li>
+                <div class="game-desc">
+                    <label>
+                        <p>Description</p>
+                        <textarea id="game_desc"
+                                  v-model="game.desc"
+                                  rows="5" cols="60"
+                                  required
+                        ></textarea>
+                    </label>
+                </div>
+                </li>
+                <li>
+                <div class="game-img">
+                    <label>
+                        <p>Image</p>
+                        <input v-if="!isUpdateMode"
+                               type="file"
+                               id="game_img_add"
+                               accept="image/*"
+                               @change="onGameImageChange"
+                               required>
+                        <input v-else
+                               type="file"
+                               id="game_img_update"
+                               accept="image/*"
+                               @change="onGameImageChange">
+                    </label>
+                    <figure v-if="game.imgUrl">
+                        <img :src="game.imgUrl" alt="cover image" width="200px"/>
+                        <caption>Current cover image</caption>
+                    </figure>
+                </div>
+                </li>
+                <li>
+                <div class="game-player">
+                    <label for="game_player_min">
+                        <p>Number of Players</p>
+                    </label>
+                    <span>
+                        <input type="number"
+                               id="game_player_min"
+                               v-model="game.playerMin"
+                               required>
+                        to
+                        <input type="number"
+                               id="game_player_max"
+                               v-model="game.playerMax"
+                               required>
+                    </span>
+                </div>
+                </li>
+                <li>
+                <div class="game-age">
+                    <p>Age Range</p>
+                    <select id="game_age" v-model="game.age" required>
+                        <option value="">Select</option>
+                        <option>Under 10</option>
+                        <option>Under 16</option>
+                        <option>Adults</option>
+                        <option>All ages</option>
+                    </select>
+                </div>
+                </li>
+            </ul>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <footer>
+       <p><small>&copy; 2017, FLJ Corporation</small></p>
+    </footer>
+
+    <script src="https://unpkg.com/vue/dist/vue"></script>
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="js/parse_args.js"></script>
+    <script src="js/init_firebase.js"></script>
+    <script src="js/edit_game.js"></script>
+    <script src="js/user_check.js"></script>
+    <script src="js/user_state.js"></script>
+</body>
+</html>
