@@ -33,9 +33,13 @@ auth.onAuthStateChanged(user => {
 
                 var gameRef = gamesDatabaseRef.child(args['t']);
                 gameRef.once('value', snap => {
+                    console.debug(snap.val());
+                    if (snap.val() == null) {
+                        // game not found
+                        location.href = '404.html';
+                    }
                     this.game = snap.val();
                     this.game.title = snap.key;
-                    // TODO game not found
                 });
             }
             else { console.log('switched to add mode'); }
