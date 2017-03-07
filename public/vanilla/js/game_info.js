@@ -17,34 +17,46 @@ parse_args = function () {
 
 window.addEventListener('load', function () {
     args = parse_args();
-    console.log(args.title);
+    // console.log(args.title);
 
     var vm = new Vue({
         el: "#game_info",
         data: {
-            key       : '',
             game      : '',
         },
         created: function() {
-            ref.orderByChild('title').equalTo(args.title).on('child_added', snap => {
-                this.key = snap.key;
+            var gameRef = ref.child(args.title);
+            gameRef.once('value', snap => {
+                console.debug(snap.val());
+                // TODO game not found (snap.val() == null)
                 this.game = snap.val();
-                // TODO game not found
-                ref.child(this.key).on('child_changed', snap => {
-                    this.game[snap.key] = snap.val();
-                });
+                this.game.title = snap.key;
             });
+            gameRef.on('child_changed', snap => {
+                this.game[snap.key] = snap.val();
+            });
+
         }, // end of created
         methods: {
             updateGame: function() {
                 console.log('updating');
                 console.log('redirecting to the edit page');
                 location.href='editgame.html?t='+this.game.title;
-            }
-
+            },
+            deleteGame: function() {
+                console.log('deleting');
+                ref.child(args.title).remove().then(
+                function(success) {
+                    document.location.href = 'index.html';
+                }, function(error) {
+                    if (error.code === 'PERMISSION_DENIED') {
+                        alert('Error: You do not have permission to delete this game.');
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
+                });
+            },
         } // end of method
     }); // end of vue
 }); // end of listener
-
-
 
