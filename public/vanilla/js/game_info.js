@@ -14,7 +14,18 @@ parse_args = function () {
     };
     return args;
 }
-
+var remove = function(gameTitle) {
+    ref.child(gameTitle).remove().then(
+            function(success) {
+                document.location.href = 'index.html';
+            }, function(error) {
+                if (error.code === 'PERMISSION_DENIED') {
+                    alert('Error: You do not have permission to delete this game.');
+                } else {
+                    alert('Error: ' + error.message);
+                }
+            });
+}
 window.addEventListener('load', function () {
     args = parse_args();
     // console.log(args.title);
@@ -45,16 +56,12 @@ window.addEventListener('load', function () {
             },
             deleteGame: function() {
                 console.log('deleting');
-                ref.child(args.title).remove().then(
-                function(success) {
-                    document.location.href = 'index.html';
-                }, function(error) {
-                    if (error.code === 'PERMISSION_DENIED') {
-                        alert('Error: You do not have permission to delete this game.');
-                    } else {
-                        alert('Error: ' + error.message);
-                    }
-                });
+                if (confirm('Are you sure you want delete this game for good?')) {
+                    console.debug("YES, remove it!");
+                    remove(args.title);
+                } else {
+                    // Do nothing!
+                }
             },
         } // end of method
     }); // end of vue
