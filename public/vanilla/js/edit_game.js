@@ -135,7 +135,7 @@ auth.onAuthStateChanged(user => {
                     return;
                 }
                 console.log('uploading image');
-                var imgRef = gamesStorageRef.child(this.game.title+'/image');
+                var imgRef = gamesStorageRef.child(auth.currentUser.uid+'/'+this.game.title+'/image');
                 var uploadTask = imgRef.put(this.imgFile);
                 uploadTask.on('state_changed',
                     function progress(snap) {
