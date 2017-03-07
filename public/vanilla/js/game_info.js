@@ -2,9 +2,9 @@
 
 Vue.use(VueFire);
 
-const database        = firebase.database();
-const gameDatabaseRef = database.ref('games');
-const auth            = firebase.auth();
+const database      = firebase.database();
+const auth          = firebase.auth();
+var gameDatabaseRef = database.ref('games');
 
 parseArgs = function () {
     // parse argument
