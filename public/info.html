@@ -143,26 +143,12 @@
                     <button type="button">&lt;&lt;</button>
                 </li>
                 <li>
-                    <ul class="recommend-list">
-                        <li class="board-item">
-                            <a href="info.html">
+                    <ul id="recommend_list" class="recommend-list">
+                        <li v-for="game in games" class="board-item">
+                            <a :href="'info.html?t='+game.title">
                                 <img class="board-img"
-                                src="../img/board-chess-min.jpg" alt="Chess">
-                                <p class="board-name">Chess</p>
-                            </a>
-                        </li>
-                        <li class="board-item">
-                            <a href="info.html">
-                                <img class="board-img"
-                                src="../img/board-chinese-chess-min.jpg" alt="Chinese Chess">
-                                <p class="board-name">Chinese Chess</p>
-                            </a>
-                        </li>
-                        <li class="board-item">
-                            <a href="info.html">
-                                <img class="board-img"
-                                src="../img/board-nim-min.jpg" alt="Nim">
-                                <p class="board-name">Nim</p>
+                                :src="game.imgUrl" :alt="game.title">
+                                <p class="board-name">{{ game.title }}</p>
                             </a>
                         </li>
                     </ul>
@@ -182,6 +168,7 @@
     <script src="js/parse_args.js"></script>
     <script src="js/init_firebase.js"></script>
     <script src="js/game_info.js"></script>
+    <script src="js/recommend.js"></script>
     <script src="js/user_state.js"></script>
 
 </body>
