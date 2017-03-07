@@ -1,8 +1,6 @@
 
 (function() {
 
-const auth = firebase.auth();
-
 const _signupBtn  = document.getElementById('signup');
 const _signinBtn  = document.getElementById('signin');
 const _signoutBtn = document.getElementById('signout');

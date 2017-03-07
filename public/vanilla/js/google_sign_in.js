@@ -1,7 +1,6 @@
 
 (function() {
 
-const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 
 // Get elements

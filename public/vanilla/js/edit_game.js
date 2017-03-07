@@ -1,9 +1,6 @@
 
 (function() {
 
-const database       = firebase.database();
-const storage        = firebase.storage();
-const auth           = firebase.auth();
 var gamesStorageRef  = storage.ref('games');
 var gamesDatabaseRef = database.ref('games');
 

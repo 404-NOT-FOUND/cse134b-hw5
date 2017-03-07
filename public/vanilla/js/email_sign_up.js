@@ -1,8 +1,6 @@
 
 (function() {
 
-const auth = firebase.auth();
-
 const _email         = document.getElementById("usr_email");
 const _password      = document.getElementById("usr_password");
 const _passwordCheck = document.getElementById("usr_password_check");
