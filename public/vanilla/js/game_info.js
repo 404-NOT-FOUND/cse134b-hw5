@@ -4,7 +4,7 @@ var db = firebase.database();
 var ref = db.ref('games');
 const auth = firebase.auth();
 
-parse_args = function () {
+parseArgs = function () {
     // parse argument
     // location.search => the search string ('?xxx=xxx')
     var parameters = location.search.substring(1).split('&');
@@ -28,7 +28,7 @@ var remove = function(gameTitle) {
             });
 }
 window.addEventListener('load', function () {
-    args = parse_args();
+    args = parseArgs();
     // console.log(args.title);
 
     var vm = new Vue({
