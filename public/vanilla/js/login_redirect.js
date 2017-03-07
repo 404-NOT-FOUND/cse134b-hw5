@@ -3,12 +3,11 @@
 const auth = firebase.auth();
 auth.onAuthStateChanged(user => {
     if (user) {
-        console.log(user);
-        console.log('logged in');
-        if(location.search === '?newgame'){
-            location.href = 'editgame.html';
-        } else {
+        args = parseArgs();
+        if (!args.hasOwnProperty('from')) {
             location.href = 'index.html';
+        } else if(args['from'] === 'editgame') {
+            location.href = 'editgame.html';
         }
     } else {
         console.log('not logged in');

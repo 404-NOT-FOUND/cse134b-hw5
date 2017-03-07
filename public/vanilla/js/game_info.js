@@ -4,21 +4,10 @@ var db = firebase.database();
 var ref = db.ref('games');
 const auth = firebase.auth();
 
-parse_args = function () {
-    // parse argument
-    // location.search => the search string ('?xxx=xxx')
-    var parameters = location.search.substring(1).split('&');
-    var pair = parameters[0].split('=');
-    title = unescape(pair[1]);
-    args = {
-        title,
-    };
-    return args;
-}
 var remove = function(gameTitle) {
     ref.child(gameTitle).remove().then(
             function(success) {
-                document.location.href = 'index.html';
+                location.href = 'index.html';
             }, function(error) {
                 if (error.code === 'PERMISSION_DENIED') {
                     alert('Error: You do not have permission to delete this game.');
@@ -27,9 +16,9 @@ var remove = function(gameTitle) {
                 }
             });
 }
+
 window.addEventListener('load', function () {
-    args = parse_args();
-    // console.log(args.title);
+    args = parseArgs();
 
     var vm = new Vue({
         el: "#game_info",
@@ -38,7 +27,7 @@ window.addEventListener('load', function () {
             game   : '',
         },
         created: function() {
-            var gameRef = ref.child(args.title);
+            var gameRef = ref.child(args['t']);
             gameRef.once('value', snap => {
                 console.debug(snap.val());
                 // TODO game not found (snap.val() == null)
@@ -59,8 +48,7 @@ window.addEventListener('load', function () {
             deleteGame: function() {
                 console.log('deleting');
                 if (confirm('Are you sure you want delete this game for good?')) {
-                    console.debug("YES, remove it!");
-                    remove(args.title);
+                    remove(args['t']);
                 } else {
                     // Do nothing!
                 }

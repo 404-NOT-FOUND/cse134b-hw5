@@ -7,18 +7,6 @@ const auth = firebase.auth();
 
 Vue.use(VueFire);
 
-parseArgs = function () {
-    // parse argument
-    // location.search => the search string ('?xxx=xxx')
-    var parameters = location.search.substring(1).split('&');
-    var pair = parameters[0].split('=');
-    title = pair[1] ? unescape(pair[1]) : '';
-    args = {
-        title,
-    };
-    return args;
-}
-
 auth.onAuthStateChanged(user => {
     var vm = new Vue({
         el: '#game_spec',
@@ -40,11 +28,11 @@ auth.onAuthStateChanged(user => {
         },
         created: function () {
             args = parseArgs();
-            if (args.title != '') {
+            if (args.hasOwnProperty('t') && args['t'] != '') {
                 console.log('switched to update mode');
                 this.isUpdateMode = true;
 
-                var gameRef = gamesDatabaseRef.child(args.title);
+                var gameRef = gamesDatabaseRef.child(args['t']);
                 gameRef.once('value', snap => {
                     this.game = snap.val();
                     this.game.title = snap.key;
@@ -98,7 +86,7 @@ auth.onAuthStateChanged(user => {
                         'uid':        auth.currentUser.uid,
                     }).then(function(success) {
                         alert('Game succesfully added.');
-                        document.location.href = 'info.html?t=' + vm.game.title;
+                        location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
                         alert('An error occured when trying to add your game.');
                     });//console.log('pushed!'));
@@ -116,11 +104,11 @@ auth.onAuthStateChanged(user => {
                         'age':        vm.game.age,
                     }).then(function(success) {
                         alert('Game succesfully updated.');
-                        document.location.href = 'info.html?t=' + vm.game.title;
+                        location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
                         if(error.code === 'PERMISSION_DENIED') {
                             alert('Error: You do not have permission to edit this game. Redirecting to the home page.');
-                            document.location.href = 'index.html';
+                            location.href = 'index.html';
                         } else {
                             alert('Error: ' + error.message);
                         }

@@ -23,6 +23,10 @@
             alert('Passwords do not match.')
         }
 
+        const promise = auth.createUserWithEmailAndPassword(email, password);
+        promise.catch(e => console.log(e.message));
+        promise.then(onFulfilled, onRejected);
+
         if( matchPassword == true ) {
             const promise = auth.createUserWithEmailAndPassword(email, password);
             promise.catch(e => console.log(e.message));
@@ -30,10 +34,11 @@
             promise.then(onFulfilled, onRejected);
 
             function onFulfilled(value) {
-                if(window.location.search == '?newgame'){
-                    document.location.href = 'newgame.html';
-                } else {
-                    document.location.href = 'index.html';
+                args = parseArgs();
+                if (!args.hasOwnProperty('from')) {
+                    location.href = 'index.html';
+                } else if(args['from'] === 'editgame') {
+                    location.href = 'editgame.html';
                 }
             }
             function onRejected(error) {
