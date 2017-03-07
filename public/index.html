@@ -1,17 +1,93 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework 3 | BoarDex</title>
-    <link rel="stylesheet" href="css/master.css">
+    <title>Game List | BoarDex</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sidebar.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/list.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li id="vanilla"><a href="vanilla/index.html"><div class="bigbtn">Vanilla Version</div></a></li>
-            <li id="framework"><a href="framework/index.html"><div class="bigbtn">Bootstrap Version</div></a></li>
+
+    <header>
+        <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
+        <div class="searchbar">
+            <input id="searchbox" type="search"
+                   placeholder="Search for a game" />
+            <button type="submit" id="search-btn">Search</button>
+        </div>
+        <div class="login">
+            <a href="signup.html" id="signup">Sign Up</a>
+        </div>
+        <div class="login">
+            <a href="login.html" id="signin">Sign In</a>
+        </div>
+        <div class="login">
+            <button id="signout" class="hide">Sign Out</button>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <h1>Tags</h1>
+        <form>
+            <ul>
+                <li><div class="category">Materials</div>
+                <ul>
+                    <li><label><input type="radio" name="material"> Cards</label></li>
+                    <li><label><input type="radio" name="material"> Paper and Pen</label></li>
+                    <li><label><input type="radio" name="material"> Boards</label></li>
+                    <li><label><input type="radio" name="material"> Poker Cards</label></li>
+                </ul>
+                </li>
+                <li><div class="category">Age</div>
+                <ul>
+                    <li><label><input type="radio" name="age"> under 10</label></li>
+                    <li><label><input type="radio" name="age"> under 16</label></li>
+                    <li><label><input type="radio" name="age"> adults</label></li>
+                </ul>
+                </li>
+                <li>
+                    <div class="category">Play time</div>
+                    <ul>
+                        <li><label><input type="radio" name="time"> under 10 minutes</label></li>
+                        <li><label><input type="radio" name="time"> under 30 minutes</label></li>
+                        <li><label><input type="radio" name="time"> under 60 minutes</label></li>
+                        <li><label><input type="radio" name="time"> over 60 minutes</label></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="filter-button">
+                <button type="submit">Apply Filters</button>
+            </div>
+        </form>
+    </div>
+
+    <main>
+        <h1>Top Games</h1>
+        <ul class="board-list" id="board_list">
+            <li id="add_game_btn" class="board-item">
+            <a href="editgame.html?from=editgame">
+                <img id="add_game_btn_img" class="board-img" src="img/plus.jpg" alt="Add Game">
+                <p class="board-name">Add a new game</p>
+            </a>
+            </li>
+            <li class="board-item" v-for="game in games">
+            <a :href="'info.html?t='+game['.key']">
+                <img class="board-img" :src="game.imgUrl" :alt="game['.key']">
+                <p class="board-name">{{game['.key']}}</p>
+            </a>
+            </li>
         </ul>
-    </nav>
+    </main>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-router@2.0.3"></script>
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="js/init_firebase.js"></script>
+    <script src="js/read_list.js"></script>
+    <script src="js/user_state.js"></script>
+
 </body>
 </html>
