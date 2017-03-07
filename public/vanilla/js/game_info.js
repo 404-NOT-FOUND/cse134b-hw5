@@ -29,8 +29,10 @@ window.addEventListener('load', function () {
         created: function() {
             var gameRef = gameDatabaseRef.child(args['t']);
             gameRef.once('value', snap => {
-                console.debug(snap.val());
-                // TODO game not found (snap.val() == null)
+                if (snap.val() == null) {
+                    // game not found 
+                    location.href = '404.html';
+                }
                 this.game = snap.val();
                 this.game.title = snap.key;
                 this.checkOwnership();
