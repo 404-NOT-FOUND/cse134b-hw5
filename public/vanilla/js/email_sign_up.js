@@ -22,10 +22,6 @@ _signupBtn.addEventListener('click', e => {
     promise.catch(e => console.log(e.message));
     promise.then(onFulfilled, onRejected);
 
-    const promise = auth.createUserWithEmailAndPassword(email, password);
-    promise.catch(e => console.log(e.message));
-    promise.then(onFulfilled, onRejected);
-
     function onFulfilled(value) {
         console.log('succesfully signed up');
     }
