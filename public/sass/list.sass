@@ -19,24 +19,41 @@ ul.board-list
 
     img
       opacity: 0.85
+      transition: all 0.3s ease-in-out
 
     img:hover
       opacity: 1
+      transform: scale(1.1, 1.1)
 
     a
       display: inline-block
-
     .board-name
       width: $board-img-width*$board-name-ratio-of-img
       margin-top: 10px
+
+    $thumb-shad-off: 5px
+    $thumb-shad-clr: #d8d8d8
+    .board-img-box
+      height: $board-img-height
+      width: $board-img-width
+      border-radius: 50%
+      position: relative
+      padding: 0px
+      margin: 0px
+      box-shadow: $thumb-shad-off $thumb-shad-off $thumb-shad-clr
 
     .board-img
       height: $board-img-height
       width: $board-img-width
       border-radius: 50%
-      position: relative
+      padding: 0px
+      margin: 0px
+      box-shadow: $thumb-shad-off $thumb-shad-off $thumb-shad-clr
     #add_game_btn_img
-      background-color: gray
+      // disable shadow
+      box-shadow: 0px 0px
+    #add_game_btn_img:hover
+      transform: rotate(1turn)
 
 main
   h1
