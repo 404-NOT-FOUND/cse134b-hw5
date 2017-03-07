@@ -1,9 +1,8 @@
 
-var database = firebase.database();
-var storage = firebase.storage();
-var gamesStorageRef = storage.ref('games');
+(function() {
+
+var gamesStorageRef  = storage.ref('games');
 var gamesDatabaseRef = database.ref('games');
-const auth = firebase.auth();
 
 Vue.use(VueFire);
 
@@ -49,7 +48,7 @@ auth.onAuthStateChanged(user => {
                 this.game.playerMax  = parseInt(this.game.playerMax);
                 this.game.age        = this.game.age.trim();
 
-                is_valid = this.game.title  && this.game.desc &&
+                isValid = this.game.title  && this.game.desc &&
                            this.game.imgUrl && this.game.age  &&
                            this.game.playerMin && this.game.playerMax;
 
@@ -57,10 +56,10 @@ auth.onAuthStateChanged(user => {
                     this.game.playerMax < this.game.playerMin
                    ) {
                     alert('bad number of players');
-                    is_valid = false;
+                    isValid = false;
                 }
 
-                if (!is_valid) {
+                if (!isValid) {
                     alert('Input is not valid. Edit failed.');
                     return;
                 }
@@ -158,7 +157,9 @@ auth.onAuthStateChanged(user => {
                     }
                 );
             },
-        }
+        },
     });
 });
+
+}());
 
