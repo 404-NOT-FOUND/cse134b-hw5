@@ -2,6 +2,7 @@
 Vue.use(VueFire);
 var db = firebase.database();
 var ref = db.ref('games');
+const auth = firebase.auth();
 
 parse_args = function () {
     // parse argument
@@ -33,7 +34,8 @@ window.addEventListener('load', function () {
     var vm = new Vue({
         el: "#game_info",
         data: {
-            game      : '',
+            isOwner: '',
+            game   : '',
         },
         created: function() {
             var gameRef = ref.child(args.title);
@@ -42,11 +44,11 @@ window.addEventListener('load', function () {
                 // TODO game not found (snap.val() == null)
                 this.game = snap.val();
                 this.game.title = snap.key;
+                this.checkOwnership();
             });
             gameRef.on('child_changed', snap => {
                 this.game[snap.key] = snap.val();
             });
-
         }, // end of created
         methods: {
             updateGame: function() {
@@ -62,6 +64,11 @@ window.addEventListener('load', function () {
                 } else {
                     // Do nothing!
                 }
+            },
+            checkOwnership: function() {
+                auth.onAuthStateChanged(user => {
+                    this.isOwner = user != null && user.uid === this.game.uid;
+                });
             },
         } // end of method
     }); // end of vue
