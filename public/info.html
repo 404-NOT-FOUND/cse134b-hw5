@@ -143,9 +143,9 @@
                     <button type="button">&lt;&lt;</button>
                 </li>
                 <li>
-                    <ul class="recommend-list">
-                        <li class="board-item">
-                            <a href="info.html">
+                    <ul id="recommend_list" class="recommend-list">
+                        <li v-for="game in games" class="board-item">
+                            <a :href="'info.html?t='+game.title">
                                 <img class="board-img"
                                 src="../img/board-chess-min.jpg" alt="Chess">
                                 <p class="board-name">Chess</p>
@@ -182,6 +182,7 @@
     <script src="js/parse_args.js"></script>
     <script src="js/init_firebase.js"></script>
     <script src="js/game_info.js"></script>
+    <script src="js/recommend.js"></script>
     <script src="js/user_state.js"></script>
 
 </body>
