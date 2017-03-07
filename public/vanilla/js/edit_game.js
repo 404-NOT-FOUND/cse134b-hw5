@@ -1,11 +1,11 @@
 
 (function() {
 
-var database = firebase.database();
-var storage = firebase.storage();
-var gamesStorageRef = storage.ref('games');
-var gamesDatabaseRef = database.ref('games');
-const auth = firebase.auth();
+const database         = firebase.database();
+const storage          = firebase.storage();
+const gamesStorageRef  = storage.ref('games');
+const gamesDatabaseRef = database.ref('games');
+const auth             = firebase.auth();
 
 Vue.use(VueFire);
 
@@ -172,7 +172,7 @@ auth.onAuthStateChanged(user => {
                     }
                 );
             },
-        }
+        },
     });
 });
 

@@ -1,9 +1,10 @@
 (function() {
 
 Vue.use(VueFire);
-var db = firebase.database();
-var ref = db.ref('games');
-const auth = firebase.auth();
+
+const database        = firebase.database();
+const gameDatabaseRef = database.ref('games');
+const auth            = firebase.auth();
 
 parseArgs = function () {
     // parse argument
@@ -16,8 +17,9 @@ parseArgs = function () {
     };
     return args;
 }
+
 var remove = function(gameTitle) {
-    ref.child(gameTitle).remove().then(
+    gameDatabaseRef.child(gameTitle).remove().then(
             function(success) {
                 document.location.href = 'index.html';
             }, function(error) {
@@ -28,6 +30,7 @@ var remove = function(gameTitle) {
                 }
             });
 }
+
 window.addEventListener('load', function () {
     args = parseArgs();
     // console.log(args.title);
@@ -39,7 +42,7 @@ window.addEventListener('load', function () {
             game   : '',
         },
         created: function() {
-            var gameRef = ref.child(args.title);
+            var gameRef = gameDatabaseRef.child(args.title);
             gameRef.once('value', snap => {
                 console.debug(snap.val());
                 // TODO game not found (snap.val() == null)
@@ -71,7 +74,7 @@ window.addEventListener('load', function () {
                     this.isOwner = user != null && user.uid === this.game.uid;
                 });
             },
-        } // end of method
+        }, // end of method
     }); // end of vue
 }); // end of listener
 

@@ -3,16 +3,15 @@
 
 const auth = firebase.auth();
 
-const _signupBtn = document.getElementById('signup');
-const _signinBtn = document.getElementById('signin');
+const _signupBtn  = document.getElementById('signup');
+const _signinBtn  = document.getElementById('signin');
 const _signoutBtn = document.getElementById('signout');
 
 _signoutBtn.addEventListener('click', e => {
     auth.signOut();
-
     alert('You have succesfully signed out.');
     // TODO redirect to home page from editgame.html
-})
+});
 
 auth.onAuthStateChanged(user => {
     if (user) {
