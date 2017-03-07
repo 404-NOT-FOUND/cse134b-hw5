@@ -10,46 +10,35 @@
 <body>
     <div class="sign-up-box">
         <h1>Create account</h1>
-        <form action="index.html" method="post">
-            <ul>
-                <li>
-                    <div class="info-box">
-                      <label for="u_name"></label>
-                      <input type="text" maxLength="50"
-                             id="u_name" name="u_name" 
-                             placeholder="Enter your name" 
-                             required>
-                    </div>
-                </li>
-                <li>
-                    <div class="info-box">
-                      <label for="u_email"></label>
-                      <input type="email" maxLength="64"
-                             id="u_email" name="u_email" 
-                             placeholder="Enter a valid email"
-                             required>
-                    </div>
-                </li>
-                <li>
-                    <div class="info-box">
-                      <label for="u_pwd"></label>
-                      <input type="password" maxlength="1024" autocomplete="off"
-                             id="u_pwd" name="u_pwd" 
-                             placeholder="Password (at least 6 characters)" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="info-box">
-                      <label for="u_pwd_check"></label>
-                      <input type="password" 
-                             id="u_pwd_check" name="u_pwd_check" 
-                             placeholder="Renter your password"
-                             required>
-                    </div>
-                </li>
-            </ul>
-            <button type="submit">Create your BoarDex account</button>
-        </form>
+        <ul>
+            <li>
+                <div class="info-box">
+                  <label for="usr_email"></label>
+                  <input type="text" maxLength="50"
+                         id="usr_email" name="usr_email" 
+                         placeholder="Email" 
+                         required>
+                </div>
+            </li>
+            <li>
+                <div class="info-box">
+                  <label for="usr_password"></label>
+                  <input type="password" maxlength="1024" autocomplete="off"
+                         id="usr_password" name="usr_password" 
+                         placeholder="Password (at least 6 characters)" required>
+                </div>
+            </li>
+            <li>
+                <div class="info-box">
+                  <label for="usr_password_check"></label>
+                  <input type="password" 
+                         id="usr_password_check" name="usr_password_check" 
+                         placeholder="Re-enter your password"
+                         required>
+                </div>
+            </li>
+        </ul>
+        <button id="signup_btn" type="submit">Create your BoarDex account</button>
         <div class="existed-user">
             <h5>Already have an account?</h5>
             <a id="login" href="login.html">Sign in</a>
@@ -58,5 +47,9 @@
     <footer>
         <p><small>&copy; 2017, FLJ Corporation</small></p>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="js/email_sign_up.js"></script>
+    <script src="js/user_state.js"></script>
 </body>
 </html>
