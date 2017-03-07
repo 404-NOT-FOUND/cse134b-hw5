@@ -1,3 +1,4 @@
+(function() {
 
 Vue.use(VueFire);
 
@@ -10,4 +11,6 @@ var vm = new Vue({
         games: ref
     },
 });
+
+}());
 

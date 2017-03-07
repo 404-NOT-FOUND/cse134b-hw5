@@ -1,3 +1,4 @@
+(function() {
 
 Vue.use(VueFire);
 var db = firebase.database();
@@ -73,4 +74,6 @@ window.addEventListener('load', function () {
         } // end of method
     }); // end of vue
 }); // end of listener
+
+}());
 

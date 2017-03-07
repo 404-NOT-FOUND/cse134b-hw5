@@ -1,4 +1,6 @@
 
+(function() {
+
 var database = firebase.database();
 var storage = firebase.storage();
 var gamesStorageRef = storage.ref('games');
@@ -173,4 +175,6 @@ auth.onAuthStateChanged(user => {
         }
     });
 });
+
+}());
 

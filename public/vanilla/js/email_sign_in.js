@@ -1,33 +1,35 @@
 
 (function() {
-    const auth = firebase.auth();
 
-    // Get elements
-    const _email = document.getElementById('usr_email');
-    const _password = document.getElementById('usr_pwd');
-    const _loginBtn = document.getElementById('login_btn');
-    const _signupBtn = document.getElementById('signup_btn')
+const auth = firebase.auth();
 
-    // when loginBtn is clicked, collect user info
-    _loginBtn.addEventListener('click', e => {
-        const email = _email.value;
-        const password = _password.value;
+// Get elements
+const _email = document.getElementById('usr_email');
+const _password = document.getElementById('usr_pwd');
+const _loginBtn = document.getElementById('login_btn');
+const _signupBtn = document.getElementById('signup_btn')
 
-        const promise = auth.signInWithEmailAndPassword(email, password);
-        promise.catch(e => console.log(e.message));
+// when loginBtn is clicked, collect user info
+_loginBtn.addEventListener('click', e => {
+    const email = _email.value;
+    const password = _password.value;
 
-        promise.then(onFulfilled, onRejected);
+    const promise = auth.signInWithEmailAndPassword(email, password);
+    promise.catch(e => console.log(e.message));
 
-        function onFulfilled(value) {
-            console.log('succesfully logged in');
-        }
-        function onRejected(error) {
-            alert(error.message);
-        }
-    });
+    promise.then(onFulfilled, onRejected);
 
-    _signupBtn.addEventListener('click', e => {
-        document.location.href = 'signup.html' + window.location.search;
-    });
+    function onFulfilled(value) {
+        console.log('succesfully logged in');
+    }
+    function onRejected(error) {
+        alert(error.message);
+    }
+});
+
+_signupBtn.addEventListener('click', e => {
+    document.location.href = 'signup.html' + window.location.search;
+});
+
 }());
 
