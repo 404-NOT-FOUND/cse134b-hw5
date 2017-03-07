@@ -40,7 +40,7 @@ window.addEventListener('load', function () {
             gameRef.on('child_changed', snap => {
                 this.game[snap.key] = snap.val();
             });
-        }, // end of created
+        },
         methods: {
             updateGame: function() {
                 console.log('updating');
@@ -60,9 +60,9 @@ window.addEventListener('load', function () {
                     this.isOwner = user != null && user.uid === this.game.uid;
                 });
             },
-        }, // end of method
-    }); // end of vue
-}); // end of listener
+        },
+    });
+});
 
 }());
 
