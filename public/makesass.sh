@@ -2,7 +2,15 @@
 # makesass.sh
 
 # add your .sass source files to the list
-SRCS="master.sass
+SRCS="sidebar.sass
+      gameinfo.sass
+      list.sass
+      header.sass
+      login.sass
+      ratings.sass
+      recommend-list.sass
+      master.sass
+      editgame.sass
      "
 
 ################################################################################
