@@ -43,5 +43,9 @@
         },
       },
     },
+    "tagging": {
+      ".read": true,
+      ".write": "auth != null",
+    },
   },
 }

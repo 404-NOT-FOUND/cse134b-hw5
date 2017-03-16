@@ -3,6 +3,7 @@
 Vue.use(VueFire);
 
 var gameDatabaseRef = database.ref('games');
+var taggingDatabaseRef = database.ref('tagging');
 
 var remove = function(gameTitle) {
     gameDatabaseRef.child(gameTitle).remove().then(
@@ -43,11 +44,26 @@ window.addEventListener('load', function () {
             gameRef.on('child_changed', snap => {
                 this.game[snap.key] = snap.val();
             });
+
+            // TODO read tags
         },
         watch: {
-            'newtag': function(val, oldVal) {
-                if (val) {
-                    this.tags.push(val);
+            'newtag': function(tag, _) {
+                // TODO abort if tag is already there
+                if (tag) {
+                    this.tags.push(tag);
+
+                    // add game title under the new tag 
+                    var thegame = {};
+                    thegame[this.game.title] = true;
+                    var tagRef = taggingDatabaseRef.child('tags/');
+                    tagRef.child(tag).update(thegame);
+
+                    // add new tag under the game
+                    var thetag = {};
+                    thetag[tag] = true;
+                    var gameRef = taggingDatabaseRef.child('games/');
+                    gameRef.child(this.game.title).update(thetag);
                 }
                 // reset newtag selector
                 this.newtag = '';
