@@ -9,13 +9,21 @@
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 <body>
-
+    <div id="container">
     <header>
         <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
-        <div class="searchbar">
+        <div id="searchbar">
             <input id="searchbox" type="search"
+                   v-model="searchString"
+                   @keyup="search"
+                   @keyup.enter="submitSearch"
                    placeholder="Search for a game" />
-            <button type="submit" id="search-btn">Search</button>
+            <button type="submit" id="search-btn" @click="submitSearch">Search</button>
+            <ul id="search-results" v-if="isSearch">
+                <li v-for="game in gamesList">
+                    <a :href="'info.html?t='+game">{{game}}</a>
+                </li>
+            </ul>
         </div>
         <div class="login">
             <a href="signup.html" id="signup">Sign Up</a>
@@ -80,6 +88,7 @@
             </li>
         </ul>
     </main>
+    </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vue-router@2.0.3"></script>
@@ -88,6 +97,7 @@
     <script src="js/init_firebase.js"></script>
     <script src="js/read_list.js"></script>
     <script src="js/user_state.js"></script>
-
+    <script src="js/search.js"></script>
 </body>
+
 </html>

@@ -30,13 +30,12 @@ header
     display: inline-block
     font-size: 50px
     margin-top: 20px
-    // text-shadow: 3px 3px 13px gray
 
     a
       color: $logo-color-light
       text-decoration: none
 
-.searchbar
+#searchbar
   display: inline-block
   margin-left: 20px
   margin-top: $header-height/2 - $search-height/2
@@ -60,6 +59,28 @@ header
 
   #search-btn
     border-radius: 0px 5px 5px 0px
+
+  #search-results
+
+    li
+      width: 39vw
+      background-color: #fcfcfc
+      padding-top: 10px
+      padding-bottom: 15px
+      padding-left: 10px
+      list-style-type: none
+      margin-left: -10px
+      margin-top: -10px
+      transition: background-color 0.3s
+      
+      a
+        text-decoration: none
+        color: black
+        font-weight: 600
+
+    li:hover
+      background-color: #f4f4f4
+
 
 @media #{$phones, $tablets}
   .searchbar
