@@ -79,6 +79,25 @@
                         v-model="tags"> about 2 hours</label></li>
                 </ul>
                 </li>
+                <li><div class="category">Number of Players</div>
+                <ul>
+                    <li><label><input type="checkbox"
+                        value="1player"
+                        v-model="tags"> Play alone</label></li>
+                    <li><label><input type="checkbox"
+                        value="2players"
+                        v-model="tags"> 2 Players</label></li>
+                    <li><label><input type="checkbox"
+                        value="3players"
+                        v-model="tags"> 3 Players</label></li>
+                    <li><label><input type="checkbox"
+                        value="4players"
+                        v-model="tags"> 4 Players</label></li>
+                    <li><label><input type="checkbox"
+                        value="5to10players"
+                        v-model="tags"> 5 - 10 players</label></li>
+                </ul>
+                </li>
             </ul>
             <div class="filter-button">
                 <button type="submit">Apply Filters</button>
