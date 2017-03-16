@@ -34,58 +34,47 @@
             <ul>
                 <li><div class="category">Materials</div>
                 <ul>
-                    <li><label><input type="radio"
-                        name="material"
+                    <li><label><input type="checkbox"
                         value="cards"
-                        v-model="tags['material']"> Cards</label></li>
-                    <li><label><input type="radio"
-                        name="material"
+                        v-model="tags"> Cards</label></li>
+                    <li><label><input type="checkbox"
                         value="paper&amp;pen"
-                        v-model="tags['material']"> Paper and Pen</label></li>
-                    <li><label><input type="radio"
-                        name="material"
-                        value="boards"
-                        v-model="tags['material']"> Boards</label></li>
-                    <li><label><input type="radio"
-                        name="material"
+                        v-model="tags"> Paper and Pen</label></li>
+                    <li><label><input type="checkbox"
+                        value="board"
+                        v-model="tags"> Board</label></li>
+                    <li><label><input type="checkbox"
                         value="poker"
-                        v-model="tags['material']"> Poker Cards</label></li>
+                        v-model="tags"> Poker Cards</label></li>
                 </ul>
                 </li>
                 <li><div class="category">Age</div>
                 <ul>
-                    <li><label><input type="radio"
-                        name="age"
+                    <li><label><input type="checkbox"
                         value="children"
-                        v-model="tags.age"> under 10</label></li>
-                    <li><label><input type="radio"
-                        name="age"
+                        v-model="tags"> under 10</label></li>
+                    <li><label><input type="checkbox"
                         value="teen"
-                        v-model="tags.age"> under 16</label></li>
-                    <li><label><input type="radio"
-                        name="age"
+                        v-model="tags"> teenagers</label></li>
+                    <li><label><input type="checkbox"
                         value="adults"
-                        v-model="tags.age"> adults</label></li>
+                        v-model="tags"> adults</label></li>
                 </ul>
                 </li>
                 <li><div class="category">Play time</div>
                 <ul>
-                    <li><label><input type="radio"
-                        name="time"
+                    <li><label><input type="checkbox"
                         value="10mins"
-                        v-model="tags.time"> under 10 minutes</label></li>
-                    <li><label><input type="radio"
-                        name="time"
+                        v-model="tags"> under 10 minutes</label></li>
+                    <li><label><input type="checkbox"
                         value="30mins"
-                        v-model="tags.time"> about 30 minutes</label></li>
-                    <li><label><input type="radio"
-                        name="time"
+                        v-model="tags"> about 30 minutes</label></li>
+                    <li><label><input type="checkbox"
                         value="1hour"
-                        v-model="tags.time"> about 60 minutes</label></li>
-                    <li><label><input type="radio"
-                        name="time"
+                        v-model="tags"> about 60 minutes</label></li>
+                    <li><label><input type="checkbox"
                         value="2hours"
-                        v-model="tags.time"> about 2 hours</label></li>
+                        v-model="tags"> about 2 hours</label></li>
                 </ul>
                 </li>
             </ul>

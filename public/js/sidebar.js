@@ -7,20 +7,23 @@ var taggingDatabaseRef = database.ref('tagging');
 var vm = new Vue({
     el: "#sidebar",
     data: {
-        tags : {},
-        games: [],
+        tags : [],
+        games: '',
     },
     methods: {
         filterGame: function() {
+            vm.games = '';
             console.log('hey');
             console.log('tags: ' + JSON.stringify(vm.tags));
-            for (category in vm.tags) {
-                var tag = vm.tags[category];
+            for (tag of vm.tags) {
                 var tagRef = taggingDatabaseRef.child('tags/'+tag);
                 tagRef.once('value', snap => {
                     console.debug(snap.key);
                     if (!snap.val()) { return; }
                     if (vm.games.length) {
+                        console.debug('games and games[tag]');
+                        console.debug(vm.games);
+                        console.debug(Object.keys(snap.val()));
                         vm.games = this.intersect(vm.games, Object.keys(snap.val()));
                     } else {
                         vm.games = Object.keys(snap.val());
