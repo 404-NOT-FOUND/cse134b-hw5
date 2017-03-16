@@ -76,7 +76,7 @@
                     Delete
                 </button>
                 <h5 id="tags">
-                    <select v-model="newtag">
+                    <select v-if="isUser" v-model="newtag">
                         <!-- TODO maybe support adding multiple tags at once? -->
                         <option value="">Add a tag</option>
                         <option>board</option>

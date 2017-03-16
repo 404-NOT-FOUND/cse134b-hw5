@@ -23,6 +23,7 @@ window.addEventListener('load', function () {
     var vm = new Vue({
         el: "#game_info",
         data: {
+            isUser : '',
             isOwner: '',
             game   : '',
             tags   : [],
@@ -68,6 +69,7 @@ window.addEventListener('load', function () {
             },
             checkOwnership: function() {
                 auth.onAuthStateChanged(user => {
+                    this.isUser  = user != null;
                     this.isOwner = user != null && user.uid === this.game.uid;
                 });
             },
