@@ -3,6 +3,7 @@
 Vue.use(VueFire);
 
 var gameDatabaseRef = database.ref('games');
+var taggingDatabaseRef = database.ref('tagging');
 
 var remove = function(gameTitle) {
     gameDatabaseRef.child(gameTitle).remove().then(
@@ -23,8 +24,11 @@ window.addEventListener('load', function () {
     var vm = new Vue({
         el: "#game_info",
         data: {
+            isUser : '',
             isOwner: '',
             game   : '',
+            tags   : [],
+            newtag : '',
         },
         created: function() {
             var gameRef = gameDatabaseRef.child(args['t']);
@@ -40,6 +44,24 @@ window.addEventListener('load', function () {
             gameRef.on('child_changed', snap => {
                 this.game[snap.key] = snap.val();
             });
+
+            // get the game tags
+            var gameRef = taggingDatabaseRef.child('games/'+args['t']);
+            gameRef.once('value', snap => {
+                if (!snap.val()) { return; }
+                vm.tags = Object.keys(snap.val());
+            });
+        },
+        watch: {
+            'newtag': function(tag, _) {
+                const isNewTag   = this.tags.indexOf(tag) < 0;
+                const isValidTag = tag && isNewTag;
+                if (isValidTag) {
+                    this.addTag(tag);
+                }
+                // reset newtag selector
+                this.newtag = '';
+            },
         },
         methods: {
             updateGame: function() {
@@ -57,8 +79,24 @@ window.addEventListener('load', function () {
             },
             checkOwnership: function() {
                 auth.onAuthStateChanged(user => {
+                    this.isUser  = user != null;
                     this.isOwner = user != null && user.uid === this.game.uid;
                 });
+            },
+            addTag: function(tag) {
+                this.tags.push(tag);
+
+                var thegame = {};
+                var thetag  = {};
+                thegame[this.game.title] = true;
+                thetag[tag]              = true;
+
+                // add game title under the new tag 
+                var tagRef = taggingDatabaseRef.child('tags/');
+                tagRef.child(tag).update(thegame);
+                // add new tag under the game
+                var gameRef = taggingDatabaseRef.child('games/');
+                gameRef.child(this.game.title).update(thetag);
             },
         },
     });

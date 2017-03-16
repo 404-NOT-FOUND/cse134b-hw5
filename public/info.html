@@ -75,13 +75,32 @@
                 <button v-if="isOwner" type="button" id="delete_btn" @click="deleteGame">
                     Delete
                 </button>
-                <h5>
-                  <a href="#">#board</a>
-                  <a href="#">#2players</a>
-                  <a href="#">#10andunder</a>
-                  <a href="#">#under30mins</a>
-                  <!-- TODO tags -->
-                </h5>
+                <div id="tags">
+                    <ul id="taglist">
+                        <li v-for="tag in tags"><a href="#">#{{ tag }}</a></li>
+                        <li>
+                        <select id="tag_selector" v-if="isUser" v-model="newtag">
+                            <!-- TODO maybe support adding multiple tags at once? -->
+                            <option value="">+addtag</option>
+                            <option>board</option>
+                            <option>cards</option>
+                            <option>paper&amp;pen</option>
+                            <option>1player</option>
+                            <option>2players</option>
+                            <option>3players</option>
+                            <option>4players</option>
+                            <option>5to10players</option>
+                            <option>children</option>
+                            <option>teen</option>
+                            <option>adults</option>
+                            <option>30mins</option>
+                            <option>10mins</option>
+                            <option>1hour</option>
+                            <option>2hours</option>
+                        </select>
+                        </li>
+                    </ul>
+                </div>
                 <div class="ratings-row">
                     <ul>
                         <li>&nbsp;Fun
