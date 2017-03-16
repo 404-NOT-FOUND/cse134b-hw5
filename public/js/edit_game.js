@@ -3,6 +3,7 @@
 
 var gamesStorageRef  = storage.ref('games');
 var gamesDatabaseRef = database.ref('games');
+var ratingsDatabaseRef = database.ref('ratings');
 
 Vue.use(VueFire);
 
@@ -20,10 +21,27 @@ auth.onAuthStateChanged(user => {
                 playerMax : '',
                 age       : '',
             },
+            rating: {
+                title     : '',
+                funRating : 0,
+                funTotal  : 0,
+                funNum    : 0,
+                diffRating: 0,
+                diffTotal : 0,
+                diffNum   : 0,
+                chaRating : 0,
+                chaTotal  : 0,
+                chaNum    : 0,
+            },
             isUpdateMode: false,
+            alertPlayer: false,
+            alertSuccess: false,
+            alertFaliure: false,
+            alertPermission: false,
         },
         firebase: {
-            games: gamesDatabaseRef
+            games: gamesDatabaseRef,
+            ratings: ratingsDatabaseRef
         },
         created: function () {
             args = parseArgs();
@@ -59,12 +77,14 @@ auth.onAuthStateChanged(user => {
                 if (this.game.playerMin < 1 ||
                     this.game.playerMax < this.game.playerMin
                    ) {
-                    alert('bad number of players');
+                    //alert('bad number of players');
+                    this.alertPlayer = true;
                     isValid = false;
                 }
-
+ 
                 if (!isValid) {
-                    alert('Input is not valid. Edit failed.');
+                    this.alertFaliure = true;
+                   // alert('Input is not valid. Edit failed.');
                     return;
                 }
 
@@ -80,6 +100,25 @@ auth.onAuthStateChanged(user => {
                 };
                 add = function () {
                     console.log('pushing');
+
+                    ratingsDatabaseRef.child(vm.game.title).set({
+                        'funRating' : 0,
+                        'funTotal'  : 0,
+                        'funNum'    : 0,
+                        'diffRating': 0,
+                        'diffTotal' : 0,
+                        'diffNum'   : 0,
+                        'chaRating' : 0,
+                        'chaTotal'  : 0,
+                        'chaNum'    : 0,
+                    }).then(function(success) {
+                       // this.alertSuccess = true;
+                        alert('Game succesfully added.');
+                    }, function(error) {
+                        //this.alertFaliure = true;
+                        alert('An error occured when trying to add your game.');
+                    });
+
                     gamesDatabaseRef.child(vm.game.title).set({
                         'desc':       vm.game.desc,
                         'imgUrl':     vm.game.imgUrl,
@@ -88,10 +127,12 @@ auth.onAuthStateChanged(user => {
                         'age':        vm.game.age,
                         'uid':        auth.currentUser.uid,
                     }).then(function(success) {
-                        alert('Game succesfully added.');
+                        this.alertSuccess = true;
+                        //alert('Game succesfully added.');
                         location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
-                        alert('An error occured when trying to add your game.');
+                        this.alertFaliure = true;
+                        //alert('An error occured when trying to add your game.');
                     });//console.log('pushed!'));
                 };
                 this.uploadImageWithCallBack(requireImg, add);
@@ -106,14 +147,19 @@ auth.onAuthStateChanged(user => {
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
                     }).then(function(success) {
-                        alert('Game succesfully updated.');
+                        this.alertSuccess = true;
+                        //alert('Game succesfully updated.');
                         location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
-                        if(error.code === 'PERMISSION_DENIED') {
-                            alert('Error: You do not have permission to edit this game. Redirecting to the home page.');
+                        if (error.code === 'PERMISSION_DENIED') {
+                            if (!this.alertFaliure){
+                                this.alertPermission = true;
+                            }
+                            //alert('Error: You do not have permission to edit this game. Redirecting to the home page.');
                             location.href = 'index.html';
                         } else {
-                            alert('Error: ' + error.message);
+                            this.alertFaliure = true;
+                            //alert('Error: ' + error.message);
                         }
                     });
                 };

@@ -11,15 +11,21 @@
 <body>
     <header>
         <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
-        <div class="searchbar">
+       <div id="searchbar">
             <input id="searchbox" type="search"
+                   v-model="searchString"
+                   @keyup="search"
+                   @keyup.enter="submitSearch"
                    placeholder="Search for a game" />
-            <button type="submit" id="search-btn">Search</button>
+            <button type="submit" id="search-btn" @click="submitSearch">Search</button>
+            <ul id="search-results" v-if="isSearch">
+                <li v-for="game in gamesList">
+                    <a :href="'info.html?t='+game">{{game}}</a>
+                </li>
+            </ul>
         </div>
         <div class="login">
             <a href="signup.html" id="signup">Sign Up</a>
-        </div>
-        <div class="login">
             <a href="login.html" id="signin">Sign In</a>
         </div>
         <div class="login">
@@ -94,6 +100,7 @@
                                v-model="game.playerMax"
                                required>
                     </span>
+                    <p class="warning" v-if="alertPlayer">Please enter a valid number of players</p>
                 </div>
                 </li>
                 <li>
@@ -109,7 +116,13 @@
                 </div>
                 </li>
             </ul>
+           
             <button type="submit">Submit</button>
+            <div class="submit-message">
+              <p class="success" v-if="alertSuccess">Game successfully updated!</p>
+              <p class="warning" v-if="alertFaliure">An error occured when trying to add your game.</p>
+              <p class="warning" v-if="alertPermission">You do not have permission to edit this game. Redirecting to the home page.</p>
+            </div>
         </form>
     </div>
     <footer>
@@ -124,5 +137,6 @@
     <script src="js/edit_game.js"></script>
     <script src="js/user_check.js"></script>
     <script src="js/user_state.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>
