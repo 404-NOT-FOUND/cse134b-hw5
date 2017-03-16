@@ -49,8 +49,7 @@ window.addEventListener('load', function () {
         },
         watch: {
             'newtag': function(tag, _) {
-                // TODO abort if tag is already there
-                if (tag) {
+                if (tag && this.tags.indexOf(tag) < 0) {
                     this.tags.push(tag);
 
                     // add game title under the new tag 
