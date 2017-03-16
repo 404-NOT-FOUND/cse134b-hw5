@@ -45,7 +45,12 @@ window.addEventListener('load', function () {
                 this.game[snap.key] = snap.val();
             });
 
-            // TODO read tags
+            // get the game tags
+            var gameRef = taggingDatabaseRef.child('games/'+args['t']);
+            gameRef.once('value', snap => {
+                if (!snap.val()) { return; }
+                vm.tags = Object.keys(snap.val());
+            });
         },
         watch: {
             'newtag': function(tag, _) {
