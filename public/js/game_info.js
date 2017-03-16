@@ -49,20 +49,10 @@ window.addEventListener('load', function () {
         },
         watch: {
             'newtag': function(tag, _) {
-                if (tag && this.tags.indexOf(tag) < 0) {
-                    this.tags.push(tag);
-
-                    // add game title under the new tag 
-                    var thegame = {};
-                    thegame[this.game.title] = true;
-                    var tagRef = taggingDatabaseRef.child('tags/');
-                    tagRef.child(tag).update(thegame);
-
-                    // add new tag under the game
-                    var thetag = {};
-                    thetag[tag] = true;
-                    var gameRef = taggingDatabaseRef.child('games/');
-                    gameRef.child(this.game.title).update(thetag);
+                const isNewTag   = this.tags.indexOf(tag) < 0;
+                const isValidTag = tag && isNewTag;
+                if (isValidTag) {
+                    this.addTag(tag);
                 }
                 // reset newtag selector
                 this.newtag = '';
@@ -87,6 +77,21 @@ window.addEventListener('load', function () {
                     this.isUser  = user != null;
                     this.isOwner = user != null && user.uid === this.game.uid;
                 });
+            },
+            addTag: function(tag) {
+                this.tags.push(tag);
+
+                var thegame = {};
+                var thetag  = {};
+                thegame[this.game.title] = true;
+                thetag[tag]              = true;
+
+                // add game title under the new tag 
+                var tagRef = taggingDatabaseRef.child('tags/');
+                tagRef.child(tag).update(thegame);
+                // add new tag under the game
+                var gameRef = taggingDatabaseRef.child('games/');
+                gameRef.child(this.game.title).update(thetag);
             },
         },
     });
