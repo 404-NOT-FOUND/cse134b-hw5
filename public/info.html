@@ -23,9 +23,11 @@
                    placeholder="Search for a game" />
             <button type="submit" id="search-btn" @click="submitSearch">Search</button>
             <ul id="search-results" v-if="isSearch">
-                <li v-for="game in gamesList">
-                    <a :href="'info.html?t='+game">{{game}}</a>
-                </li>
+                <div v-for="game in gamesList">
+                    <a :href="'info.html?t='+game">
+                        <li>{{game}}</li>
+                    </a>
+                </div>
             </ul>
         </div>
         <div class="login">
