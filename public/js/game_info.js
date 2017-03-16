@@ -25,6 +25,8 @@ window.addEventListener('load', function () {
         data: {
             isOwner: '',
             game   : '',
+            tags   : [],
+            newtag : '',
         },
         created: function() {
             var gameRef = gameDatabaseRef.child(args['t']);
@@ -40,6 +42,15 @@ window.addEventListener('load', function () {
             gameRef.on('child_changed', snap => {
                 this.game[snap.key] = snap.val();
             });
+        },
+        watch: {
+            'newtag': function(val, oldVal) {
+                if (val) {
+                    this.tags.push(val);
+                }
+                // reset newtag selector
+                this.newtag = '';
+            },
         },
         methods: {
             updateGame: function() {
