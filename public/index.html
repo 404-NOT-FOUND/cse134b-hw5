@@ -28,7 +28,9 @@
         </div>
     </header>
 
-    <div id="sidebar" class="sidebar">
+    <div id="gamelist">
+
+    <div class="sidebar">
         <h1>Tags</h1>
         <form @submit.prevent="filterGame">
             <ul>
@@ -86,7 +88,7 @@
 
     <main>
         <h1>Top Games</h1>
-        <ul class="board-list" id="board_list">
+        <ul class="board-list">
             <li id="add_game_btn" class="board-item">
             <a href="editgame.html?from=editgame">
                 <div class="board-img-box"><img id="add_game_btn_img" class="board-img" src="img/plus.jpg" alt="Add Game"></div>
@@ -102,6 +104,8 @@
         </ul>
     </main>
 
+    </div>
+
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vue-router@2.0.3"></script>
     <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
@@ -109,7 +113,6 @@
     <script src="js/init_firebase.js"></script>
     <script src="js/read_list.js"></script>
     <script src="js/user_state.js"></script>
-    <script src="js/sidebar.js"></script>
 
 </body>
 </html>
