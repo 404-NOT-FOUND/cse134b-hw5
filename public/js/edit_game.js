@@ -34,7 +34,7 @@ auth.onAuthStateChanged(user => {
                 chaNum    : 0,
             },
             isUpdateMode: false,
-            alertPlayer: false,
+            alertPlayer : false,
             alertSuccess: false,
             alertFaliure: false,
             alertPermission: false,
@@ -64,6 +64,11 @@ auth.onAuthStateChanged(user => {
         },
         methods: {
             editgame: function () {
+                this.alertPlayer     = false;
+                this.alertSuccess    = false;
+                this.alertFaliure    = false;
+                this.alertPermission = false;
+
                 this.game.title      = this.game.title.trim();
                 this.game.desc       = this.game.desc.trim();
                 this.game.playerMin  = parseInt(this.game.playerMin);
