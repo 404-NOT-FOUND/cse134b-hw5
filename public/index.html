@@ -106,7 +106,9 @@
     </div>
 
     <main>
-        <h1>Top Games</h1>
+        <h1 v-if="isShowAll">Top Games</h1>
+        <h1 v-else-if="games.length > 0">Results</h1>
+        <h1 v-else>No result. Help others by adding a new game entry!</h1>
         <ul class="board-list">
             <li id="add_game_btn" class="board-item">
             <a href="editgame.html?from=editgame">

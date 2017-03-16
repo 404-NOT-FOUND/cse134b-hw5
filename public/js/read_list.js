@@ -8,14 +8,22 @@ var taggingDatabaseRef = database.ref('tagging');
 var vm = new Vue({
     el: "#gamelist",
     data: {
-        tags  : [],
-        titles: '',
+        tags    : [],
+        titles  : '',
+        isShowAll: true,
     },
     firebase: {
-        games: gameDatabaseRef
+        games: gameDatabaseRef,
+        allGames: gameDatabaseRef,
     },
     methods: {
         filterGame: function() {
+            if (vm.tags.length < 1) {
+                vm.isShowAll = true;
+                vm.games = vm.allGames;
+                return;
+            }
+            vm.isShowAll = false;
             vm.titles = '';
             vm.games  = '';
             console.log('tags: ' + JSON.stringify(vm.tags));
