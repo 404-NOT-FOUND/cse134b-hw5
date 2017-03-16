@@ -28,33 +28,75 @@
         </div>
     </header>
 
+    <div id="gamelist">
+
     <div class="sidebar">
         <h1>Tags</h1>
-        <form>
+        <form @submit.prevent="filterGame">
             <ul>
                 <li><div class="category">Materials</div>
                 <ul>
-                    <li><label><input type="radio" name="material"> Cards</label></li>
-                    <li><label><input type="radio" name="material"> Paper and Pen</label></li>
-                    <li><label><input type="radio" name="material"> Boards</label></li>
-                    <li><label><input type="radio" name="material"> Poker Cards</label></li>
+                    <li><label><input type="checkbox"
+                        value="cards"
+                        v-model="tags"> Cards</label></li>
+                    <li><label><input type="checkbox"
+                        value="paper&amp;pen"
+                        v-model="tags"> Paper and Pen</label></li>
+                    <li><label><input type="checkbox"
+                        value="board"
+                        v-model="tags"> Board</label></li>
+                    <li><label><input type="checkbox"
+                        value="poker"
+                        v-model="tags"> Poker Cards</label></li>
                 </ul>
                 </li>
                 <li><div class="category">Age</div>
                 <ul>
-                    <li><label><input type="radio" name="age"> under 10</label></li>
-                    <li><label><input type="radio" name="age"> under 16</label></li>
-                    <li><label><input type="radio" name="age"> adults</label></li>
+                    <li><label><input type="checkbox"
+                        value="children"
+                        v-model="tags"> under 10</label></li>
+                    <li><label><input type="checkbox"
+                        value="teen"
+                        v-model="tags"> teenagers</label></li>
+                    <li><label><input type="checkbox"
+                        value="adults"
+                        v-model="tags"> adults</label></li>
                 </ul>
                 </li>
-                <li>
-                    <div class="category">Play time</div>
-                    <ul>
-                        <li><label><input type="radio" name="time"> under 10 minutes</label></li>
-                        <li><label><input type="radio" name="time"> under 30 minutes</label></li>
-                        <li><label><input type="radio" name="time"> under 60 minutes</label></li>
-                        <li><label><input type="radio" name="time"> over 60 minutes</label></li>
-                    </ul>
+                <li><div class="category">Play time</div>
+                <ul>
+                    <li><label><input type="checkbox"
+                        value="10mins"
+                        v-model="tags"> under 10 minutes</label></li>
+                    <li><label><input type="checkbox"
+                        value="30mins"
+                        v-model="tags"> about 30 minutes</label></li>
+                    <li><label><input type="checkbox"
+                        value="1hour"
+                        v-model="tags"> about 60 minutes</label></li>
+                    <li><label><input type="checkbox"
+                        value="2hours"
+                        v-model="tags"> about 2 hours</label></li>
+                </ul>
+                </li>
+                <li><div class="category">Number of Players</div>
+                <ul>
+                    <li><label><input type="checkbox"
+                        value="1player"
+                        v-model="tags"> Play alone</label></li>
+                    <li><label><input type="checkbox"
+                        value="2players"
+                        v-model="tags"> 2 Players</label></li>
+                    <li><label><input type="checkbox"
+                        value="3players"
+                        v-model="tags"> 3 Players</label></li>
+                    <li><label><input type="checkbox"
+                        value="4players"
+                        v-model="tags"> 4 Players</label></li>
+                    <li><label><input type="checkbox"
+                        value="5to10players"
+                        v-model="tags"> 5 - 10 players</label></li>
+                </ul>
                 </li>
             </ul>
             <div class="filter-button">
@@ -64,8 +106,10 @@
     </div>
 
     <main>
-        <h1>Top Games</h1>
-        <ul class="board-list" id="board_list">
+        <h1 v-if="isShowAll">Top Games</h1>
+        <h1 v-else-if="games.length > 0">Results</h1>
+        <h1 v-else>No result. Help others by adding a new game entry!</h1>
+        <ul class="board-list">
             <li id="add_game_btn" class="board-item">
             <a href="editgame.html?from=editgame">
                 <div class="board-img-box"><img id="add_game_btn_img" class="board-img" src="img/plus.jpg" alt="Add Game"></div>
@@ -80,6 +124,8 @@
             </li>
         </ul>
     </main>
+
+    </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vue-router@2.0.3"></script>
