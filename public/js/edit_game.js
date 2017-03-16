@@ -142,7 +142,7 @@ auth.onAuthStateChanged(user => {
                     uploadCompleteCb();
                     return;
                 }
-                console.log('uploading image');
+                console.log('uploading original image');
                 var imgRef = gamesStorageRef.child(auth.currentUser.uid+'/'+this.game.title+'/image');
                 var uploadTask = imgRef.put(this.imgFile);
                 uploadTask.on('state_changed',
@@ -155,11 +155,56 @@ auth.onAuthStateChanged(user => {
                     },
                     function complete() {
                         console.log('upload complete!');
-                        vm.game.imgUrl = uploadTask.snapshot.downloadURL;
-                        uploadCompleteCb();
+                        vm.optimizeImg(uploadTask.snapshot.downloadURL, uploadCompleteCb);
                         vm.lastImg = vm.imgFile;
                     }
                 );
+            },
+            optimizeImg: function(url, cb) {
+                console.log('fetching optimized image');
+                const resizer = "http://res.cloudinary.com/law4d4rh3/image/fetch/";
+                const SIZE    = "h_280,";
+                const QUALITY = "q_40,";
+                const FORMAT  = "f_jpg/";
+                optUrl = resizer+SIZE+QUALITY+FORMAT+escape(url);
+                console.debug(optUrl);
+
+                var img = new Image();
+                img.setAttribute('crossOrigin', 'anonymous');
+                img.onload = function () {
+                    var canvas    = document.createElement("canvas");
+                    canvas.width  = this.width;
+                    canvas.height = this.height;
+
+                    var canvasContext = canvas.getContext("2d");
+                    canvasContext.drawImage(this, 0, 0);
+                    console.debug('hehe');
+
+                    canvas.toBlob(blob => {
+                        console.debug(blob);
+                        console.log('uploading optimized image');
+                        var imgRef = gamesStorageRef
+                        .child(auth.currentUser.uid)
+                        .child(vm.game.title+'/image');
+                    var uploadTask = imgRef.put(blob);
+                    uploadTask.on('state_changed',
+                        function progress(snap) {
+                            var progress = (snap.bytesTransferred / snap.totalBytes) * 100;
+                            console.log('uploading image: ' + progress);
+                        },
+                        function error(err) {
+                            console.log('upload failed!');
+                        },
+                        function complete() {
+                            console.log('upload complete!');
+                            vm.game.imgUrl = uploadTask.snapshot.downloadURL;
+                            cb();
+                        });
+                    });
+
+                };
+
+                img.src = optUrl;
             },
         },
     });
