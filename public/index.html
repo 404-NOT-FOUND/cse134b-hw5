@@ -9,9 +9,18 @@
     <link rel="stylesheet" href="css/master.css" type="text/css" media="screen">
 </head>
 <body>
-    <div id="container">
+
     <header>
         <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
+        <div class="login">
+            <a href="signup.html" id="signup">Sign Up</a>
+        </div>
+        <div class="login">
+            <a href="login.html" id="signin">Sign In</a>
+        </div>
+        <div class="login">
+            <button id="signout" class="hide">Sign Out</button>
+        </div>
         <div id="searchbar">
             <input id="searchbox" type="search"
                    v-model="searchString"
@@ -27,23 +36,20 @@
                 </div>
             </ul>
         </div>
-        <div class="login">
-            <a href="signup.html" id="signup">Sign Up</a>
-        </div>
-        <div class="login">
-            <a href="login.html" id="signin">Sign In</a>
-        </div>
-        <div class="login">
-            <button id="signout" class="hide">Sign Out</button>
-        </div>
     </header>
 
-    <div id="gamelist">
-
-    <div class="sidebar">
+    <div id="app">
+    <div class="hamburger-btn" 
+         v-on:click="toggleSidebar"
+         v-bind:class="{ active : isShowSidebar }">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="sidebar" v-bind:class="{ active : isShowSidebar }">
         <h1>Tags</h1>
         <form @submit.prevent="filterGame">
-            <ul>
+            <ul id="taglist">
                 <li><div class="category">Materials</div>
                 <ul>
                     <li><label><input type="checkbox"
@@ -109,7 +115,7 @@
                 </ul>
                 </li>
             </ul>
-            <div id="filter-btns">
+            <div class="filter-btns">
                 <button type="submit">Apply Filters</button>
                 <a href="#" v-on:click="clearTags">clear filters</a>
             </div>

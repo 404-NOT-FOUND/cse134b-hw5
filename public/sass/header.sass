@@ -4,15 +4,11 @@
 $logo-color-light: #000
 $logo-color-dark: #0db7ab
 
-// $header-color: #ffb03b
 $header-color: #fff
 $header-shadow-color: #eee
 $header-height: 100px
 $search-width: 500px
 $search-height: 50px
-
-body
-  margin-top: $header-height+50px
 
 header
   background-color: $header-color
@@ -84,10 +80,6 @@ header
       background-color: #f4f4f4
 
 
-@media #{$phones, $tablets}
-  .searchbar
-    display: none
-
 .login
   display: inline-block
   white-space: nowrap
@@ -129,3 +121,29 @@ header
 
 .hide
   display: none
+
+@media #{$computers}
+  $header-height: 100px
+  body
+    margin-top: $header-height+50px
+@media #{$phones, $tablets}
+  $header-height: 180px
+  body
+    margin-top: $header-height+50px
+  header
+    height: $header-height
+    display: block
+    text-align: center
+    h1
+      margin-bottom: 10px
+    #searchbar
+      display: block
+      margin-top: 0
+      margin: 0 auto
+      position: relative
+      width: 90%
+      #searchbox
+        margin: 0px
+        width: -webkit-calc(100% - 100px)
+        width:    -moz-calc(100% - 100px)
+        width:         calc(100% - 100px)
