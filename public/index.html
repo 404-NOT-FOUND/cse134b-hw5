@@ -12,7 +12,9 @@
 
     <div id="app">
 
-    <div class="hamburger-btn" v-on:click="toggleSidebar">
+    <div class="hamburger-btn" 
+         v-on:click="toggleSidebar"
+         v-bind:class="{ active : isShowSidebar }">
         <span></span>
         <span></span>
         <span></span>

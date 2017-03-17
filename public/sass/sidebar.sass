@@ -40,25 +40,37 @@ $sidebar-color: #0db7ab
     z-index: 701
     margin-top: 5px
     display: block
-    width:   30px
+    width:   33px
     height:  5px
     background-color: black
+    transition: background .25s ease-in-out, opacity .25s ease-in-out, transform 1s ease-in-out
 .hamburger-btn:hover
   cursor: pointer
+.hamburger-btn.active span:nth-last-child(3)
+  transform: rotate(45deg) translate(7px, 7px)
+  opacity: 1
+.hamburger-btn.active span:nth-last-child(2)
+  opacity: 0
+.hamburger-btn.active span:nth-last-child(1)
+  transform: rotate(-45deg) translate(7px, -7px)
+  opacity: 1
 
 #app
   width: 100%
   height: 100%
 
+@media #{$phones}
+  .sidebar
+    font-size: 27px
+    h1
+      font-size: 33px
 @media #{$phones, $tablets}
   .sidebar
     width: 100%
     height: 100%
     z-index: 600
     transform: translate(-100%, 0)
-    font-size: 28px
     h1
-      font-size: 33px
       padding-left: 60px
     #taglist
       padding-left: 90px
