@@ -6,11 +6,12 @@ var gameDatabaseRef = database.ref('games');
 var taggingDatabaseRef = database.ref('tagging');
 
 var vm = new Vue({
-    el: "#gamelist",
+    el: "#app",
     data: {
         tags    : [],
         titles  : '',
         isShowAll: true,
+        isShowSidebar: false,
     },
     firebase: {
         games: gameDatabaseRef,
@@ -55,6 +56,7 @@ var vm = new Vue({
             for (title of vm.titles) {
                 var gameRef = gameDatabaseRef.child(title);
                 gameRef.once('value', snap => {
+                    if (snap.val() == null) { return; } // ignore missing games
                     var game = snap.val();
                     game['.key'] = snap.key;
                     vm.games.push(game);
@@ -63,7 +65,11 @@ var vm = new Vue({
         },
         clearTags: function() {
             vm.tags = [];
-        }
+        },
+        toggleSidebar: function() {
+            console.debug('hey');
+            vm.isShowSidebar = !vm.isShowSidebar;
+        },
     },
 });
 
