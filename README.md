@@ -12,6 +12,17 @@ can create board game entries, update and delete them, as well as rate them
 based on different categories. Users can also filter board games by different
 fields - namely playing time, number of players, materials, and age.
 
+## screen shot for homepage on computer
+![demo-pc-home](/demo-pics/demo-pc-home.png)
+## screen shot for info page on computer
+![demo-pc-info](/demo-pics/demo-pc-info.png)
+## screen shot for edit page on computer
+![demo-pc-edit](/demo-pics/demo-pc-edit.png)
+## screen shot for login page on computer
+![demo-pc-login](/demo-pics/demo-pc-login.png)
+## screen shot for home page on phone or tablet
+![demo-phone-home](/demo-pics/demo-phone-home.png)
+
 Technology
 ================================================================================
 
@@ -88,6 +99,14 @@ of our web pages tremendously.
 
 Concerns and Limitations
 =============================================================================
+
+## `min.js`
+We were trying to integrat all the javascript files into one. 
+However, since we are using **vue.js** and having event listeners when the pages loaded,
+doing so would disturb our website and creating undisirable results.
+Thus, instead of having only one `min.js` file that contains all our javascript files,
+we created a javescript file for each page and combined the javecript files
+that a page will need to use.
 
 ## third-party tools limitation:
 Because our resizing feature is dependent on a thrid-party service, there are certain limits.
