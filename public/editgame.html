@@ -121,6 +121,7 @@
            
             <button type="submit">Submit</button>
             <div class="submit-message">
+              <p class="success" v-if="isUploading">Uploading game...</p>
               <p class="success" v-if="alertSuccess">Game successfully updated!</p>
               <p class="warning" v-if="alertFaliure">An error occured when trying to add your game.</p>
               <p class="warning" v-if="alertPermission">You do not have permission to edit this game. Redirecting to the home page.</p>

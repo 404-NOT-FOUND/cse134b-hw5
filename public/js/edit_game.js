@@ -34,6 +34,7 @@ auth.onAuthStateChanged(user => {
                 chaNum    : 0,
             },
             isUpdateMode: false,
+            isUploading : false,
             alertPlayer : false,
             alertSuccess: false,
             alertFaliure: false,
@@ -68,6 +69,7 @@ auth.onAuthStateChanged(user => {
                 this.alertSuccess    = false;
                 this.alertFaliure    = false;
                 this.alertPermission = false;
+                this.isUploading     = false;
 
                 this.game.title      = this.game.title.trim();
                 this.game.desc       = this.game.desc.trim();
@@ -93,6 +95,7 @@ auth.onAuthStateChanged(user => {
                     return;
                 }
 
+                this.isUploading = true;
                 if (this.isUpdateMode) {
                     this.updateGame();
                 } else {
@@ -116,12 +119,6 @@ auth.onAuthStateChanged(user => {
                         'chaRating' : 0,
                         'chaTotal'  : 0,
                         'chaNum'    : 0,
-                    }).then(function(success) {
-                       // this.alertSuccess = true;
-                        alert('Game succesfully added.');
-                    }, function(error) {
-                        //this.alertFaliure = true;
-                        alert('An error occured when trying to add your game.');
                     });
 
                     gamesDatabaseRef.child(vm.game.title).set({
