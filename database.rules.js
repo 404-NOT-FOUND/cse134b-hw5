@@ -47,5 +47,13 @@
       ".read": true,
       ".write": "auth != null",
     },
+    "ratings": {
+      ".read": true,
+      "$rating": {
+        ".write": "
+          auth != null
+          ",
+      },
+    },
   },
 }
