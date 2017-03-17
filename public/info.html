@@ -15,6 +15,15 @@
 
     <header>
         <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
+        <div class="login">
+            <a href="signup.html" id="signup">Sign Up</a>
+        </div>
+        <div class="login">
+            <a href="login.html" id="signin">Sign In</a>
+        </div>
+        <div class="login">
+            <button id="signout" class="hide">Sign Out</button>
+        </div>
         <div id="searchbar">
             <input id="searchbox" type="search"
                    v-model="searchString"
@@ -29,13 +38,6 @@
                     </a>
                 </div>
             </ul>
-        </div>
-        <div class="login">
-            <a href="signup.html" id="signup">Sign Up</a>
-            <a href="login.html" id="signin">Sign In</a>
-        </div>
-        <div class="login">
-            <button id="signout" class="hide">Sign Out</button>
         </div>
     </header>
 
