@@ -43,5 +43,14 @@
         },
       },
     },
+
+    "ratings": {
+      ".read": true,
+      "$rating": {
+        ".write": "
+          auth != null
+        ",
+      }
+    },
   },
 }
