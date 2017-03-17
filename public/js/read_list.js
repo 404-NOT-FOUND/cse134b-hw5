@@ -61,6 +61,9 @@ var vm = new Vue({
                 });
             }
         },
+        clearTags: function() {
+            vm.tags = [];
+        }
     },
 });
 
