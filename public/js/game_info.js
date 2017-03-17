@@ -29,7 +29,6 @@ window.addEventListener('load', function () {
             isOwner   : '',
             isRating  : '',
             game      : '',
-            formattedDesc: '',
             tags      : [],
             newtag    : '',
             rating    : '',
@@ -47,7 +46,6 @@ window.addEventListener('load', function () {
                 }
                 this.game = snap.val();
                 this.game.title = snap.key;
-                this.formattedDesc = marked(this.game.desc, { sanitize: true });
                 this.checkOwnership();
             });
             gameRef.on('child_changed', snap => {

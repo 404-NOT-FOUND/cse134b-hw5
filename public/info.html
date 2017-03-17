@@ -204,8 +204,7 @@
                  <figure>
                     <img :src="game.imgUrl" :alt="game.title">
                 </figure>
-                <div id="game_desc" v-html="formattedDesc"></div>
-                <!-- TODO css for game_desc -->
+                <div>{{ game.desc }}</div>
             </div>
         </div>
 
@@ -238,7 +237,6 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
     <script src="js/parse_args.js"></script>
     <script src="js/init_firebase.js"></script>
     <script src="js/game_info.js"></script>
