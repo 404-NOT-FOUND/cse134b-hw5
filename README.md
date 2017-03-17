@@ -100,6 +100,14 @@ of our web pages tremendously.
 Concerns and Limitations
 =============================================================================
 
+## `min.js`
+We were trying to integrat all the javascript files into one. 
+However, since we are using **vue.js** and having event listeners when the pages loaded,
+doing so would disturb our website and creating undisirable results.
+Thus, instead of having only one `min.js` file that contains all our javascript files,
+we created a javescript file for each page and combined the javecript files
+that a page will need to use.
+
 ## third-party tools limitation:
 Because our resizing feature is dependent on a thrid-party service, there are certain limits.
 For example, for free users like us, there is a limit on the total number of images that
