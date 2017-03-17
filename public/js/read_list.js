@@ -55,6 +55,7 @@ var vm = new Vue({
             for (title of vm.titles) {
                 var gameRef = gameDatabaseRef.child(title);
                 gameRef.once('value', snap => {
+                    if (snap.val() == null) { return; } // ignore missing games
                     var game = snap.val();
                     game['.key'] = snap.key;
                     vm.games.push(game);
