@@ -3,6 +3,7 @@
 
 var gamesStorageRef  = storage.ref('games');
 var gamesDatabaseRef = database.ref('games');
+var ratingsDatabaseRef = database.ref('ratings');
 
 Vue.use(VueFire);
 
@@ -20,10 +21,28 @@ auth.onAuthStateChanged(user => {
                 playerMax : '',
                 age       : '',
             },
+            rating: {
+                title     : '',
+                funRating : 0,
+                funTotal  : 0,
+                funNum    : 0,
+                diffRating: 0,
+                diffTotal : 0,
+                diffNum   : 0,
+                chaRating : 0,
+                chaTotal  : 0,
+                chaNum    : 0,
+            },
             isUpdateMode: false,
+            isUploading : false,
+            alertPlayer : false,
+            alertSuccess: false,
+            alertFaliure: false,
+            alertPermission: false,
         },
         firebase: {
-            games: gamesDatabaseRef
+            games: gamesDatabaseRef,
+            ratings: ratingsDatabaseRef
         },
         created: function () {
             args = parseArgs();
@@ -46,6 +65,12 @@ auth.onAuthStateChanged(user => {
         },
         methods: {
             editgame: function () {
+                this.alertPlayer     = false;
+                this.alertSuccess    = false;
+                this.alertFaliure    = false;
+                this.alertPermission = false;
+                this.isUploading     = false;
+
                 this.game.title      = this.game.title.trim();
                 this.game.desc       = this.game.desc.trim();
                 this.game.playerMin  = parseInt(this.game.playerMin);
@@ -59,15 +84,18 @@ auth.onAuthStateChanged(user => {
                 if (this.game.playerMin < 1 ||
                     this.game.playerMax < this.game.playerMin
                    ) {
-                    alert('bad number of players');
+                    //alert('bad number of players');
+                    this.alertPlayer = true;
                     isValid = false;
                 }
-
+ 
                 if (!isValid) {
-                    alert('Input is not valid. Edit failed.');
+                    this.alertFaliure = true;
+                   // alert('Input is not valid. Edit failed.');
                     return;
                 }
 
+                this.isUploading = true;
                 if (this.isUpdateMode) {
                     this.updateGame();
                 } else {
@@ -80,6 +108,19 @@ auth.onAuthStateChanged(user => {
                 };
                 add = function () {
                     console.log('pushing');
+
+                    ratingsDatabaseRef.child(vm.game.title).set({
+                        'funRating' : 0,
+                        'funTotal'  : 0,
+                        'funNum'    : 0,
+                        'diffRating': 0,
+                        'diffTotal' : 0,
+                        'diffNum'   : 0,
+                        'chaRating' : 0,
+                        'chaTotal'  : 0,
+                        'chaNum'    : 0,
+                    });
+
                     gamesDatabaseRef.child(vm.game.title).set({
                         'desc':       vm.game.desc,
                         'imgUrl':     vm.game.imgUrl,
@@ -88,10 +129,12 @@ auth.onAuthStateChanged(user => {
                         'age':        vm.game.age,
                         'uid':        auth.currentUser.uid,
                     }).then(function(success) {
-                        alert('Game succesfully added.');
+                        this.alertSuccess = true;
+                        //alert('Game succesfully added.');
                         location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
-                        alert('An error occured when trying to add your game.');
+                        this.alertFaliure = true;
+                        //alert('An error occured when trying to add your game.');
                     });//console.log('pushed!'));
                 };
                 this.uploadImageWithCallBack(requireImg, add);
@@ -106,14 +149,19 @@ auth.onAuthStateChanged(user => {
                         'playerMax':  vm.game.playerMax,
                         'age':        vm.game.age,
                     }).then(function(success) {
-                        alert('Game succesfully updated.');
+                        this.alertSuccess = true;
+                        //alert('Game succesfully updated.');
                         location.href = 'info.html?t=' + vm.game.title;
                     }, function(error) {
-                        if(error.code === 'PERMISSION_DENIED') {
-                            alert('Error: You do not have permission to edit this game. Redirecting to the home page.');
+                        if (error.code === 'PERMISSION_DENIED') {
+                            if (!this.alertFaliure){
+                                this.alertPermission = true;
+                            }
+                            //alert('Error: You do not have permission to edit this game. Redirecting to the home page.');
                             location.href = 'index.html';
                         } else {
-                            alert('Error: ' + error.message);
+                            this.alertFaliure = true;
+                            //alert('Error: ' + error.message);
                         }
                     });
                 };
@@ -142,7 +190,7 @@ auth.onAuthStateChanged(user => {
                     uploadCompleteCb();
                     return;
                 }
-                console.log('uploading image');
+                console.log('uploading original image');
                 var imgRef = gamesStorageRef.child(auth.currentUser.uid+'/'+this.game.title+'/image');
                 var uploadTask = imgRef.put(this.imgFile);
                 uploadTask.on('state_changed',
@@ -155,11 +203,56 @@ auth.onAuthStateChanged(user => {
                     },
                     function complete() {
                         console.log('upload complete!');
-                        vm.game.imgUrl = uploadTask.snapshot.downloadURL;
-                        uploadCompleteCb();
+                        vm.optimizeImg(uploadTask.snapshot.downloadURL, uploadCompleteCb);
                         vm.lastImg = vm.imgFile;
                     }
                 );
+            },
+            optimizeImg: function(url, cb) {
+                console.log('fetching optimized image');
+                const resizer = "http://res.cloudinary.com/law4d4rh3/image/fetch/";
+                const SIZE    = "h_280,";
+                const QUALITY = "q_40,";
+                const FORMAT  = "f_jpg/";
+                optUrl = resizer+SIZE+QUALITY+FORMAT+escape(url);
+                console.debug(optUrl);
+
+                var img = new Image();
+                img.setAttribute('crossOrigin', 'anonymous');
+                img.onload = function () {
+                    var canvas    = document.createElement("canvas");
+                    canvas.width  = this.width;
+                    canvas.height = this.height;
+
+                    var canvasContext = canvas.getContext("2d");
+                    canvasContext.drawImage(this, 0, 0);
+                    console.debug('hehe');
+
+                    canvas.toBlob(blob => {
+                        console.debug(blob);
+                        console.log('uploading optimized image');
+                        var imgRef = gamesStorageRef
+                        .child(auth.currentUser.uid)
+                        .child(vm.game.title+'/image');
+                    var uploadTask = imgRef.put(blob);
+                    uploadTask.on('state_changed',
+                        function progress(snap) {
+                            var progress = (snap.bytesTransferred / snap.totalBytes) * 100;
+                            console.log('uploading image: ' + progress);
+                        },
+                        function error(err) {
+                            console.log('upload failed!');
+                        },
+                        function complete() {
+                            console.log('upload complete!');
+                            vm.game.imgUrl = uploadTask.snapshot.downloadURL;
+                            cb();
+                        });
+                    });
+
+                };
+
+                img.src = optUrl;
             },
         },
     });

@@ -18,6 +18,8 @@
                          id="usr_email" name="usr_email" 
                          placeholder="Email" 
                          required>
+                  <p class="warning hide" id="emailAlert">Please enter a valid email address.</p>
+                  <p class="warning hide" id="duplicateAlert">The email address is already in use by another account.</p>
                 </div>
             </li>
             <li>
@@ -26,6 +28,7 @@
                   <input type="password" maxlength="1024" autocomplete="off"
                          id="usr_password" name="usr_password" 
                          placeholder="Password (at least 6 characters)" required>
+                  <p class="warning hide" id="passwordAlert">Password should be at least 6 characters.</p>
                 </div>
             </li>
             <li>
@@ -35,6 +38,7 @@
                          id="usr_password_check" name="usr_password_check" 
                          placeholder="Re-enter your password"
                          required>
+                  <p class="warning hide" id="matchAlert">Passwords do not match.</p>
                 </div>
             </li>
         </ul>

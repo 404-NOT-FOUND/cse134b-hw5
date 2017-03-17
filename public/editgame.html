@@ -11,15 +11,8 @@
 <body>
     <header>
         <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
-        <div class="searchbar">
-            <input id="searchbox" type="search"
-                   placeholder="Search for a game" />
-            <button type="submit" id="search-btn">Search</button>
-        </div>
         <div class="login">
             <a href="signup.html" id="signup">Sign Up</a>
-        </div>
-        <div class="login">
             <a href="login.html" id="signin">Sign In</a>
         </div>
         <div class="login">
@@ -94,6 +87,7 @@
                                v-model="game.playerMax"
                                required>
                     </span>
+                    <p class="warning" v-if="alertPlayer">Please enter a valid number of players</p>
                 </div>
                 </li>
                 <li>
@@ -109,7 +103,14 @@
                 </div>
                 </li>
             </ul>
+           
             <button type="submit">Submit</button>
+            <div class="submit-message">
+              <p class="success" v-if="isUploading">Uploading game...</p>
+              <p class="success" v-if="alertSuccess">Game successfully updated!</p>
+              <p class="warning" v-if="alertFaliure">An error occured when trying to add your game.</p>
+              <p class="warning" v-if="alertPermission">You do not have permission to edit this game. Redirecting to the home page.</p>
+            </div>
         </form>
     </div>
     <footer>
