@@ -15,10 +15,20 @@
 
     <header>
         <h1><a href="index.html">Boar<span class="boardex-dex">dex</span></a></h1>
-        <div class="searchbar">
+        <div id="searchbar">
             <input id="searchbox" type="search"
+                   v-model="searchString"
+                   @keyup="search"
+                   @keyup.enter="submitSearch"
                    placeholder="Search for a game" />
-            <button type="submit" id="search-btn">Search</button>
+            <button type="submit" id="search-btn" @click="submitSearch">Search</button>
+            <ul id="search-results" v-if="isSearch">
+                <div v-for="game in gamesList">
+                    <a :href="'info.html?t='+game">
+                        <li>{{game}}</li>
+                    </a>
+                </div>
+            </ul>
         </div>
         <div class="login">
             <a href="signup.html" id="signup">Sign Up</a>
@@ -66,57 +76,134 @@
                         </li>
                     </ul>
                 </div>
-                <div class="ratings-row">
+                <div class="ratings-row" id="ratings">
                     <ul>
-                        <li>&nbsp;Fun
+                         <li v-if="isRating">&nbsp;Fun
                             <form class="rating-stars">
-                                   <input type="radio" name="fun" value="1" id="fstar5"><!--
+                                   <input type="radio" name="fun" value="5" id="fstar5" 
+                                        v-model="funInput"><!--
                                 --><label for="fstar5"></label><!--
-                                --><input type="radio" name="fun" value="2" id="fstar4"><!--
+                                --><input type="radio" name="fun" value="4" id="fstar4" 
+                                        v-model="funInput"><!--
                                 --><label for="fstar4"></label><!--
-                                --><input type="radio" name="fun" value="3" id="fstar3" checked="checked"><!--
+                                --><input type="radio" name="fun" value="3" id="fstar3"
+                                        v-model="funInput"><!--
                                 --><label for="fstar3"></label><!--
-                                --><input type="radio" name="fun" value="4" id="fstar2"><!--
+                                --><input type="radio" name="fun" value="2" id="fstar2"
+                                        v-model="funInput"><!--
                                 --><label for="fstar2"></label><!--
-                                --><input type="radio" name="fun" value="5" id="fstar1"><!--
+                                --><input type="radio" name="fun" value="1" id="fstar1"
+                                        v-model="funInput"><!--
                                 --><label for="fstar1"></label>
                             </form>
                         </li>
-                        <li>
+                        <li v-if="!isRating">&nbsp;Fun
                             <form class="rating-stars">
-                                   <input type="radio" name="difficulty" value="5" id="dstar5"><!--
+                                   <input type="radio" name="fun" value="5" id="fstar5" 
+                                        v-bind:checked="rating.funRating == 5"><!--
+                                --><label for="fstar5" @click="checkUser"></label><!--
+                                --><input type="radio" name="fun" value="4" id="fstar4" 
+                                        v-bind:checked="rating.funRating == 4"><!--
+                                --><label for="fstar4" @click="checkUser"></label><!--
+                                --><input type="radio" name="fun" value="3" id="fstar3"
+                                        v-bind:checked="rating.funRating == 3"><!--
+                                --><label for="fstar3" @click="checkUser"></label><!--
+                                --><input type="radio" name="fun" value="2" id="fstar2"
+                                        v-bind:checked="rating.funRating == 2"><!--
+                                --><label for="fstar2" @click="checkUser"></label><!--
+                                --><input type="radio" name="fun" value="1" id="fstar1"
+                                        v-bind:checked="rating.funRating == 1"><!--
+                                --><label for="fstar1" @click="checkUser"></label>
+                            </form>
+                        </li>
+                       
+                        <li v-if="isRating">&nbsp;Difficulty
+                            <form class="rating-stars">
+                                   <input type="radio" name="difficulty" value="5" id="dstar5"
+                                        v-model="diffInput"><!--
                                 --><label for="dstar5"></label><!--
-                                --><input type="radio" name="difficulty" value="4" id="dstar4"><!--
+                                --><input type="radio" name="difficulty" value="4" id="dstar4"  
+                                        v-model="diffInput"><!--
                                 --><label for="dstar4"></label><!--
-                                --><input type="radio" name="difficulty" value="3" id="dstar3"><!--
+                                --><input type="radio" name="difficulty" value="3" id="dstar3"
+                                        v-model="diffInput"><!--
                                 --><label for="dstar3"></label><!--
-                                --><input type="radio" name="difficulty" value="2" id="dstar2" checked="checked"><!--
+                                --><input type="radio" name="difficulty" value="2" id="dstar2"
+                                        v-model="diffInput"><!--
                                 --><label for="dstar2"></label><!--
-                                --><input type="radio" name="difficulty" value="1" id="dstar1"><!--
+                                --><input type="radio" name="difficulty" value="1" id="dstar1"
+                                        v-model="diffInput"><!--
                                 --><label for="dstar1"></label>
 
-                            </form>&nbsp;Difficulty
+                            </form>
                         </li>
-                        <li>
+                        <li v-if="!isRating">&nbsp;Difficulty
                             <form class="rating-stars">
-                                   <input type="radio" name="challenging" value="5" id="cstar5"><!--
+                                   <input type="radio" name="difficulty" value="5" id="dstar5"
+                                        v-bind:checked="rating.diffRating == 5"><!--
+                                --><label for="dstar5" @click="checkUser"></label><!--
+                                --><input type="radio" name="difficulty" value="4" id="dstar4"  
+                                        v-bind:checked="rating.diffRating == 4"><!--
+                                --><label for="dstar4" @click="checkUser"></label><!--
+                                --><input type="radio" name="difficulty" value="3" id="dstar3"
+                                        v-bind:checked="rating.diffRating == 3"><!--
+                                --><label for="dstar3" @click="checkUser"></label><!--
+                                --><input type="radio" name="difficulty" value="2" id="dstar2"
+                                        v-bind:checked="rating.diffRating == 2"><!--
+                                --><label for="dstar2" @click="checkUser"></label><!--
+                                --><input type="radio" name="difficulty" value="1" id="dstar1"
+                                        v-bind:checked="rating.diffRating == 1"><!--
+                                --><label for="dstar1" @click="checkUser"></label>
+                            </form>
+                        </li>
+                        <li v-if="isRating">&nbsp;Challenging
+                            <form class="rating-stars">
+                                   <input type="radio" name="challenging" value="5" id="cstar5"
+                                        v-model="chaInput"><!--
                                 --><label for="cstar5"></label><!--
-                                --><input type="radio" name="challenging" value="4" id="cstar4" checked="checked"><!--
+                                --><input type="radio" name="challenging" value="4" id="cstar4"
+                                        v-model="chaInput"><!--
                                 --><label for="cstar4"></label><!--
-                                --><input type="radio" name="challenging" value="3" id="cstar3"><!--
+                                --><input type="radio" name="challenging" value="3" id="cstar3"
+                                        v-model="chaInput"><!--
                                 --><label for="cstar3"></label><!--
-                                --><input type="radio" name="challenging" value="2" id="cstar2"><!--
+                                --><input type="radio" name="challenging" value="2" id="cstar2"
+                                        v-model="chaInput"><!--
                                 --><label for="cstar2"></label><!--
-                                --><input type="radio" name="challenging" value="1" id="cstar1"><!--
+                                --><input type="radio" name="challenging" value="1" id="cstar1"
+                                        v-model="chaInput"><!--
                                 --><label for="cstar1"></label>
-                            </form>&nbsp;Challenging
+                            </form>
+                        </li>
+                        <li v-if="!isRating">&nbsp;Challenging
+                            <form class="rating-stars">
+                                   <input type="radio" name="challenging" value="5" id="cstar5"
+                                        v-bind:checked="rating.chaRating == 5"><!--
+                                --><label for="cstar5" @click="checkUser"></label><!--
+                                --><input type="radio" name="challenging" value="4" id="cstar4"
+                                        v-bind:checked="rating.chaRating == 4"><!--
+                                --><label for="cstar4" @click="checkUser"></label><!--
+                                --><input type="radio" name="challenging" value="3" id="cstar3"
+                                        v-bind:checked="rating.chaRating == 3"><!--
+                                --><label for="cstar3" @click="checkUser"></label><!--
+                                --><input type="radio" name="challenging" value="2" id="cstar2"
+                                        v-bind:checked="rating.chaRating == 2"><!--
+                                --><label for="cstar2" @click="checkUser"></label><!--
+                                --><input type="radio" name="challenging" value="1" id="cstar1"
+                                        v-bind:checked="rating.chaRating == 1"><!--
+                                --><label for="cstar1" @click="checkUser"></label>
+                            </form>
                         </li>
                     </ul>
+                    <div v-if="isRating">
+                        <button type="submit" id="save-ratings" @click="saveRating">Save</button>
+                    </div>
                 </div>
                  <figure>
                     <img :src="game.imgUrl" :alt="game.title">
                 </figure>
-                <p>{{ game.desc }}</p>
+                <div id="game_desc" v-html="formattedDesc"></div>
+                <!-- TODO css for game_desc -->
             </div>
         </div>
 
@@ -149,11 +236,13 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
     <script src="js/parse_args.js"></script>
     <script src="js/init_firebase.js"></script>
     <script src="js/game_info.js"></script>
     <script src="js/recommend.js"></script>
     <script src="js/user_state.js"></script>
+    <script src="js/search.js"></script>
 
 </body>
 </html>

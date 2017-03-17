@@ -31,8 +31,9 @@ var vm = new Vue({
                 var tagRef = taggingDatabaseRef.child('tags/'+tag);
                 tagRef.once('value', snap => {
                     console.debug(snap.key);
-                    if (!snap.val()) { return; }
-                    if (vm.titles.length) {
+                    if (!snap.val()) {
+                        vm.titles = [];
+                    } else if (Array.isArray(vm.titles)) {
                         console.debug('titles and titles[tag]');
                         console.debug(vm.titles);
                         console.debug(Object.keys(snap.val()));
@@ -60,6 +61,9 @@ var vm = new Vue({
                 });
             }
         },
+        clearTags: function() {
+            vm.tags = [];
+        }
     },
 });
 

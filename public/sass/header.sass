@@ -31,7 +31,7 @@ header
       color: $logo-color-light
       text-decoration: none
 
-.searchbar
+#searchbar
   display: inline-block
   margin-left: 20px
   margin-top: $header-height/2 - $search-height/2
@@ -56,6 +56,37 @@ header
   #search-btn
     border-radius: 0px 5px 5px 0px
 
+<<<<<<< HEAD
+=======
+  #search-results
+
+    li
+      width: 39vw
+      background-color: #fcfcfc
+      padding-top: 10px
+      padding-bottom: 15px
+      padding-left: 10px
+      list-style-type: none
+      margin-left: -10px
+      margin-top: -10px
+      transition: background-color 0.3s
+      text-decoration: none
+      color: black
+      font-weight: 600
+
+    a
+      text-decoration: none
+        
+
+    li:hover
+      background-color: #f4f4f4
+
+
+@media #{$phones, $tablets}
+  .searchbar
+    display: none
+
+>>>>>>> 0ed350eb0fd840efad571d2808cbd6bc943297f0
 .login
   display: inline-block
   white-space: nowrap

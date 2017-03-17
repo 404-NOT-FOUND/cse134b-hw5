@@ -27,6 +27,12 @@ ul.board-list
 
     a
       display: inline-block
+      text-decoration: none
+
+    p
+      color: black
+      font-weight: 600
+
     .board-name
       width: $board-img-width*$board-name-ratio-of-img
       margin-top: 10px
@@ -39,7 +45,7 @@ ul.board-list
       border-radius: 50%
       position: relative
       padding: 0px
-      margin: 0px
+      margin: 0px auto
       box-shadow: $thumb-shad-off $thumb-shad-off $thumb-shad-clr
 
     .board-img
@@ -59,3 +65,8 @@ main
   h1
     text-align: center
     color: #888
+
+#filter-btns
+  text-align: center
+  a
+    color: white
