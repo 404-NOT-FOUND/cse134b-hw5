@@ -210,7 +210,7 @@ auth.onAuthStateChanged(user => {
             },
             optimizeImg: function(url, cb) {
                 console.log('fetching optimized image');
-                const resizer = "http://res.cloudinary.com/law4d4rh3/image/fetch/";
+                const resizer = "https://res.cloudinary.com/law4d4rh3/image/fetch/";
                 const SIZE    = "h_280,";
                 const QUALITY = "q_40,";
                 const FORMAT  = "f_jpg/";
